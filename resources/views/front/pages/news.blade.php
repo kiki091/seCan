@@ -2,7 +2,7 @@
 @section('content')
 
 
-<section class="pb-5">
+<section class="pb-5 pt-3">
     <div class="container">
         <div class="row">
             
@@ -15,22 +15,33 @@
                         <option>Terbaru</option>
                     </select>
                     <br/>
-                    <p class="text-uppercase text-left mb-3">
-                        <h6>TAG</h6>
-                    </p>
-                    <p class="text-sm text-uppercase text-left mb-3">
-                        <a href="">kecantikan (1)</a> <a href="">tips cantik (2)</a> <a href="">riasan (3)</a> <a href="">bibir (6)</a> <a href="">perawatan (2)</a>
-                        <a href="">kulit sehat (5)</a> <a href="">rambut (4)</a> <a href="">pelembab (1)</a> <a href="">olah raga (3)</a> <a href="">produk (2)</a>
-                        <a href="">senam (4)</a>
-                    </p>
-                    <br/>
-                    <p class="text-uppercase text-left mb-3"><h6>INSTAGRAM</h6></p>
+                    <div class="news_tag">
+                        <p class="text-uppercase text-left mb-3">
+                            <h6>TAG</h6>
+                        </p>
+                        <p class="text-sm text-uppercase text-left mb-3">
+                            <a href="">kecantikan (1)</a> <a href="">tips cantik (2)</a> <a href="">riasan (3)</a> <a href="">bibir (6)</a> <a href="">perawatan (2)</a>
+                            <a href="">kulit sehat (5)</a> <a href="">rambut (4)</a> <a href="">pelembab (1)</a> <a href="">olah raga (3)</a> <a href="">produk (2)</a>
+                            <a href="">senam (4)</a>
+                        </p>
+                        <br/>
+                        <p class="text-uppercase text-left mb-3"><h6>INSTAGRAM</h6></p>
+                    </div>
                 </div>
 
                 <h1 class="text-left text-capitalize mb-5">
                     Artikel
                 </h1>
-                <p>beranda / artikel / kecantikan</p>
+                <div class="col-xs-12 sidebar_news_mobile mb-3">
+                        <p class="text-uppercase text-left mb-3">
+                            <h6>URUTKAN</h6>
+                        </p>
+                        <select class="form-control">
+                            <option>Terbaru</option>
+                        </select>
+                    </div>
+                <p><i class="fa fa-home mr-2"></i>beranda / artikel / kecantikan</p>
+                <br />
                 <ul class="nav_article_category">
                     <li><a class="active">kecantikan</a></li>
                     <li><a>kesehatan</a></li>

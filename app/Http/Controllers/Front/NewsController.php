@@ -19,4 +19,9 @@ class NewsController extends Controller
     {
         return view('front.pages.news');
     }
+    
+    public function detail($slug)
+    {
+        return view('front.pages.news-detail');
+    }
 }
