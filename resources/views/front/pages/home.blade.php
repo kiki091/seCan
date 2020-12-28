@@ -9,20 +9,14 @@
                 <div class="carousel-inner">
                     <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
                     <div class="carousel-item-custom">
-                        <img src="{{ asset('images/banner/home.png') }}">
+                        <img src="{{ asset('images/banner/1.jpg') }}">
                     </div>
                     <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
                     <div class="carousel-item-custom">
-                        <img src="{{ asset('images/banner/home.png') }}">
+                        <img src="{{ asset('images/banner/2.jpg') }}">
                     </div>
-                    <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-                    <div class="carousel-item-custom">
-                        <img src="{{ asset('images/banner/home.png') }}">
-                    </div>
-                    <label for="carousel-3" class="carousel-control prev control-1">‹</label>
                     <label for="carousel-2" class="carousel-control next control-1">›</label>
                     <label for="carousel-1" class="carousel-control prev control-2">‹</label>
-                    <label for="carousel-3" class="carousel-control next control-2">›</label>
                     <label for="carousel-2" class="carousel-control prev control-3">‹</label>
                     <label for="carousel-1" class="carousel-control next control-3">›</label>
                     <ol class="carousel-indicators">
@@ -31,9 +25,6 @@
                         </li>
                         <li>
                             <label for="carousel-2" class="carousel-bullet">•</label>
-                        </li>
-                        <li>
-                            <label for="carousel-3" class="carousel-bullet">•</label>
                         </li>
                     </ol>
                 </div>
@@ -257,7 +248,7 @@
                                 <input type="email" placeholder="Email" class="form-contact">
                                 </div>
                                 <div class="form-group">       
-                                <textarea  class="form-contact" style="height: 200px" placeholder="Cerita Kamu"></textarea>
+                                <textarea class="form-contact" style="height: 200px" placeholder="Cerita Kamu"></textarea>
                                 </div>
                                 <div class="form-group">       
                                 <button type="submit" class="btn btn-submit-contact">Kirim</button>

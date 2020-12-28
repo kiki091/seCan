@@ -24,12 +24,10 @@
                             <a href="">kulit sehat (5)</a> <a href="">rambut (4)</a> <a href="">pelembab (1)</a> <a href="">olah raga (3)</a> <a href="">produk (2)</a>
                             <a href="">senam (4)</a>
                         </p>
-                        <br/>
-                        <p class="text-uppercase text-left mb-3"><h6>INSTAGRAM</h6></p>
                     </div>
                 </div>
 
-                <h1 class="text-left text-capitalize mb-5">
+                <h1 class="text-left text-capitalize mb-5 text-md">
                     Artikel
                 </h1>
                 <div class="col-xs-12 sidebar_news_mobile mb-3">

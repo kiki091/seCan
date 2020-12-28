@@ -6,33 +6,8 @@
             <div class="carousel-inner">
                 <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
                 <div class="carousel-item-custom">
-                    <img src="{{ asset('images/about/banner.png') }}">
+                    <img src="{{ asset('images/about/banner.jpg') }}">
                 </div>
-                <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-                <div class="carousel-item-custom">
-                    <img src="{{ asset('images/about/banner.png') }}">
-                </div>
-                <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-                <div class="carousel-item-custom">
-                    <img src="{{ asset('images/about/banner.png') }}">
-                </div>
-                <label for="carousel-3" class="carousel-control prev control-1">‹</label>
-                <label for="carousel-2" class="carousel-control next control-1">›</label>
-                <label for="carousel-1" class="carousel-control prev control-2">‹</label>
-                <label for="carousel-3" class="carousel-control next control-2">›</label>
-                <label for="carousel-2" class="carousel-control prev control-3">‹</label>
-                <label for="carousel-1" class="carousel-control next control-3">›</label>
-                <ol class="carousel-indicators">
-                    <li>
-                        <label for="carousel-1" class="carousel-bullet">•</label>
-                    </li>
-                    <li>
-                        <label for="carousel-2" class="carousel-bullet">•</label>
-                    </li>
-                    <li>
-                        <label for="carousel-3" class="carousel-bullet">•</label>
-                    </li>
-                </ol>
             </div>
         </div>
     </div>
@@ -74,7 +49,7 @@
 <section class="pt-5 pb-0">
     <div class="row">
         <div class="col-md-12">
-            <img src="{{ asset('images/about/section_2.png') }}" class="full-width" />
+            <img src="{{ asset('images/about/banner_middle.jpg') }}" class="full-width" />
         </div>
     </div>
 </section>
@@ -95,71 +70,10 @@
             </div>
 
             <div class="col-md-8">
-                <img src="{{ asset('images/about/section_3.png') }}" class="full-width" />
+                <img src="{{ asset('images/about/section_3.jpg') }}" class="full-width" />
             </div>
         </div>
     </div>
 </section>
 
-<section class="">
-    <div class="container">
-        <div class="row flow-root">
-            <div class="col-md-4 ml-5 mr-5 float-left">
-                <p class="text-sm text-uppercase">
-                    Mari berkarya bersama kami
-                </p>
-                <h4 class="">salam@secan.id</h4>
-
-                <p class="text-sm text-uppercase mt-5">
-                    Ikuti Kabar Kami
-                </p>
-
-                <ul class="list-unstyled d-flex flex-md-row align-items-md-center">
-
-                    <li class="m-3">
-                        <a href="">
-                        <i class="fab fa-facebook-f"></i>
-                        </a>
-                    
-                    </li>
-
-                    <li class="m-3">
-                        <a href="">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    
-                    </li>
-
-                    <li class="m-3">
-                        <a href="">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    
-                    </li>
-                </ul>
-
-            </div>
-
-
-            <div class="col-md-4 ml-5 mr-5 float-right">
-                <p class="text-sm text-uppercase mb-5">
-                    Berlangganan
-                </p>
-
-                <form>
-                    <div class="form-group mb-5">
-                        <input type="text" placeholder="Nama Lengkap" class="form-subscribe">
-                    </div>
-                    <div class="form-group mb-5">
-                        <input type="email" placeholder="Email" class="form-subscribe">
-                    </div>
-                    <div class="form-group">       
-                        <button type="submit" class="btn btn-dark p-3">Kirim</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-</section>
 @stop
