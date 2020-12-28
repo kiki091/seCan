@@ -56,7 +56,7 @@
                             <li class="nav-item"><a class="nav-link link-scroll" href="{{ route('frontAbout') }}">Tentang SeCan</a></li>
                             <li class="nav-item"><a class="nav-link link-scroll" href="{{ route('frontNews') }}">Artikel</a></li>
                             <li class="nav-item"><a class="nav-link link-scroll" href="#education">Dokter</a></li>
-                            <li class="nav-item"><a class="nav-link link-scroll" href="#experience">Video</a></li>
+                            <li class="nav-item"><a class="nav-link link-scroll" href="{{ route('frontVideo') }}">Video</a></li>
                             <li class="nav-item"><a class="nav-link link-scroll" href="#contact">Kontak<span
                                 class="sr-only">(current)</span></a>
                             </li>

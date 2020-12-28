@@ -20,7 +20,8 @@
                 <h1 class="text-base mobile_only">
                     Kesehatan Kulit Wajah Tetap Terjaga Ketika Era Adaptasi Kebuasaan Baru
                 </h1>
-                <video src="" class="full-width"></video>
+                <iframe class="full-width" height="515" src="https://www.youtube.com/embed/fEOIBToGmF0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- <video src="https://www.youtube.com/watch?v=fEOIBToGmF0" class="full-width"></video> -->
             </div>
 
             <div class="col-md-4 mb-5">
