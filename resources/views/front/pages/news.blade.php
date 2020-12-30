@@ -45,6 +45,7 @@
                     <li><a>kesehatan</a></li>
                 </ul>
                 <div class="grid js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 300 }'>
+                    
                     <div class="grid-item m-3">
                         <img src="{{ asset('images/news/thumb_1.png') }}" class="full-width" />
                         <p class="mt-3 mb-3">
@@ -58,7 +59,7 @@
                         when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                         </p>
                         <p class="mt-5">
-                            <a href="">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
+                            <a href="{{ route('frontNewsDetail', 'test') }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
                         </p>
                     </div>
 
@@ -73,7 +74,7 @@
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                         </p>
                         <p class="mt-5">
-                            <a href="">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
+                            <a href="{{ route('frontNewsDetail', 'test') }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
                         </p>
                     </div>
 
@@ -90,7 +91,7 @@
                         when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                         </p>
                         <p class="mt-5">
-                            <a href="">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
+                            <a href="{{ route('frontNewsDetail', 'test') }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
                         </p>
                     </div>
 
@@ -107,7 +108,7 @@
                         when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                         </p>
                         <p class="mt-5">
-                            <a href="">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
+                            <a href="{{ route('frontNewsDetail', 'test') }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
                         </p>
                     </div>
 
@@ -122,7 +123,7 @@
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                         </p>
                         <p class="mt-5">
-                            <a href="">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
+                            <a href="{{ route('frontNewsDetail', 'test') }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
                         </p>
                     </div>
 
@@ -139,7 +140,7 @@
                         when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                         </p>
                         <p class="mt-5">
-                            <a href="">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
+                            <a href="{{ route('frontNewsDetail', 'test') }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
                         </p>
                     </div>
                 </div>

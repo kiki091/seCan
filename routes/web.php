@@ -11,5 +11,7 @@
 |
 */
 
-
+Auth::routes();
 include __DIR__.'/front.php';
+include __DIR__.'/cms.php';
+

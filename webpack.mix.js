@@ -15,12 +15,18 @@ mix.js([
     'resources/js/app.js',
     'public/js/front.js',
 ], 'public/js/secan_plugins.js')
+    .js([
+        'resources/js/app.js',
+    ], 'public/js/cms.js')
     .styles([
         'public/vendor/bootstrap/css/bootstrap.css',
         'public/css/style.default.css',
         'public/css/custom.css',
         'public/css/maps.css',
     ], 'public/css/secan_plugins.css')
+    .styles([
+        'public/css/app.css',
+    ], 'public/css/cms.css')
     .options({
         processCssUrls: false
     });;

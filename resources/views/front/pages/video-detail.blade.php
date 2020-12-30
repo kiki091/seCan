@@ -16,7 +16,7 @@
                 
             </div>
 
-            <div class="col-md-8 mb-5">
+            <div class="col-md-9 mb-5">
                 <h1 class="text-base mobile_only">
                     Kesehatan Kulit Wajah Tetap Terjaga Ketika Era Adaptasi Kebuasaan Baru
                 </h1>
@@ -24,7 +24,7 @@
                 <!-- <video src="https://www.youtube.com/watch?v=fEOIBToGmF0" class="full-width"></video> -->
             </div>
 
-            <div class="col-md-4 mb-5">
+            <div class="col-md-3 mb-5">
                 <div class="">
                     <h1 class="text-md desktop_only">
                         Kesehatan Kulit Wajah Tetap Terjaga Ketika Era Adaptasi Kebuasaan Baru

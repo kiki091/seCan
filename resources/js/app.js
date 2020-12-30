@@ -6,7 +6,7 @@
 
 require('./bootstrap');
 
-// window.Vue = require('vue');
+window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -30,3 +30,18 @@ require('./bootstrap');
 // const app = new Vue({
 //     el: '#app',
 // });
+
+
+import Vue from 'vue'
+import Antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.css'
+import LayoutCms from './components/Layout';
+
+Vue.use(Antd)
+Vue.config.productionTip = false
+Vue.component('layout-component', require('./components/Layout.vue').default);
+
+/* eslint-disable no-new */
+const app = new Vue({
+    el: '#app'
+})
