@@ -8,24 +8,34 @@
                     <!-- Languages dropdown    -->
                     <li class="nav-item dropdown right">
                         <a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle">
-                            <img src="{{ asset('images/flags/GB.png') }}" alt="English">
-                            <span class="d-none d-sm-inline-block">English</span>
+                        @if (LaravelLocalization::getCurrentLocale() == 'en')    
+                        <img src="{{ asset('images/flags/GB.png') }}" alt="{{ current(explode(' ', LaravelLocalization::getCurrentLocaleNative())) }}">
+                        @else
+                        <img src="{{ asset('images/flags/ID.png') }}" alt="{{ current(explode(' ', LaravelLocalization::getCurrentLocaleNative())) }}">
+                        @endif
+                        
+                        <span class="d-none d-sm-inline-block">
+                            {{ current(explode(' ', LaravelLocalization::getCurrentLocaleNative())) }}
+                            </span>
                         </a>
                         <ul aria-labelledby="languages" class="dropdown-menu">
-                            <li>
-                                <a rel="nofollow" href="#" class="dropdown-item"> 
-                                    <img src="{{ asset('images/flags/GB.png') }}" alt="English" class="mr-2">
-                                    English
-                                </a>
-                            </li>
-                            <li>
-                                <a rel="nofollow" href="#" class="dropdown-item"> 
-                                    <img src="{{ asset('images/flags/ID.png') }}" alt="Indonesia" class="mr-2">
-                                    Indonesia                                         
-                                </a>
-                            </li>
+                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $language)
+                                <li>
+                                    <a rel="nofollow" class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                        @if ($localeCode == 'en')
+                                            <img src="{{ asset('images/flags/GB.png') }}" alt="{{ current(explode(' ', $language['native'])) }}" class="mr-2">
+                                        @else
+                                            <img src="{{ asset('images/flags/ID.png') }}" alt="{{ current(explode(' ', $language['native'])) }}" class="mr-2">
+                                        @endif
+                                        {{ current(explode(' ', $language['native'])) }}
+                                    </a>
+                                </li>
+
+                            
+                            @endforeach
                         </ul>
                     </li>
+                    
                 </ul>
             </div>
             <!-- <div class="row"> -->

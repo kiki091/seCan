@@ -25,9 +25,9 @@ DROP TABLE IF EXISTS `banner`;
 CREATE TABLE `banner` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `image` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,6 +36,7 @@ CREATE TABLE `banner` (
 
 LOCK TABLES `banner` WRITE;
 /*!40000 ALTER TABLE `banner` DISABLE KEYS */;
+INSERT INTO `banner` VALUES (1,'1.jpg','2021-01-02 17:03:03'),(18,'2.jpg',NULL),(19,'1620x1080_1.png','2021-01-02 18:57:29');
 /*!40000 ALTER TABLE `banner` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,10 +53,8 @@ CREATE TABLE `banner_trans` (
   `locale` varchar(2) NOT NULL,
   `title` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_banner_trans_1_idx` (`banner_id`),
-  CONSTRAINT `fk_banner_trans_1` FOREIGN KEY (`banner_id`) REFERENCES `banner` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,6 +63,7 @@ CREATE TABLE `banner_trans` (
 
 LOCK TABLES `banner_trans` WRITE;
 /*!40000 ALTER TABLE `banner_trans` DISABLE KEYS */;
+INSERT INTO `banner_trans` VALUES (7,1,'id','test 1 edit 2','2021-01-02 10:03:03'),(8,1,'en','test 1 en edit 2','2021-01-02 10:03:03'),(47,18,'id','test id','2021-01-02 10:03:03'),(48,18,'en','test en','2021-01-02 10:03:03'),(49,19,'id','test','2021-01-02 11:57:29'),(50,19,'en','test','2021-01-02 11:57:29');
 /*!40000 ALTER TABLE `banner_trans` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,9 +76,11 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug_UNIQUE` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,6 +89,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES (1,'kecantikan',NULL),(2,'kesehatan',NULL);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,7 +109,7 @@ CREATE TABLE `category_trans` (
   PRIMARY KEY (`id`),
   KEY `fk_category_trans_1_idx` (`category_id`),
   CONSTRAINT `fk_category_trans_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,6 +118,7 @@ CREATE TABLE `category_trans` (
 
 LOCK TABLES `category_trans` WRITE;
 /*!40000 ALTER TABLE `category_trans` DISABLE KEYS */;
+INSERT INTO `category_trans` VALUES (1,1,'id','Kecantikan',NULL),(2,1,'en','Beauty',NULL),(3,2,'id','Kesehatan',NULL),(4,2,'en','Healtly',NULL);
 /*!40000 ALTER TABLE `category_trans` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,9 +140,12 @@ CREATE TABLE `doctor` (
   `phone_number` varchar(15) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `fullname_UNIQUE` (`fullname`),
-  UNIQUE KEY `phone_number_UNIQUE` (`phone_number`)
+  UNIQUE KEY `phone_number_UNIQUE` (`phone_number`),
+  UNIQUE KEY `category_id_UNIQUE` (`category_id`),
+  CONSTRAINT `fk_doctor_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -213,15 +220,20 @@ DROP TABLE IF EXISTS `news`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `news` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(255) NOT NULL,
   `thumbnail` varchar(255) DEFAULT NULL,
+  `home_thumbnail` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `category_id` int(11) NOT NULL,
   `doctor_id` int(11) DEFAULT NULL,
   `publish_date` datetime DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug_UNIQUE` (`slug`),
+  KEY `fk_news_1_idx` (`doctor_id`),
+  CONSTRAINT `fk_news_1` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -230,6 +242,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
+INSERT INTO `news` VALUES (1,'riasan-tanpa-riasan-ini-dia','thumb_1.png','Asset 05_thumbnail.png','detail.png',1,NULL,'2021-01-03 11:30:00','2021-01-03 04:30:00',NULL);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,8 +261,10 @@ CREATE TABLE `news_trans` (
   `content` text,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `fk_news_trans_1_idx` (`news_id`),
+  CONSTRAINT `fk_news_trans_1` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -258,6 +273,7 @@ CREATE TABLE `news_trans` (
 
 LOCK TABLES `news_trans` WRITE;
 /*!40000 ALTER TABLE `news_trans` DISABLE KEYS */;
+INSERT INTO `news_trans` VALUES (1,1,'id','Riasan Tanpa Riasan ? Ini Dia','<p>\n                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                            Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, \n                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n                        </p><p>\n                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                            Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, \n                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n                        </p>',NULL,NULL),(2,1,'en','Riasan Tanpa Riasan ? Ini Dia EN','<p>\n                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                            Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, \n                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n                        </p><p>\n                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                            Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, \n                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n                        </p>',NULL,NULL);
 /*!40000 ALTER TABLE `news_trans` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,9 +310,11 @@ DROP TABLE IF EXISTS `tag`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug_UNIQUE` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -305,6 +323,7 @@ CREATE TABLE `tag` (
 
 LOCK TABLES `tag` WRITE;
 /*!40000 ALTER TABLE `tag` DISABLE KEYS */;
+INSERT INTO `tag` VALUES (1,'tips-cantik',NULL),(2,'riasan',NULL),(3,'bibir',NULL),(4,'perawatan',NULL),(5,'kulit-sehat',NULL),(6,'rambut',NULL),(7,'pelembab',NULL),(8,'olah-raga',NULL),(9,'produk',NULL),(10,'senam',NULL),(11,'kecantikan',NULL);
 /*!40000 ALTER TABLE `tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -347,12 +366,12 @@ CREATE TABLE `tag_trans` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tag_id` int(11) NOT NULL,
   `locale` varchar(2) NOT NULL,
-  `title` varchar(55) NOT NULL,
+  `title` varchar(55) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_tag_trans_1_idx` (`tag_id`),
   CONSTRAINT `fk_tag_trans_1` FOREIGN KEY (`tag_id`) REFERENCES `tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -361,6 +380,7 @@ CREATE TABLE `tag_trans` (
 
 LOCK TABLES `tag_trans` WRITE;
 /*!40000 ALTER TABLE `tag_trans` DISABLE KEYS */;
+INSERT INTO `tag_trans` VALUES (17,1,'id','Tips Cantik',NULL),(18,1,'en','Tips Cantik',NULL),(19,2,'id','Riasan',NULL),(20,2,'en','Riasan',NULL),(21,3,'id','Bibir',NULL),(22,3,'en','Bibir',NULL),(23,4,'id','Perawatan',NULL),(24,4,'en','Perawatan',NULL),(25,5,'id',NULL,NULL),(26,5,'en',NULL,NULL),(27,6,'id',NULL,NULL),(28,6,'en',NULL,NULL),(29,7,'id',NULL,NULL),(30,7,'en',NULL,NULL),(31,8,'id',NULL,NULL),(32,8,'en',NULL,NULL),(33,9,'id',NULL,NULL),(34,9,'en',NULL,NULL),(35,10,'id',NULL,NULL),(36,10,'en',NULL,NULL),(37,11,'id',NULL,NULL),(38,11,'en',NULL,NULL);
 /*!40000 ALTER TABLE `tag_trans` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -391,7 +411,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,1,'admin','admin@facile.com','$2y$10$Llk9CHGZDvw0op1iTu6CaOWG3AREJmJBGBgY2z.ticrfwu1TaTi0C','2qtuebwwozPGeZB5QtNZw8cezWTDpYGK9YL9s5zJwiSFmWkpvXpxzExwEmyw','2016-07-29 11:12:15','2016-09-16 09:27:27',1);
+INSERT INTO `users` VALUES (1,1,'admin','admin@facile.com','$2y$10$Llk9CHGZDvw0op1iTu6CaOWG3AREJmJBGBgY2z.ticrfwu1TaTi0C','DIdaWqIlvFnQp12fyrDnjSFIXFKYc4ZGr2rl6LetUXszFO0E7VFH1vi78vPR','2016-07-29 11:12:15','2016-09-16 09:27:27',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -462,4 +482,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-30 10:04:53
+-- Dump completed on 2021-01-04  9:44:08

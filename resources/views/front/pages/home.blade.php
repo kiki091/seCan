@@ -7,25 +7,33 @@
         <div class="col-md-12 col-lg-12">
             <div class="carousel">
                 <div class="carousel-inner">
-                    <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
-                    <div class="carousel-item-custom">
-                        <img src="{{ asset('images/banner/1.jpg') }}">
-                    </div>
-                    <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-                    <div class="carousel-item-custom">
-                        <img src="{{ asset('images/banner/2.jpg') }}">
-                    </div>
+                    @if(isset($home_sliders) && !empty($home_sliders))
+                        @foreach($home_sliders as $keySlider=> $slider)
+                            @if($keySlider == '0')
+                                <input class="carousel-open" type="radio" id="carousel-{{ $keySlider }}" name="carousel" aria-hidden="true" hidden="" checked="checked">
+                            @else
+                                <input class="carousel-open" type="radio" id="carousel-{{ $keySlider }}" name="carousel" aria-hidden="true" hidden="">
+                            @endif  
+                            <div class="carousel-item-custom">
+                                <img src="{{ $slider['image_url'] }}" alt="{{ $slider['title'] }}">
+                            </div>
+                            {{--<label for="carousel-{{ $keySlider }}" class="carousel-control next control-{{ $keySlider+1 }}">›</label>--}}
+
+                            
+                        @endforeach
+                    @endif
+                    <!-- 
                     <label for="carousel-2" class="carousel-control next control-1">›</label>
                     <label for="carousel-1" class="carousel-control prev control-2">‹</label>
                     <label for="carousel-2" class="carousel-control prev control-3">‹</label>
                     <label for="carousel-1" class="carousel-control next control-3">›</label>
+                     -->
                     <ol class="carousel-indicators">
-                        <li>
-                            <label for="carousel-1" class="carousel-bullet">•</label>
-                        </li>
-                        <li>
-                            <label for="carousel-2" class="carousel-bullet">•</label>
-                        </li>
+                        @for ($index = 0; $index < count($home_sliders); $index++)
+                            <li>
+                                <label for="carousel-{{ $index }}" class="carousel-bullet">•</label>
+                            </li>
+                        @endfor
                     </ol>
                 </div>
             </div>
@@ -68,43 +76,21 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-4 col-lg-3 col-xl-3">
-                    <p class="text-center" style="">
-                        <img src="{{ asset('images/Asset 05_thumbnail.png') }}" style="width: 100%" />
-                        <span class="article_category">
-                            TATARIAS
-                        </span>
-                        <h4 class="article_title text-center">Riasan Tanpa Riasan? Ini Dia.</h4>
-                    </p>
-                </div>
-                <div class="col-md-3 col-sm-4 col-lg-3 col-xl-3">
-                    <p class="text-center" style="">
-                        <img src="{{ asset('images/Asset 05_thumbnail.png') }}" style="width: 100%" />
-                        <span class="article_category">
-                            PERONA MATA
-                        </span>
-                        <h4 class="article_title text-center">Perona Mata Krim dan Cair Terbaik</h4>
-                    </p>
-                </div>
-                <div class="col-md-3 col-sm-4 col-lg-3 col-xl-3">
-                    <p class="text-center" style="">
-                        <img src="{{ asset('images/Asset 05_thumbnail.png') }}" style="width: 100%" />
-                        <span class="article_category">
-                            KECANTIKAN
-                        </span>
-                        <h4  class="article_title text-center">Memanjakan Diri Tetap Cantik Di Masa Karantina Di Rumah.</h4>
-                    </p>
-                </div>
-                <div class="col-md-3 col-sm-12 col-lg-3 col-xl-3">
-                    <div class="circle_bottom">
-                        <span>Blog dan artikel perawatan kulit, riasan, dan yang diantaranya.</span>
-                        <h5 style="margin-top:1em;">
-                            <a href="" >
-                                <u style="position: absolute;display: contents;">Jelajahi Semua</u>
-                            </a>
-                        </h5>
-                    </div>
-                </div>
+                @if(isset($home_news) && !empty($home_news))
+                    @foreach($home_news as $keyNews=> $news)
+                        <div class="col-md-3 col-sm-4 col-lg-3 col-xl-3">
+                            <p class="text-center" style="">
+                                <img src="{{ $news['home_thumbnail_url'] }}" alt="{{ $news['title'] }}" style="width: 100%" />
+                                <span class="article_category">
+                                {{ $news['category'] }}
+                                </span>
+                                <a href="{{ route('frontNewsDetail', $news['slug']) }}">
+                                    <h4 class="article_title text-center">{{ $news['title'] }}</h4>
+                                </a>
+                            </p>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>

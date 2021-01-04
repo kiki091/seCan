@@ -46,103 +46,23 @@
                 </ul>
                 <div class="grid js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 300 }'>
                     
-                    <div class="grid-item m-3">
-                        <img src="{{ asset('images/news/thumb_1.png') }}" class="full-width" />
-                        <p class="mt-3 mb-3">
-                            <span class="float-left text-uppercase">kecantikan</span>
-                            <span class="float-right text-uppercase">05/01/2020</span>
-                        </p>
-                        <h3 class="mt-3">Riasan tanpa riasan? Ini dia.</h3>
-                        <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        </p>
-                        <p class="mt-5">
-                            <a href="{{ route('frontNewsDetail', 'test') }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
-                        </p>
-                    </div>
-
-                    <div class="grid-item m-3">
-                        <img src="{{ asset('images/news/thumb_2.png') }}" class="full-width" />
-                        <p class="mt-3 mb-3">
-                            <span class="float-left text-uppercase">kecantikan</span>
-                            <span class="float-right text-uppercase">05/01/2020</span>
-                        </p>
-                        <h3 class="mt-3">Riasan tanpa riasan? Ini dia.</h3>
-                        <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        </p>
-                        <p class="mt-5">
-                            <a href="{{ route('frontNewsDetail', 'test') }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
-                        </p>
-                    </div>
-
-                    <div class="grid-item m-3">
-                        <img src="{{ asset('images/news/thumb_3.png') }}" class="full-width" />
-                        <p class="mt-3 mb-3">
-                            <span class="float-left text-uppercase">kecantikan</span>
-                            <span class="float-right text-uppercase">05/01/2020</span>
-                        </p>
-                        <h3 class="mt-3">Riasan tanpa riasan? Ini dia.</h3>
-                        <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        </p>
-                        <p class="mt-5">
-                            <a href="{{ route('frontNewsDetail', 'test') }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
-                        </p>
-                    </div>
-
-                    <div class="grid-item m-3">
-                        <img src="{{ asset('images/news/thumb_1.png') }}" class="full-width" />
-                        <p class="mt-3 mb-3">
-                            <span class="float-left text-uppercase">kecantikan</span>
-                            <span class="float-right text-uppercase">05/01/2020</span>
-                        </p>
-                        <h3 class="mt-3">Riasan tanpa riasan? Ini dia.</h3>
-                        <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        </p>
-                        <p class="mt-5">
-                            <a href="{{ route('frontNewsDetail', 'test') }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
-                        </p>
-                    </div>
-
-                    <div class="grid-item m-3">
-                        <img src="{{ asset('images/news/thumb_2.png') }}" class="full-width" />
-                        <p class="mt-3 mb-3">
-                            <span class="float-left text-uppercase">kecantikan</span>
-                            <span class="float-right text-uppercase">05/01/2020</span>
-                        </p>
-                        <h3 class="mt-3">Riasan tanpa riasan? Ini dia.</h3>
-                        <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        </p>
-                        <p class="mt-5">
-                            <a href="{{ route('frontNewsDetail', 'test') }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
-                        </p>
-                    </div>
-
-                    <div class="grid-item m-3">
-                        <img src="{{ asset('images/news/thumb_3.png') }}" class="full-width" />
-                        <p class="mt-3 mb-3">
-                            <span class="float-left text-uppercase">kecantikan</span>
-                            <span class="float-right text-uppercase">05/01/2020</span>
-                        </p>
-                        <h3 class="mt-3">Riasan tanpa riasan? Ini dia.</h3>
-                        <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        </p>
-                        <p class="mt-5">
-                            <a href="{{ route('frontNewsDetail', 'test') }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
-                        </p>
-                    </div>
+                    @if(isset($news) && !empty($news))
+                        @foreach($news as $keyNews=> $newsLanding)
+                            <div class="grid-item m-3">
+                                <img src="{{ $newsLanding['thumbnail_url'] }}" alt="{{ $newsLanding['title'] }}" class="full-width" />
+                                <p class="mt-3 mb-3">
+                                    <span class="float-left text-uppercase">{{ $newsLanding['category'] }}</span>
+                                    <span class="float-right text-uppercase">{{ $newsLanding['publish_date'] }}</span>
+                                </p>
+                                <h3 class="mt-3">{{ $newsLanding['title'] }}</h3>
+                                {!! $newsLanding['content'] !!}
+                                <p class="mt-5">
+                                    <a href="{{ route('frontNewsDetail', $newsLanding['slug']) }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
+                                </p>
+                            </div>
+                        @endforeach
+                    @endif
+                    
                 </div>
             </div>
         </div>

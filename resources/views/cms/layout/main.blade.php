@@ -12,68 +12,48 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- PNotify -->
+    <link href="{{ asset('js/external/Pnotify/dist/pnotify.css') }}" rel="stylesheet">
+    <link href="{{ asset('js/external/Pnotify/dist/pnotify.buttons.css') }}" rel="stylesheet">
+    <link href="{{ asset('js/external/Pnotify/dist/pnotify.nonblock.css') }}" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/cms.css') }}" rel="stylesheet">
 </head>
+@guest
 <body>
-        <div id="appGuest">
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-                <div class="container">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto">
-
-                        </ul>
-
-                        <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
-                            <!-- Authentication Links -->
-                            @guest
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                                @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                    </li>
-                                @endif
-                            @else
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }} <span class="caret"></span>
-                                    </a>
-
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
-                            @endguest
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <main class="py-4">
+    <div id="app">
+        <main class="py-4">
             @yield('content')
-            </main>
-        </div>
+        </main>
+    </div>
 </body>
+@else
+<body class="nav-md">
+    <div class="container body" id="app">
+        <div class="main_container">
+            @include('cms.partials.sidebar')
+            <div class="right_col" role="main">
+                @yield('content')
+            </div>
+            @include('cms.partials.footer')
+        </div>
+    </div>
+        
+</body>
+@endguest
 
 <!-- Scripts -->
+<script>
+    var token = {!! json_encode(csrf_token()) !!}
+    var appDomain = {!! json_encode(env('APP_URL')) !!}
+    var supported_language = {!! json_encode(LaravelLocalization::getSupportedLocales()) !!}
+</script>
 <script src="{{ asset('js/cms.js') }}" defer></script>
+<script src="{{ asset('js/laroute.js') }}" defer></script>
+
+<!-- PNotify -->
+<script src="{{ asset('js/external/Pnotify/dist/pnotify.js') }}" defer></script>
+<script src="{{ asset('js/external/Pnotify/dist/pnotify.buttons.js') }}" defer></script>
+<script src="{{ asset('js/external/Pnotify/dist/pnotify.nonblock.js') }}" defer></script>
 </html>

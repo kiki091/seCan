@@ -4,24 +4,58 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\Bridge\News as NewsServices;
 
 use Response;
 use Validator;
 
 class NewsController extends Controller
 {
-	public function __construct() 
+    /**
+     * init service
+     * @return true
+     **/
+    protected $newsManager;
+	public function __construct(NewsServices $newsManager) 
 	{
+        $this->newsManager = $newsManager;
 
     }
     
     public function index(Request $request)
     {
-        return view('front.pages.news');
+        $data['news'] = $this->newsManager->getHomeData($request->all());
+        return view('front.pages.news', $data);
     }
     
     public function detail($slug)
     {
-        return view('front.pages.news-detail');
+        $data['detail'] = $this->newsManager->getHomeDetail(['slug' => $slug]);
+        
+        if(empty($data['detail']))
+            return abort(404);
+        
+        $data['related'] = $this->newsManager->getHomeData([
+            'related_slug' => $slug,
+            'category_id' => $data['detail']['category_id'], 
+            'limit' => '3', 
+            'order_type' => 'desc'
+        ]);
+        $data['prev'] = $this->newsManager->getHomeDetail([
+            'related_slug' => $slug,
+            'category_id' => $data['detail']['category_id'], 
+            'limit' => '1', 
+            'order_type' => 'asc'
+
+        ]);
+        $data['next'] = $this->newsManager->getHomeDetail([
+            'related_slug' => $slug,
+            'category_id' => $data['detail']['category_id'], 
+            'limit' => '1', 
+            'order_type' => 'desc'
+
+        ]);
+        
+        return view('front.pages.news-detail',$data);
     }
 }

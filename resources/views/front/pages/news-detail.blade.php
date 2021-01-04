@@ -11,34 +11,20 @@
                 <h1 class="text-left text-capitalize mb-5 text-md">
                     Artikel
                 </h1>
-                <p class="text-capitalize bredcrumb"><i class="fa fa-home mr-4"></i>beranda / artikel / kecantikan / binar-wajah-di-cuaca-ekstrem</p>
+                <p class="text-capitalize bredcrumb"><i class="fa fa-home mr-4"></i>beranda / artikel / {{ $detail['category'] }} / {{ $detail['title'] }}</p>
                 
 
                 <div class="news_content">
 
-                    <img src="{{ asset('images/news/detail.png') }}" class="full-width" />
+                    <img src="{{ $detail['image_url'] }}" alt="{{ $detail['title'] }}" class="full-width" />
                     <p class="mt-3 mb-3 flow-root">
-                        <span class="float-left text-uppercase">kecantikan</span>
-                        <span class="float-right text-uppercase">05/01/2020</span>
+                        <span class="float-left text-uppercase">{{ $detail['category'] }}</span>
+                        <span class="float-right text-uppercase">{{ $detail['publish_date'] }}</span>
                     </p>
 
-                    <h1 class="text-capitalize mt-2 mb-2 text-md">Binar Wajah di Cuaca Ekstrem</h1>
+                    <h1 class="text-capitalize mt-2 mb-2 text-md">{{ $detail['title'] }}</h1>
                     <div class="mt-4 text-justify d-block">
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        </p>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        </p>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        </p>
+                        {!! $detail['content'] !!}
                     </div>
                 </div>
 
@@ -47,66 +33,64 @@
                     <div class="flex vend">
                         <div class="row d-flex between">
                             <div class="d-flex">
-                                <img src="{{ asset('images/news/related_1.png') }}" width="150" class="img-prev" />
-                                <p class="ml-3 mt-3 mb-3 text-center text-capitaize">
-                                    <a href="">Sebelumnya</a>
-                                </p>
+                                @if(isset($prev) && !empty($prev))
+                                    <img src="{{ $prev['home_thumbnail_url'] }}" alt="{{ $prev['title'] }}" width="150" class="img-prev" />
+                                    <p class="ml-3 mt-3 mb-3 text-center text-capitaize">
+                                        <a href="{{ route('frontNewsDetail', $prev['slug']) }}">Sebelumnya</a>
+                                    </p>
+                                @endif
                             </div>
                             <div class="d-flex">
-                                <p class="mr-3 mt-3 mb-3 text-center text-capitaize">
-                                    <a href="">Selanjutnya</a>
-                                </p>
-                                <img src="{{ asset('images/news/related_2.png') }}" width="150" class="img-prev" />
+                                @if(isset($next) && !empty($next))
+                                    <p class="mr-3 mt-3 mb-3 text-center text-capitaize">
+                                        <a href="">Selanjutnya</a>
+                                    </p>
+                                    <img src="{{ $next['home_thumbnail_url'] }}" alt="{{ $next['title'] }}" width="150" class="img-prev" />
+                                @endif
                             </div>
                         </div>
                     </div>
                     
                 </div>
-
-                <div class="related_news_title desktop_only mt-5">
-                    <h3 class="text-center mb-2 mt-2 text-md">Artikel Terkait</h3>
-                    <div class="row mt-4">
-                        <div class="col-md-4">
-                            <img src="{{ asset('images/news/related_1.png') }}" class="full-width" />
-                            <p class="mt-3 mb-3 text-center">
-                                <span class="text-uppercase">kecantikan</span>
-                            </p>
-                            <h3 class="mt-3 text-base">Riasan tanpa riasan? Ini dia.</h3>
+                @if(isset($related) && !empty($related))
+                    <div class="related_news_title desktop_only mt-5">
+                        <h3 class="text-center mb-2 mt-2 text-md">Artikel Terkait</h3>
+                        <div class="row mt-4">
+                            
+                            @foreach($related as $relatedDesktop)
+                                <a href="{{ route('frontNewsDetail', $relatedDesktop['slug']) }}">
+                                    <div class="col-md-4">
+                                        <img src="{{ $relatedDesktop['home_thumbnail_url'] }}" alt="{{ $relatedDesktop['title'] }}" class="full-width" />
+                                        <p class="mt-3 mb-3 text-center">
+                                            <span class="text-uppercase">{{ $relatedDesktop['category'] }}</span>
+                                        </p>
+                                        <h3 class="mt-3 text-base">{{ $relatedDesktop['title'] }}</h3>
+                                    </div>
+                                </a>
+                            @endforeach
                         </div>
+                    </div>
 
-                        <div class="col-md-4">
-                            <img src="{{ asset('images/news/related_2.png') }}" class="full-width" />
-                            <p class="mt-3 mb-3 text-center">
-                                <span class="text-uppercase">kecantikan</span>
-                            </p>
-                            <h3 class="mt-3 text-base">Riasan tanpa riasan? Ini dia.</h3>
-                        </div>
-
-                        <div class="col-md-4">
-                            <img src="{{ asset('images/news/related_3.png') }}" class="full-width" />
-                            <p class="mt-3 mb-3 text-center">
-                                <span class="text-uppercase">kecantikan</span>
-                            </p>
-                            <h3 class="mt-3 text-base">Riasan tanpa riasan? Ini dia.</h3>
-                        </div>
-                        </div>
-                </div>
-
-                <div class="related_news mobile_only mb-3">
-                    <div class="flex vend">
-                        <h1 class="text-left mb-3 mt-2 text-md">Artikel Terkait</h1>
-                        <div class="row d-flex between">
-                            <div class="d-flex ml-3">
-                                <img src="{{ asset('images/news/related_1.png') }}" width="150" class="" />
-                                <p class="m-3 text-justify text-capitaize text-sm style="line-hight: 1.6"">
-                                    <a href="">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    <div class="related_news mobile_only mb-3">
+                        <div class="flex vend">
+                            <h1 class="text-left mb-3 mt-2 text-md">Artikel Terkait</h1>
+                            <div class="row d-flex between">
+                                @foreach($related as $relatedMobile)
+                                    <a href="{{ route('frontNewsDetail', $relatedMobile['slug']) }}">
+                                        <div class="d-flex ml-3">
+                                            <img src="{{ $relatedMobile['home_thumbnail_url'] }}" alt="{{ $relatedMobile['title'] }}" width="150" class="" />
+                                            <p class="m-3 text-justify text-capitaize text-sm style="line-hight: 1.6"">
+                                                
+                                                {{ $relatedMobile['title'] }}
+                                                
+                                            </p>
+                                        </div>
                                     </a>
-                                </p>
+                                @endforeach
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
 
             <div class="col-md-3 sidebar_news_detail position-relative">

@@ -7,6 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.moment = require('moment');
 
 /**
  * The following block of code may be used to automatically register your
@@ -32,16 +33,32 @@ window.Vue = require('vue');
 // });
 
 
-import Vue from 'vue'
-import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
-import LayoutCms from './components/Layout';
+window.onload = function () {
 
-Vue.use(Antd)
-Vue.config.productionTip = false
-Vue.component('layout-component', require('./components/Layout.vue').default);
+    if (document.getElementById('bannerManager'))
+        require('./cms/banner');
 
-/* eslint-disable no-new */
-const app = new Vue({
-    el: '#app'
-})
+    if (document.getElementById('newsManager'))
+        require('./cms/news');
+
+}
+
+window.showLoading = () => {
+    HoldOn.open({
+        theme: "sk-circle"
+    });
+}
+
+window.hideLoading = () => {
+    HoldOn.close();
+}
+
+window.notify = (title, text, type) => {
+    new PNotify({
+        title: title,
+        text: text,
+        type: type,
+        styling: 'bootstrap3'
+    });
+}
+
