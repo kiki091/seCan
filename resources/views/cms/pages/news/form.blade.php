@@ -47,7 +47,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12 ">
+                    <!-- <div class="col-md-12 ">
                         <div class="form-group row">
                             <label for="tags_1" class="col-md-12">Input Tags</label>
                             <div class="col-md-12">
@@ -55,7 +55,7 @@
                                 <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     
                     <div class="col-md-12 mt-2">
                         <div class="form-group row">
@@ -97,6 +97,8 @@
                         {{ csrf_field() }}			
                         <input type="hidden" name="id" v-model="models.id" v-if="isEdit == true">
                         <input type="hidden" name="old_home_thumbnail" v-model="models.home_thumbnail" v-if="isEdit == true">
+                        <input type="hidden" name="old_thumbnail" v-model="models.thumbnail" v-if="isEdit == true">
+                        <input type="hidden" name="old_image" v-model="models.image" v-if="isEdit == true">
                         <button class="btn btn-primary f-right text-08rem" @click="saveData">Save</button>
                     </div>
                 </div>

@@ -28,6 +28,20 @@ class NewsController extends Controller
         return view('front.pages.news', $data);
     }
     
+    public function category($categorySlug)
+    {
+        if(is_null($categorySlug))
+            return abort(404);
+
+        $data['news'] = $this->newsManager->getHomeData(['category_slug' => $categorySlug]);
+
+        if(empty($data['news']))
+            return abort(404);
+
+        $data['category_name'] = $categorySlug;
+        return view('front.pages.news', $data);
+    }
+    
     public function detail($slug)
     {
         $data['detail'] = $this->newsManager->getHomeDetail(['slug' => $slug]);

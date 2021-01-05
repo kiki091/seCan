@@ -11,7 +11,12 @@
     <!-- css -->    
     <link rel="stylesheet" href="{{ elixir('css/secan_plugins.css') }}">
 
-    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+	<link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+	
+    <!-- PNotify -->
+    <link href="{{ asset('js/external/Pnotify/dist/pnotify.css') }}" rel="stylesheet">
+    <link href="{{ asset('js/external/Pnotify/dist/pnotify.buttons.css') }}" rel="stylesheet">
+    <link href="{{ asset('js/external/Pnotify/dist/pnotify.nonblock.css') }}" rel="stylesheet">
 	
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38845024-11"></script>
@@ -45,4 +50,8 @@
 <!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->
 @yield('scripts')
 
+<!-- PNotify -->
+<script src="{{ asset('js/external/Pnotify/dist/pnotify.js') }}" defer></script>
+<script src="{{ asset('js/external/Pnotify/dist/pnotify.buttons.js') }}" defer></script>
+<script src="{{ asset('js/external/Pnotify/dist/pnotify.nonblock.js') }}" defer></script>
 </html>

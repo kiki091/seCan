@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-md-3">
                     <p class="about_link">
-                        <a href="#">{{ trans('home.about_link') }}</a>
+                        <a href="{{ route('frontAbout') }}">{{ trans('home.about_link') }}</a>
                     </p>
                 </div>
                 <div class="col-md-9">
@@ -107,40 +107,26 @@
                         mencapai "cantik" ?
                         <br />
                         <br />
-                        <b><a href="#">Berlangganan</a></b> untuk ikuti kontent mingguan tentang kesehatan dan kecantikan.
+                        <b><a href="#subscribe">Berlangganan</a></b> untuk ikuti kontent mingguan tentang kesehatan dan kecantikan.
                     </p>
                 </div>
-                <div class="col-md-4">
-                    
-                    <p class="text-center" style="">
-                        <img src="{{ asset('images/video/thumb_1.png') }}" style="width: 100%" />
-                        <span class="article_category">
-                            KECANTIKAN DAN GAYA HIDUP
-                        </span>
-                        <h4 class="article_title text-center">Estetika dan Peremajaan</h4>
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    
-                    <p class="text-center" style="">
-                        <img src="{{ asset('images/video/thumb_1.png') }}" style="width: 100%" />
-                        <span class="article_category">
-                            RIASAN DAN KECANTIKAN
-                        </span>
-                        <h4 class="article_title text-center">Kesehatan, Kecantikan yang tak ternilai</h4>
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    
-                    
-                    <p class="text-center" style="">
-                        <img src="{{ asset('images/video/thumb_1.png') }}" style="width: 100%" />
-                        <span class="article_category">
-                            RIASAN DAN KECANTIKAN
-                        </span>
-                        <h4 class="article_title text-center">Koleksi perawatan krim dan cair</h4>
-                    </p>
-                </div>
+                @if(isset($home_video) && !empty($home_video))
+                    @foreach($home_video as $home_video)
+                        <div class="col-md-4">
+                            
+                            <p class="text-center" style="">
+                                <img src="{{ $home_video['home_thumbnail_url'] }}" alt="{{ $home_video['title'] }}" style="width: 100%" />
+                                <span class="article_category">
+                                    {{ $home_video['category'] }}
+                                </span>
+                                <a href="{{ route('frontVideoDetail', $home_video['slug']) }}">
+                                    <h4 class="article_title text-center">{{ $home_video['title'] }}</h4>
+                                </a>
+                            </p>
+                        </div>
+                    @endforeach
+                @endif
+                
             </div>
         </div>
         <div class="container mt-5">
@@ -150,7 +136,7 @@
                     <div class="circle">
                         <span>Disini tempat video tentang tips dan olah kecantikan untuk kamu.</span>
                         <h5 style="margin-top:1em;">
-                            <a href="" >
+                            <a href="{{ route('frontVideo') }}" >
                                 <u style="position: absolute;display: contents;">Jelajahi Video</u>
                             </a>
                         </h5>
@@ -209,7 +195,7 @@
         </div>
     </section>
 
-    <section class="text-white bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_contact.png') }})">
+    <section id="contact" class="text-white bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_contact.png') }})">
             
         <div class="container">
             <div class="row">
@@ -219,25 +205,29 @@
                         <div class="card-body">
                             <p>
                                 Hanya dengan saling menyapa, kita bisa tau banyak hal.
+                            
+                                <br/>
+                                <br/>
+                                <small>kontak@secan.id</small>
                             </p>
-                        <br/>
-                        <br/>
-                        <small>kontak@secan.id</small>
-                            </p>
-                            <form>
+                            <form action="{{ route('storeContact') }}" method="POST" id="form_contact" @submit.prevent>
                                 <div class="form-group">
-                                <label class="form-control-label">Name</label>
-                                <input type="text" placeholder="Nama Lengkap" class="form-contact">
+                                    <label class="form-control-label">Name</label>
+                                    <input type="text" name="fullname" v-model="models.fullname" placeholder="Nama Lengkap" class="form-contact">
+                                    <span class="text-error mt-2 d-block" id="field_fullname"></span>
                                 </div>
                                 <div class="form-group">       
-                                <label class="form-control-label">Email</label>
-                                <input type="email" placeholder="Email" class="form-contact">
+                                    <label class="form-control-label">Email</label>
+                                    <input type="email" name="email" v-model="models.email" placeholder="Email" class="form-contact">
+                                    <span class="text-error mt-2 d-block" id="field_email"></span>
                                 </div>
                                 <div class="form-group">       
-                                <textarea class="form-contact" style="height: 200px" placeholder="Cerita Kamu"></textarea>
+                                    <textarea class="form-contact" name="message" v-model="models.message" style="height: 200px" placeholder="Cerita Kamu"></textarea>
+                                    <span class="text-error mt-2 d-block" id="field_message"></span>
                                 </div>
-                                <div class="form-group">       
-                                <button type="submit" class="btn btn-submit-contact">Kirim</button>
+                                <div class="form-group">   
+                                    {{ csrf_field() }}	    
+                                    <button type="submit" class="btn btn-submit-contact" @click="storeContact">Kirim</button>
                                 </div>
                             </form>
                         </div>
@@ -253,5 +243,84 @@
 
 @section('scripts')
 
+<script>
+    var contact = new Vue({
+        el: "#contact",
+        data: {
+            models: {
+                fullname: '',
+                email: '',
+                message: ''
+            }
+        },
 
+        methods: {
+
+            storeContact: function() {
+
+                try {
+
+                    var vm = this;
+
+                    var optForm = {
+                        dataType: "json",
+                        beforeSerialize: function (form, options) {
+                            // showLoading()
+                        },
+                        beforeSend: function () {
+                            vm.clearErrorMessage();
+
+                        },
+                        success: function (response) {
+                            if (response.status == false) {
+                                if (response.is_error_form_validation) {
+
+                                    var message_validation = []
+                                    $.each(response.message, function (key, value) {
+
+                                        $('input[name="' + key.replace('.', '_') + '"]').focus();
+                                        $('#field_' + key.replace('.', '_')).text(value)
+                                    });
+
+
+                                } else {
+                                    notify('Error!', response.message, 'error');
+
+                                }
+                            } else {
+
+                                vm.clearErrorMessage();
+                                vm.resetForm()
+                                notify('Success!', 'Submit contact berhasil, terimaksih.', 'success');
+
+                            }
+                        },
+                        complete: function (response) {
+                            // hideLoading()
+                        }
+
+                    };
+                    $("#form_contact").ajaxForm(optForm);
+                    $("#form_contact").submit();
+                    
+                } catch (error) {
+                    
+                }
+            },
+
+            clearErrorMessage: function() {
+                $('.text-error').text('')
+            },
+
+            resetForm: function() {
+                this.models = {
+                    fullname: '',
+                    email: '',
+                    message: ''
+                }
+            }
+        }
+            
+    });
+</script>
 @stop

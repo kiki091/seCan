@@ -11,10 +11,11 @@
                     <p class="text-uppercase text-left mb-3">
                         <h6>URUTKAN</h6>
                     </p>
-                    <select class="form-control">
-                        <option>Terbaru</option>
+                    <select class="form-control" id="filter_order" onChange="orderNews()">
+                        <option value="desc">Terbaru</option>
+                        <option value="asc">Terdahulu</option>
                     </select>
-                    <br/>
+                    <!-- <br/>
                     <div class="news_tag">
                         <p class="text-uppercase text-left mb-3">
                             <h6>TAG</h6>
@@ -24,7 +25,7 @@
                             <a href="">kulit sehat (5)</a> <a href="">rambut (4)</a> <a href="">pelembab (1)</a> <a href="">olah raga (3)</a> <a href="">produk (2)</a>
                             <a href="">senam (4)</a>
                         </p>
-                    </div>
+                    </div> -->
                 </div>
 
                 <h1 class="text-left text-capitalize mb-5 text-md">
@@ -38,11 +39,14 @@
                             <option>Terbaru</option>
                         </select>
                     </div>
-                <p><i class="fa fa-home mr-2"></i>beranda / artikel / kecantikan</p>
+                <p class="text-capitalize bredcrumb">
+                    <i class="fa fa-home mr-2"></i>
+                    <a href="{{ route('frontHome') }}">beranda</a>
+                     / <a href="{{ route('frontNews') }}">artikel</a> {{ isset($category_name) ? '/ '.$category_name : '' }}</p>
                 <br />
                 <ul class="nav_article_category">
-                    <li><a class="active">kecantikan</a></li>
-                    <li><a>kesehatan</a></li>
+                    <li><a href="{{ route('frontNewsCategory', 'kecantikan') }}" class="active">kecantikan</a></li>
+                    <li><a href="{{ route('frontNewsCategory', 'kesehatan') }}">kesehatan</a></li>
                 </ul>
                 <div class="grid js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 300 }'>
                     
@@ -73,7 +77,29 @@
 
 @section('scripts')
 <script>
+$(document).ready(function() {
+    
+    let paramSelected = ''
+    let filterSelected = 'desc'
+    let param = location.search
 
+    if(param !== '') {
+        paramSelected = param.split('=')
+
+        if(paramSelected.length == 2) {
+            filterSelected = paramSelected[1]
+        }
+    }
+    $('#filter_order').val(filterSelected)
+    
+})
+function orderNews() {
+
+    let value = $('#filter_order').val();
+    // console.log(window.location)
+    let url = window.location.origin+window.location.pathname+'?order_type='+value
+    location.href = url
+}
 </script>
 
 @stop

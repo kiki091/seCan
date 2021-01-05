@@ -922,3 +922,7 @@ footer {
 .hover-2:hover .hover-overlay {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
 }
+
+.text-error {
+    color: #f71a0a;
+}

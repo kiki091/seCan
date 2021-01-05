@@ -3,6 +3,7 @@
     <nav class="navbar navbar-expand-lg">
     
         <div class="container-fluid">
+            {{--
             <div class="navbar-holder nav-language d-flex align-items-center justify-content-between">
                 <ul class="desktop_only nav-menu list-unstyled flow-root flex-md-row align-items-md-center">
                     <!-- Languages dropdown    -->
@@ -38,6 +39,7 @@
                     
                 </ul>
             </div>
+            --}}
             <!-- <div class="row"> -->
                 <!-- <div class="col-md-3"> -->
                     <div class="d-flex navbar-brand">
@@ -55,28 +57,57 @@
                         
                     <!--  -->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
+                        <ul class="navbar-nav m-auto">
                             <li class="nav-item">
-                                <div class="form-search-icon-m">
-                                <input type="text" class="form-search" placeholder="Cari" />
-                                    <img src="{{ asset('images/search_icon.png') }}" />
-                                </div>
+                                <form class="form-inline my-2 my-lg-0">
+                                    <div class="form-search-icon-m full-width">
+                                        <input type="text" class="form-search" placeholder="Cari" />
+                                        <button class="btn my-2 my-sm-0" type="submit">
+                                            <img src="{{ asset('images/search_icon.png') }}" />
+                                        </button>
+                                    </div>
+                                </form>
                             </li>
                             <li class="nav-item"><a class="nav-link link-scroll" href="{{ route('frontHome') }}">Beranda </a></li>
                             <li class="nav-item"><a class="nav-link link-scroll" href="{{ route('frontAbout') }}">Tentang SeCan</a></li>
-                            <li class="nav-item"><a class="nav-link link-scroll" href="{{ route('frontNews') }}">Artikel</a></li>
-                            <li class="nav-item"><a class="nav-link link-scroll" href="{{ route('frontDoctor') }}">Dokter</a></li>
-                            <li class="nav-item"><a class="nav-link link-scroll" href="{{ route('frontVideo') }}">Video</a></li>
-                            <li class="nav-item"><a class="nav-link link-scroll" href="#contact">Kontak<span
-                                class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <div class="form-search-icon">
-                                <input type="text" class="form-search" placeholder="Cari" />
-                                    <img src="{{ asset('images/search_icon.png') }}" />
+                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownArtikel" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Artikel
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownArtikel">
+                                    <div class=" d-flex">
+                                        <a class="dropdown-item" href="{{ route('frontNewsCategory', 'kesehatan') }}">Kesehatan</a>
+                                        <a class="dropdown-item" href="{{ route('frontNewsCategory', 'kecantikan') }}">Kecantikan</a>
+                                    </div>
+                                    
                                 </div>
                             </li>
+                            <li class="nav-item"><a class="nav-link link-scroll" href="{{ route('frontDoctor') }}">Dokter</a></li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVideo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Video
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownVideo">
+                                    <div class=" d-flex">
+                                        <a class="dropdown-item" href="{{ route('frontVideoCategory', 'kesehatan') }}">Kesehatan</a>
+                                        <a class="dropdown-item" href="{{ route('frontVideoCategory', 'kecantikan') }}">Kecantikan</a>
+                                    </div>
+                                    
+                                </div>
+                            </li>
+                            <li class="nav-item"><a class="nav-link link-scroll" href="#contact">Kontak</a>
+                            </li>
                         </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <div class="form-search-icon">
+                                <input type="text" class="form-search" placeholder="Cari" />
+                                <button class="btn my-2 my-sm-0" type="submit">
+                                    <img src="{{ asset('images/search_icon.png') }}" />
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 <!-- </div> -->
             <!-- </div> -->

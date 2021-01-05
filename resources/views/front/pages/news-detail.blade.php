@@ -58,15 +58,17 @@
                         <div class="row mt-4">
                             
                             @foreach($related as $relatedDesktop)
-                                <a href="{{ route('frontNewsDetail', $relatedDesktop['slug']) }}">
-                                    <div class="col-md-4">
-                                        <img src="{{ $relatedDesktop['home_thumbnail_url'] }}" alt="{{ $relatedDesktop['title'] }}" class="full-width" />
-                                        <p class="mt-3 mb-3 text-center">
-                                            <span class="text-uppercase">{{ $relatedDesktop['category'] }}</span>
-                                        </p>
+                                
+                                <div class="col-md-4">
+                                    <img src="{{ $relatedDesktop['home_thumbnail_url'] }}" alt="{{ $relatedDesktop['title'] }}" class="full-width" />
+                                    <p class="mt-3 mb-3 text-center">
+                                        <span class="text-uppercase">{{ $relatedDesktop['category'] }}</span>
+                                    </p>
+                                    <a href="{{ route('frontNewsDetail', $relatedDesktop['slug']) }}">
                                         <h3 class="mt-3 text-base">{{ $relatedDesktop['title'] }}</h3>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
+                                
                             @endforeach
                         </div>
                     </div>
@@ -76,16 +78,16 @@
                             <h1 class="text-left mb-3 mt-2 text-md">Artikel Terkait</h1>
                             <div class="row d-flex between">
                                 @foreach($related as $relatedMobile)
-                                    <a href="{{ route('frontNewsDetail', $relatedMobile['slug']) }}">
-                                        <div class="d-flex ml-3">
-                                            <img src="{{ $relatedMobile['home_thumbnail_url'] }}" alt="{{ $relatedMobile['title'] }}" width="150" class="" />
-                                            <p class="m-3 text-justify text-capitaize text-sm style="line-hight: 1.6"">
-                                                
+                                    
+                                    <div class="d-flex ml-3">
+                                        <img src="{{ $relatedMobile['home_thumbnail_url'] }}" alt="{{ $relatedMobile['title'] }}" width="150" class="" />
+                                        <p class="m-3 text-justify text-capitaize text-sm style="line-hight: 1.6"">
+                                            <a href="{{ route('frontNewsDetail', $relatedMobile['slug']) }}">
                                                 {{ $relatedMobile['title'] }}
-                                                
-                                            </p>
-                                        </div>
-                                    </a>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    
                                 @endforeach
                             </div>
                         </div>

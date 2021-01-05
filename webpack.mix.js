@@ -14,6 +14,7 @@ const mix = require('laravel-mix');
 mix.js([
     'resources/js/app.js',
     'public/js/front.js',
+    'public/vendors/jquery-ajax-form-submit/jquery.form.min.js',
 ], 'public/js/secan_plugins.js')
     .js([
         'resources/js/app.js',

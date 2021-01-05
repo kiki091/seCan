@@ -49,7 +49,7 @@
 <section class="pt-5 pb-0">
     <div class="row">
         <div class="col-md-12">
-            <img src="{{ asset('images/about/banner_middle.jpg') }}" class="full-width" />
+            <img src="{{ asset('images/about/about_section_3.jpg') }}" class="full-width" />
         </div>
     </div>
 </section>

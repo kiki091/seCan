@@ -104,6 +104,12 @@ const app = new Vue({
                     if (status == true) {
                         vm.isEdit = true
                         vm.models = data
+                        $('#category_id').val(vm.models.category_id)
+                        $('#doctor_id').val(vm.models.doctor_id)
+                        for (var key in supported_language) {
+                            $("#editor-one-" + key).html(vm.models.translations.content[key]);
+                        }
+
                         $('.list_table').hide();
                         $('#form-open-content').slideDown('swing');
                     }
@@ -253,8 +259,14 @@ const app = new Vue({
                 }
             }
 
+            for (var key in supported_language) {
+                $("#editor-one-" + key).html('');
+            }
+
             this.isEdit = false
             $('input[type=file]').val(null)
+            $('#category_id').val('')
+            $('#doctor_id').val('')
         }
     }
 

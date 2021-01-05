@@ -79,7 +79,7 @@
 
                 <div :id="'editor-one-'+langKey" class="editor-wrapper"></div>
 
-                <textarea :name="'content['+langKey+']'" :id="'descr_'+langKey" style="display:none;"></textarea>
+                <textarea :name="'content['+langKey+']'" v-model="models.translations.content[langKey]" :id="'descr_'+langKey" style="display:none;"></textarea>
 
                 <br />
 

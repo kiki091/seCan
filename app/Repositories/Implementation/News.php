@@ -20,7 +20,7 @@ class News implements NewsInterface
     protected $lastInsertId;
     protected $response;
 
-    function __construct(NewsTranModel $newsModel, NewsTranModel $newsTranModel, NewsTransformation $newsTransform,  
+    function __construct(NewsModel $newsModel, NewsTranModel $newsTranModel, NewsTransformation $newsTransform,  
     ResponseService $response)
     {
 
@@ -123,7 +123,7 @@ class News implements NewsInterface
             }
             
             $store->category_id = isset($params['category_id']) ? $params['category_id'] : '';
-            $store->doctor_id = isset($params['doctor_id']) ? $params['doctor_id'] : '';
+            $store->doctor_id = isset($params['doctor_id']) ? $params['doctor_id'] : NULL;
             
             if(isset($params['image']) && !empty($params['image']))
                 $store->image = strtolower(str_replace(' ', '_', $params['image']->getClientOriginalName()));
@@ -163,6 +163,7 @@ class News implements NewsInterface
             
         } catch (\Exception $e) {
             DB::rollBack();
+            dd($e->getMessage());
             $this->message = $e->getMessage();
         }
     }
@@ -321,6 +322,12 @@ class News implements NewsInterface
             
             //code...
             $el = NewsModel::with(['translation', 'translations', 'category', 'category.translation', 'doctor']);
+
+            if(isset($params['category_slug'])) {
+                $el->whereHas('category', function($q) use($params) {
+                    $q->where('slug', $params['category_slug']);
+                });
+            }
             
             if(isset($params['slug']))
                 $el->where('slug',$params['slug']);

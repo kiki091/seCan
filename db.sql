@@ -123,6 +123,34 @@ INSERT INTO `category_trans` VALUES (1,1,'id','Kecantikan',NULL),(2,1,'en','Beau
 UNLOCK TABLES;
 
 --
+-- Table structure for table `contact`
+--
+
+DROP TABLE IF EXISTS `contact`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `message` text,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contact`
+--
+
+LOCK TABLES `contact` WRITE;
+/*!40000 ALTER TABLE `contact` DISABLE KEYS */;
+INSERT INTO `contact` VALUES (1,'kiki','kiki@mail.com','test','2021-01-04 20:44:20','2021-01-04 20:44:20');
+/*!40000 ALTER TABLE `contact` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `doctor`
 --
 
@@ -242,7 +270,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (1,'riasan-tanpa-riasan-ini-dia','thumb_1.png','Asset 05_thumbnail.png','detail.png',1,NULL,'2021-01-03 11:30:00','2021-01-03 04:30:00',NULL);
+INSERT INTO `news` VALUES (1,'riasan-tanpa-riasan-ini-dia','thumb_1.png','Asset 05_thumbnail.png','detail.png',1,NULL,'2021-01-03 11:30:00','2021-01-03 04:30:00','2021-01-04 20:41:57');
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,7 +292,7 @@ CREATE TABLE `news_trans` (
   PRIMARY KEY (`id`),
   KEY `fk_news_trans_1_idx` (`news_id`),
   CONSTRAINT `fk_news_trans_1` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,7 +301,7 @@ CREATE TABLE `news_trans` (
 
 LOCK TABLES `news_trans` WRITE;
 /*!40000 ALTER TABLE `news_trans` DISABLE KEYS */;
-INSERT INTO `news_trans` VALUES (1,1,'id','Riasan Tanpa Riasan ? Ini Dia','<p>\n                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                            Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, \n                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n                        </p><p>\n                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                            Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, \n                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n                        </p>',NULL,NULL),(2,1,'en','Riasan Tanpa Riasan ? Ini Dia EN','<p>\n                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                            Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, \n                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n                        </p><p>\n                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                            Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, \n                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n                        </p>',NULL,NULL);
+INSERT INTO `news_trans` VALUES (3,1,'id','Riasan Tanpa Riasan ? Ini Dia','<p>\n                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                            Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, \n                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n                        </p><p>\n                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                            Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, \n                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n                        </p>','2021-01-04 13:41:57','2021-01-04 20:41:57'),(4,1,'en','Riasan Tanpa Riasan ? Ini Dia EN','<p>\n                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                            Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, \n                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n                        </p><p>\n                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                            Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, \n                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n                        </p>','2021-01-04 13:41:57','2021-01-04 20:41:57');
 /*!40000 ALTER TABLE `news_trans` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -299,6 +327,33 @@ CREATE TABLE `password_resets` (
 LOCK TABLES `password_resets` WRITE;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `subscribe`
+--
+
+DROP TABLE IF EXISTS `subscribe`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `subscribe` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(55) NOT NULL,
+  `email` varchar(55) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subscribe`
+--
+
+LOCK TABLES `subscribe` WRITE;
+/*!40000 ALTER TABLE `subscribe` DISABLE KEYS */;
+INSERT INTO `subscribe` VALUES (1,'kiki','kiki@mail.com','2021-01-04 21:34:18','2021-01-04 21:34:18');
+/*!40000 ALTER TABLE `subscribe` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -424,6 +479,8 @@ DROP TABLE IF EXISTS `video`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `video` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(255) NOT NULL,
+  `home_thumbnail` varchar(255) DEFAULT NULL,
   `thumbnail` varchar(255) DEFAULT NULL,
   `youtube_url` varchar(255) NOT NULL,
   `category_id` int(11) NOT NULL,
@@ -431,8 +488,9 @@ CREATE TABLE `video` (
   `publish_date` datetime DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug_UNIQUE` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -441,6 +499,7 @@ CREATE TABLE `video` (
 
 LOCK TABLES `video` WRITE;
 /*!40000 ALTER TABLE `video` DISABLE KEYS */;
+INSERT INTO `video` VALUES (1,'kesehatan-kulit-wajah-tetap-terjaga-ketika-era-adaptasi-kebiasaan-baru','thumb_video_home_3.png','video_2png.png','https://www.youtube.com/embed/fEOIBToGmF0',1,NULL,'2021-01-04 00:00:00',NULL,NULL);
 /*!40000 ALTER TABLE `video` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -455,13 +514,13 @@ CREATE TABLE `video_trans` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `video_id` int(11) NOT NULL,
   `locale` varchar(2) NOT NULL,
-  `title` varchar(50) DEFAULT NULL,
+  `title` varchar(250) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_video_trans_1_idx` (`video_id`),
   CONSTRAINT `fk_video_trans_1` FOREIGN KEY (`video_id`) REFERENCES `video` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -470,6 +529,7 @@ CREATE TABLE `video_trans` (
 
 LOCK TABLES `video_trans` WRITE;
 /*!40000 ALTER TABLE `video_trans` DISABLE KEYS */;
+INSERT INTO `video_trans` VALUES (1,1,'id','KESEHATAN KULIT WAJAH TETAP TERJAGA KETIKA ERA ADAPTASI KEBUASAAN BARU',NULL,NULL),(2,1,'en','KESEHATAN KULIT WAJAH TETAP TERJAGA KETIKA ERA ADAPTASI KEBUASAAN BARU',NULL,NULL);
 /*!40000 ALTER TABLE `video_trans` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -482,4 +542,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-04  9:44:08
+-- Dump completed on 2021-01-05 11:38:23
