@@ -126,11 +126,17 @@ const app = new Vue({
             try {
 
                 var vm = this;
+                var editorObj = []
 
                 var optForm = {
                     dataType: "json",
                     beforeSerialize: function (form, options) {
                         showLoading()
+                        for (var key in vm.supported_language) {
+                            editorObj[key] = $("#editor-one-" + key).html();
+                            Vue.set(vm.models.translations.content, key, editorObj[key])
+                            $('#descr_' + key).val(editorObj[key])
+                        }
                     },
                     beforeSend: function () {
                         vm.clearErrorMessage();
@@ -261,6 +267,7 @@ const app = new Vue({
 
             for (var key in supported_language) {
                 $("#editor-one-" + key).html('');
+                $('#descr_' + key).val('')
             }
 
             this.isEdit = false
