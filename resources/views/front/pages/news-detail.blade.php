@@ -11,7 +11,13 @@
                 <h1 class="text-left text-capitalize mb-5 text-md">
                     Artikel
                 </h1>
-                <p class="text-capitalize bredcrumb"><i class="fa fa-home mr-4"></i>beranda / artikel / {{ $detail['category'] }} / {{ $detail['title'] }}</p>
+                <p class="text-capitalize bredcrumb">
+                    <i class="fa fa-home mr-4"></i>
+                    <a href="{{ route('frontHome') }}">beranda</a> /
+                    <a href="{{ route('frontNews') }}">artikel</a> /
+                    <a href="{{ route('frontNewsCategory', $detail['category_slug']) }}">{{ $detail['category'] }}</a> /
+                    {{ $detail['title'] }}
+                </p>
                 
 
                 <div class="news_content">
@@ -19,12 +25,12 @@
                     <img src="{{ $detail['image_url'] }}" alt="{{ $detail['title'] }}" class="full-width" />
                     <p class="mt-3 mb-3 flow-root">
                         <span class="float-left text-uppercase">{{ $detail['category'] }}</span>
-                        <span class="float-right text-uppercase">{{ $detail['publish_date'] }}</span>
+                        <span class="float-right text-uppercase news_date">{{ $detail['publish_date'] }}</span>
                     </p>
 
                     <h1 class="text-capitalize mt-2 mb-2 text-md">{{ $detail['title'] }}</h1>
                     <div class="mt-4 text-justify d-block">
-                        {!! $detail['content'] !!}
+                        <p>{!! $detail['content'] !!}</p>
                     </div>
                 </div>
 
@@ -97,7 +103,7 @@
 
             <div class="col-md-3 sidebar_news_detail position-relative">
                     
-                <div class="">
+                <!-- <div class="">
                     <p class="text-uppercase text-left mb-3">
                         <h6>TAG</h6>
                     </p>
@@ -106,7 +112,7 @@
                         <a href="">kulit sehat (5)</a> <a href="">rambut (4)</a> <a href="">pelembab (1)</a> <a href="">olah raga (3)</a> <a href="">produk (2)</a>
                         <a href="">senam (4)</a>
                     </p>
-                </div>
+                </div> -->
             </div>
         </div>
 

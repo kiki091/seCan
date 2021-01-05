@@ -12,7 +12,13 @@
                     Video
                 </h1>
                 
-                <p class="text-capitalize bredcrumb"><i class="fa fa-home mr-2"></i>beranda / video / {{ $detail['category'] }} / {{ $detail['title'] }}</p>
+                <p class="text-capitalize bredcrumb">
+                    <i class="fa fa-home mr-2"></i>
+                    <a href="{{ route('frontHome') }}">beranda</a> / 
+                    <a href="{{ route('frontVideo') }}">video</a> /
+                    <a href="{{ route('frontVideoCategory', $detail['category_slug']) }}">{{ $detail['category'] }}</a> /
+                    {{ $detail['title'] }}
+                </p>
                 
             </div>
 

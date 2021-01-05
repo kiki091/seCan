@@ -19,6 +19,7 @@ class Video
                 'youtube_url' => isset($params['youtube_url']) ? $params['youtube_url'] : '',
                 'title' => isset($params['translation']['title']) ? $params['translation']['title'] : '',
                 'category' => isset($params['category']['translation']['title']) ? $params['category']['translation']['title'] : '',
+                'category_slug' => isset($params['category']['slug']) ? $params['category']['slug'] : '',
             ];
 
         }, $params);
@@ -41,6 +42,7 @@ class Video
             'category' => isset($params['category']['translation']['title']) ? $params['category']['translation']['title'] : '',
             'category_id' => isset($params['category_id']) ? $params['category_id'] : '',
             'doctor_id' => isset($params['doctor_id']) ? $params['doctor_id'] : '',
+            'category_slug' => isset($params['category']['slug']) ? $params['category']['slug'] : '',
         ];
     }
 

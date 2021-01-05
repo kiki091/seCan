@@ -20,6 +20,7 @@ class News
                 'title' => isset($params['translation']['title']) ? $params['translation']['title'] : '',
                 'content' => isset($params['translation']['content']) ? str_limit($params['translation']['content'], 150) : '',
                 'category' => isset($params['category']['translation']['title']) ? $params['category']['translation']['title'] : '',
+                'category_slug' => isset($params['category']['slug']) ? $params['category']['slug'] : '',
             ];
 
         }, $params);
