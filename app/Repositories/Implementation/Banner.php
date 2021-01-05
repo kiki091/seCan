@@ -42,8 +42,8 @@ class Banner implements BannerInterface
             //code...
 
             return $this->bannerTransform->getListDataCms($this->bannerManager($params));
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Exception $e) {
+            return $this->response->setResponse($e->getMessage(), false);
         }
     }
 
@@ -59,8 +59,8 @@ class Banner implements BannerInterface
             //code...
 
             return $this->bannerTransform->getListDataCms($this->bannerManager($params));
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Exception $e) {
+            return $this->response->setResponse($e->getMessage(), false);
         }
     }
 
@@ -77,8 +77,8 @@ class Banner implements BannerInterface
             $data = $this->bannerTransform->getSingleDataCms($this->bannerManager(['id' => $requestId], 'asc', 'array', true));
             return $this->response->setResponse('Success get data', true, $data);
             
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Exception $e) {
+            return $this->response->setResponse($e->getMessage(), false);
         }
     }
 
@@ -129,7 +129,7 @@ class Banner implements BannerInterface
             
         } catch (\Exception $e) {
             DB::rollBack();
-            $this->message = $e->getMessage();
+            return $this->response->setResponse($e->getMessage(), false);
         }
     }
 
@@ -235,7 +235,7 @@ class Banner implements BannerInterface
             
         } catch (\Exception $e) {
             DB::rollBack();
-            $this->message = $e->getMessage();
+            return $this->response->setResponse($e->getMessage(), false);
         }
     }
 
@@ -278,8 +278,8 @@ class Banner implements BannerInterface
                     break;
             }
 
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Exception $e) {
+            dd($e->getMessage());
         }
     }
 

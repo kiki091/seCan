@@ -42,8 +42,8 @@ class News implements NewsInterface
             //code...
 
             return $this->newsTransform->getHomeData($this->newsManager($params));
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Exception $e) {
+            return $this->response->setResponse($e->getMessage(), false);
         }
     }
 
@@ -59,8 +59,8 @@ class News implements NewsInterface
             //code...
 
             return $this->newsTransform->getHomeDetail($this->newsManager($params, 'asc', 'array', true));
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Exception $e) {
+            return $this->response->setResponse($e->getMessage(), false);
         }
     }
 
@@ -76,8 +76,8 @@ class News implements NewsInterface
             //code...
 
             return $this->newsTransform->getDataCms($this->newsManager($params));
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Exception $e) {
+            return $this->response->setResponse($e->getMessage(), false);
         }
     }
 
@@ -94,8 +94,8 @@ class News implements NewsInterface
             $data = $this->newsTransform->getSingleDataCms($this->newsManager(['id' => $requestId], 'asc', 'array', true));
             return $this->response->setResponse('Success get data', true, $data);
             
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Exception $e) {
+            return $this->response->setResponse($e->getMessage(), false);
         }
     }
 
@@ -163,8 +163,7 @@ class News implements NewsInterface
             
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e->getMessage());
-            $this->message = $e->getMessage();
+            return $this->response->setResponse($e->getMessage(), false);
         }
     }
 
@@ -294,8 +293,9 @@ class News implements NewsInterface
             $model = $this->newsModel->find($params['id']);
 
             if($model) {
-                $model->delete();
+
                 $this->newsTranModel->where('news_id', $params['id'])->delete();
+                $model->delete();
 
                 DB::commit();
                 return $this->response->setResponse('Success delete data', true);
@@ -306,7 +306,7 @@ class News implements NewsInterface
             
         } catch (\Exception $e) {
             DB::rollBack();
-            $this->message = $e->getMessage();
+            return $this->response->setResponse($e->getMessage(), false);
         }
     }
 
@@ -373,8 +373,9 @@ class News implements NewsInterface
                     break;
             }
 
-        } catch (\Throwable $th) {
+        } catch (\Exception $e) {
             //throw $th;
+            dd($e->getMessage());
         }
     }
 

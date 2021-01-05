@@ -97,12 +97,12 @@
                                     
                                 </div>
                             </li>
-                            <li class="nav-item"><a class="nav-link link-scroll" href="#contact">Kontak</a>
+                            <li class="nav-item"><a class="nav-link link-scroll" href="{{ route('frontHome') .'#contact' }}">Kontak</a>
                             </li>
                         </ul>
-                        <form class="form-inline my-2 my-lg-0">
+                        <form action="{{ route('frontSearch') }}" method="GET" class="form-inline my-2 my-lg-0">
                             <div class="form-search-icon">
-                                <input type="text" class="form-search" placeholder="Cari" />
+                                <input type="text" name="q" class="form-search" placeholder="Cari" />
                                 <button class="btn my-2 my-sm-0" type="submit">
                                     <img src="{{ asset('images/search_icon.png') }}" />
                                 </button>

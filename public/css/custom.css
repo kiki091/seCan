@@ -926,3 +926,8 @@ footer {
 .text-error {
     color: #f71a0a;
 }
+
+.news_date {
+    position: absolute;
+    right: 0;
+}

@@ -115,7 +115,7 @@ class NewsController extends Controller
             'category_id' => 'required',
             'thumbnail' => 'required|dimensions:width='.THUMBNAIL_NEWS_IMAGE_WIDTH.',height='.THUMBNAIL_NEWS_IMAGE_HEIGHT.'|max:'. MAX_IMAGES_SIZE .'|mimes:jpeg,jpg,png',
             'home_thumbnail' => 'required|dimensions:width='.HOME_THUMBNAIL_NEWS_IMAGE_WIDTH.',height='.HOME_THUMBNAIL_NEWS_IMAGE_HEIGHT.'|max:'. MAX_IMAGES_SIZE .'|mimes:jpeg,jpg,png',
-            'image' => 'required|dimensions:width='.NEWS_DETAIL_IMAGE_WIDTH.',height='.NEWS_DETAIL_IMAGE_HEIGHT.'|max:'. MAX_IMAGES_SIZE .'|mimes:jpeg,jpg,png',
+            // 'image' => 'required|dimensions:width='.NEWS_DETAIL_IMAGE_WIDTH.',height='.NEWS_DETAIL_IMAGE_HEIGHT.'|max:'. MAX_IMAGES_SIZE .'|mimes:jpeg,jpg,png',
             'title.*' => 'required',
             'content.*' => 'required',
         ];

@@ -3,6 +3,7 @@
 Route::group(['middleware' => ['web']], function() {
 	Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
 		Route::get('/', 'Front\HomeController@index')->name('frontHome');
+		Route::get('/pencarian', 'Front\HomeController@search')->name('frontSearch');
 		Route::post('/contact/submit', 'Front\HomeController@storeContact')->name('storeContact');
 		Route::post('/subscribe', 'Front\HomeController@storeSubscribe')->name('storeSubscribe');
 		Route::get('/tentang-secan', 'Front\AboutController@index')->name('frontAbout');

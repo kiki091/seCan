@@ -150,7 +150,7 @@
                                     </p>
                                 </div>
                                 <div class="form-group float-right">       
-                                    <button type="submit" class="btn btn-submit-comment text-uppercase">Post koment</button>
+                                    <button type="submit" class="btn btn-submit-comment text-uppercase" disabled>Post koment</button>
                                 </div>
                             </div>
                         </div>

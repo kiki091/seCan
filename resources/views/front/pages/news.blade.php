@@ -54,12 +54,15 @@
                         @foreach($news as $keyNews=> $newsLanding)
                             <div class="grid-item m-3">
                                 <img src="{{ $newsLanding['thumbnail_url'] }}" alt="{{ $newsLanding['title'] }}" class="full-width" />
-                                <p class="mt-3 mb-3">
+                                <p class="mt-3 mb-3 d-flex">
                                     <span class="float-left text-uppercase">{{ $newsLanding['category'] }}</span>
-                                    <span class="float-right text-uppercase">{{ $newsLanding['publish_date'] }}</span>
+                                    <span class="float-right text-uppercase news_date">{{ $newsLanding['publish_date'] }}</span>
                                 </p>
-                                <h3 class="mt-3">{{ $newsLanding['title'] }}</h3>
+                                <h3 class="mt-4 mb-3 d-flex full-width">{{ $newsLanding['title'] }}</h3>
+                                <p>
                                 {!! $newsLanding['content'] !!}
+                                </p>
+                                
                                 <p class="mt-5">
                                     <a href="{{ route('frontNewsDetail', $newsLanding['slug']) }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
                                 </p>

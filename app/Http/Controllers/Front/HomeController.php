@@ -9,6 +9,7 @@ use App\Services\Bridge\News as NewsServices;
 use App\Services\Bridge\Video as VideoServices;
 use App\Services\Bridge\Contact as ContactServices;
 use App\Services\Api\Response as ResponseService;
+use App\Services\Bridge\Search as SearchServices;
 
 use Response;
 use Validator;
@@ -24,12 +25,14 @@ class HomeController extends Controller
     protected $bannerManager;
     protected $videoManager;
     protected $contactManager;
+    protected $searchManager;
 
     public function __construct(
         BannerServices $bannerManager, 
         NewsServices $newsManager, 
         VideoServices $videoManager, 
         ContactServices $contactManager,
+        SearchServices $searchManager,
         ResponseService $response) 
 	{
         $this->response = $response;
@@ -37,6 +40,7 @@ class HomeController extends Controller
         $this->bannerManager = $bannerManager;
         $this->videoManager = $videoManager;
         $this->contactManager = $contactManager;
+        $this->searchManager = $searchManager;
 
     }
     
@@ -100,5 +104,17 @@ class HomeController extends Controller
 
         return $rules;
 
+    }
+
+    public function search(Request $request)
+    {
+        if(isset($request['q']) && !empty($request['q'])) {
+            $data['result_title'] = $request['q'];
+            $data['result'] = $this->searchManager->getResult($request->all());
+            // dd($data);
+            return view('front.pages.result', $data);
+        }
+
+        return abort(404);        
     }
 }

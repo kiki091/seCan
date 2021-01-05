@@ -17,16 +17,19 @@ class DoctorController extends Controller
     
     public function index(Request $request)
     {
+        return abort(404);
         return view('front.pages.doctor');
     }
     
     public function article(Request $request)
     {
+        return abort(404);
         return view('front.pages.doctor-article');
     }
     
     public function video(Request $request)
     {
+        return abort(404);
         return view('front.pages.doctor-video');
     }
 }
