@@ -104,7 +104,7 @@ class BannerController extends Controller
         $rules = [
             
             'image' => 'required|dimensions:width='.HOME_BANNER_IMAGE_WIDTH.',height='.HOME_BANNER_IMAGE_HEIGHT.'|max:'. MAX_IMAGES_SIZE .'|mimes:jpeg,jpg,png',
-            'title.*' => 'required'
+            'title.id' => 'required'
         ];
 
         if(isset($request['old_image']) && !empty($request['old_image'])) 
