@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" lang="en">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>seCan</title>
-    <meta name="author" content="seCan">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    @include('front.partials.meta') 
     <!-- css -->    
     <link rel="stylesheet" href="{{ elixir('css/secan_plugins.css') }}">
 
@@ -54,4 +48,82 @@
 <script src="{{ asset('js/external/Pnotify/dist/pnotify.js') }}" defer></script>
 <script src="{{ asset('js/external/Pnotify/dist/pnotify.buttons.js') }}" defer></script>
 <script src="{{ asset('js/external/Pnotify/dist/pnotify.nonblock.js') }}" defer></script>
+<script>
+    var subscribe = new Vue({
+        el: "#subscribe",
+        data: {
+            models: {
+                fullname: '',
+                email: '',
+            }
+        },
+
+        methods: {
+
+            storeSubscribe: function() {
+
+                try {
+
+                    var vm = this;
+
+                    var optForm = {
+                        dataType: "json",
+                        beforeSerialize: function (form, options) {
+                            // showLoading()
+                        },
+                        beforeSend: function () {
+                            vm.clearErrorMessage();
+
+                        },
+                        success: function (response) {
+                            if (response.status == false) {
+                                if (response.is_error_form_validation) {
+
+                                    var message_validation = []
+                                    $.each(response.message, function (key, value) {
+
+                                        $('input[name="' + key.replace('.', '_') + '"]').focus();
+                                        $('#field_subscribe_' + key.replace('.', '_')).text(value)
+                                    });
+
+
+                                } else {
+                                    notify('Error!', response.message, 'error');
+
+                                }
+                            } else {
+
+                                vm.clearErrorMessage();
+                                vm.resetForm()
+                                notify('Success!', 'Subscribe berhasil, terimaksih.', 'success');
+
+                            }
+                        },
+                        complete: function (response) {
+                            // hideLoading()
+                        }
+
+                    };
+                    $("#form_subscribe").ajaxForm(optForm);
+                    $("#form_subscribe").submit();
+                    
+                } catch (error) {
+                    
+                }
+            },
+
+            clearErrorMessage: function() {
+                $('.text-error').text('')
+            },
+
+            resetForm: function() {
+                this.models = {
+                    fullname: '',
+                    email: ''
+                }
+            }
+        }
+            
+    });
+</script>
 </html>

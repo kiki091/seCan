@@ -33,6 +33,7 @@ class News
 
         return [
 
+            'id' => isset($params['id']) ? $params['id'] : '',
             'slug' => isset($params['slug']) ? $params['slug'] : '',
             'publish_date' => isset($params['publish_date']) ? Carbon::parse($params['publish_date'])->format('d/m/Y') : '',
             'home_thumbnail_url' => isset($params['home_thumbnail']) ? asset(NEWS_DIR.$params['home_thumbnail']) : '',

@@ -140,7 +140,7 @@ a.text-chocolate:hover, a.text-chocolate:focus {
     background-color: #e6e5e5;
     width: 18em;
     height: 18em;
-    right: -12em;
+    right: -5vw;
     z-index: 99;
     padding-top: 5em;
     padding-left: 2em;
@@ -295,7 +295,7 @@ a.text-chocolate:hover, a.text-chocolate:focus {
     background-color: #343433;
     display: block;
     width: 100%;
-    height: calc(1.5em + 0.75rem + 2px);
+    height: calc(3.5em + 1.75rem + 5px);
     border-bottom: 1px solid #ced4da;
     border-top: 0;
     border-left: 0;
@@ -388,7 +388,7 @@ footer {
 
 .about_deskription {
 
-    padding: 1em; font-size: 21px;
+    padding: 1em; font-size: 18px;
 }
 
 .about_link {
@@ -396,7 +396,7 @@ footer {
 }
 
 .article_description {
-    padding: 1em; font-size: 24px;
+    padding: 1em; font-size: 18px;
 }
 
 .article_category {
@@ -523,6 +523,7 @@ footer {
         top: -2vw;
         height: 25vw;
         width: 25vw;
+        right: -8vw;
     }
 
     .circle_bottom {

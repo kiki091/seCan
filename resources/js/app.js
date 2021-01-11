@@ -35,6 +35,9 @@ window.moment = require('moment');
 
 window.onload = function () {
 
+    if (document.getElementById('seoManager'))
+        require('./cms/seo');
+
     if (document.getElementById('bannerManager'))
         require('./cms/banner');
 

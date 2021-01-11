@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Models;
+use App\Traits\Seo;
 use App\Models\BaseModel as Model;
+use App\Observers\SeoActionsObserver;
 
 class News extends Model
 {
-	
+    use Seo;
+    
 	protected $table = 'news';
 	protected $fillable = [
 		'thumbnail',
@@ -50,5 +53,10 @@ class News extends Model
     {
     	
     	return $this->belongsTo(\App\Models\Category::class,'category_id','id');
+    }
+
+    public static function boot() {
+        parent::boot();
+        News::observe(new SeoActionsObserver());
     }
 }

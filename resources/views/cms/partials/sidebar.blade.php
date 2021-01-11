@@ -27,6 +27,7 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-home"></i> General <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
+                            <li><a href="{{ route('indexSeo') }}">Seo</a></li>
                             <li><a href="{{ route('indexBanner') }}">Banner</a></li>
                             <li><a href="{{ route('indexNews') }}">Artikel</a></li>
                         </ul>

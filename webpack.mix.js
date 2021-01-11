@@ -49,7 +49,7 @@ mix.js([
         'public/js/custom_cms.js',
     ], 'public/js/cms.js')
     .styles([
-        'public/vendors/bootstrap/dist/css/bootstrap.min.css',
+        'public/vendors/bootstrap/dist/css/bootstrap.css',
         'public/css/style.default.css',
         'public/css/custom.css',
         'public/css/maps.css',

@@ -24,5 +24,12 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post('/store', 'Cms\NewsController@store')->name('storeNews');
             Route::post('/delete', 'Cms\NewsController@delete')->name('deleteNews');
         });
+
+        Route::group(['prefix' => 'seo'], function () {
+            Route::get('/', 'Cms\SeoController@index')->name('indexSeo');
+            Route::get('/data', 'Cms\SeoController@data')->name('dataSeo');
+            Route::get('/edit/{id}', 'Cms\SeoController@edit')->name('editSeo');
+            Route::post('/store', 'Cms\SeoController@store')->name('storeSeo');
+        });
     });
 });

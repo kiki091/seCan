@@ -92,6 +92,8 @@
                         @include('cms.partials.texteditor')
                         
                     </div>
+
+                    @include('cms.partials.form-seo')
                     <div class="col-md-12 mt-3">
                         <div class="ln_solid"></div>
                         {{ csrf_field() }}			

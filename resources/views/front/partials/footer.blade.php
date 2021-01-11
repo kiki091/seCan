@@ -51,7 +51,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-lg-4 mx-auto" id="subscribe">
+            <div class="col-lg-4 mx-auto desktop_only" id="subscribe">
                 <p class="text-sm text-uppercase mb-5">
                     Berlangganan
                 </p>
@@ -61,12 +61,12 @@
                         <input type="text" name="fullname" v-model="models.fullname" placeholder="Nama Lengkap" class="form-subscribe">
                         
                     </div>
-                    <span class="text-left pl-2 text-error mb-3 d-block" id="field_fullname"></span>
+                    <span class="text-left pl-2 text-error mb-3 d-block" id="field_subscribe_fullname"></span>
                     <div class="form-group mb-4 d-flex">
                         <input type="email" name="email" v-model="models.email" placeholder="Email" class="form-subscribe">
                         
                     </div>
-                    <span class="text-left pl-2 text-error mb-3 d-block" id="field_email"></span>
+                    <span class="text-left pl-2 text-error mb-3 d-block" id="field_subscribe_email"></span>
                     <div class="form-group d-flex">      
                     {{ csrf_field() }}	  
                         <button type="submit" class="btn btn-dark p-3" @click="storeSubscribe">Kirim</button>
@@ -80,82 +80,5 @@
 
 @section('scripts')
 
-<script>
-    var subscribe = new Vue({
-        el: "#subscribe",
-        data: {
-            models: {
-                fullname: '',
-                email: '',
-            }
-        },
 
-        methods: {
-
-            storeSubscribe: function() {
-
-                try {
-
-                    var vm = this;
-
-                    var optForm = {
-                        dataType: "json",
-                        beforeSerialize: function (form, options) {
-                            // showLoading()
-                        },
-                        beforeSend: function () {
-                            vm.clearErrorMessage();
-
-                        },
-                        success: function (response) {
-                            if (response.status == false) {
-                                if (response.is_error_form_validation) {
-
-                                    var message_validation = []
-                                    $.each(response.message, function (key, value) {
-
-                                        $('input[name="' + key.replace('.', '_') + '"]').focus();
-                                        $('#field_' + key.replace('.', '_')).text(value)
-                                    });
-
-
-                                } else {
-                                    notify('Error!', response.message, 'error');
-
-                                }
-                            } else {
-
-                                vm.clearErrorMessage();
-                                vm.resetForm()
-                                notify('Success!', 'Subscribe berhasil, terimaksih.', 'success');
-
-                            }
-                        },
-                        complete: function (response) {
-                            // hideLoading()
-                        }
-
-                    };
-                    $("#form_subscribe").ajaxForm(optForm);
-                    $("#form_subscribe").submit();
-                    
-                } catch (error) {
-                    
-                }
-            },
-
-            clearErrorMessage: function() {
-                $('.text-error').text('')
-            },
-
-            resetForm: function() {
-                this.models = {
-                    fullname: '',
-                    email: ''
-                }
-            }
-        }
-            
-    });
-</script>
 @stop

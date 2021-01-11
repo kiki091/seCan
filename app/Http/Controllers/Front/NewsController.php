@@ -16,8 +16,10 @@ class NewsController extends Controller
      * @return true
      **/
     protected $newsManager;
+    
 	public function __construct(NewsServices $newsManager) 
 	{
+        parent::__construct();
         $this->newsManager = $newsManager;
 
     }

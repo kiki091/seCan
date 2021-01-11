@@ -35,6 +35,7 @@ class HomeController extends Controller
         SearchServices $searchManager,
         ResponseService $response) 
 	{
+        parent::__construct();
         $this->response = $response;
         $this->newsManager = $newsManager;
         $this->bannerManager = $bannerManager;

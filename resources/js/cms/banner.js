@@ -126,6 +126,7 @@ const app = new Vue({
                             vm.clearErrorMessage();
                             vm.closeForm()
                             vm.fetchData()
+                            notify('Success', '', 'success');
 
                         }
                     },

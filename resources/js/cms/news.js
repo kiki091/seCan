@@ -21,6 +21,20 @@ const app = new Vue({
             }
         },
 
+        seo: {
+
+            id: '',
+            title: '',
+            keyword: '',
+            description: '',
+            translations: {
+
+                meta_title: { 'en': '', 'id': '' },
+                meta_keyword: { 'en': '', 'id': '' },
+                meta_description: { 'en': '', 'id': '' },
+            }
+        },
+        type_seo: 'News',
         isEdit: false,
         listData: [],
         listDoctor: [],
@@ -103,7 +117,8 @@ const app = new Vue({
 
                     if (status == true) {
                         vm.isEdit = true
-                        vm.models = data
+                        vm.models = data.data
+                        vm.seo = data.seo
                         $('#category_id').val(vm.models.category_id)
                         $('#doctor_id').val(vm.models.doctor_id)
                         for (var key in supported_language) {
@@ -163,6 +178,7 @@ const app = new Vue({
                             vm.clearErrorMessage();
                             vm.closeForm()
                             vm.fetchData()
+                            notify('Success', '', 'success');
 
                         }
                     },
@@ -264,6 +280,22 @@ const app = new Vue({
                     content: { "en": "", "id": "" },
                 }
             }
+
+            this.seo = {
+
+                id: '',
+                title: '',
+                keyword: '',
+                description: '',
+                translations: {
+
+                    meta_title: { 'en': '', 'id': '' },
+                    meta_keyword: { 'en': '', 'id': '' },
+                    meta_description: { 'en': '', 'id': '' },
+                }
+            }
+
+            this.type_seo = 'News'
 
             for (var key in supported_language) {
                 $("#editor-one-" + key).html('');

@@ -52,7 +52,7 @@
                     </p>
                 </div>
                 <div class="col-md-3">
-                    <p class="about_link">
+                    <p class="about_link ml-3">
                         <a href="{{ route('frontAbout') }}">{{ trans('home.about_link') }}</a>
                     </p>
                 </div>
@@ -65,7 +65,7 @@
     </section>
 
     <!-- Article Section-->
-    <section class="bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_news.png') }})">
+    <section class="bg-cover bg-center pt-5" style="background-image: url({{ asset('images/bg_section_news.png') }})">
         <div class="container-fluid">
             <div class="row" style="margin: 0 3em;">
                 <div class="col-md-12">
@@ -85,7 +85,7 @@
                                 {{ $news['category'] }}
                                 </span>
                                 <a href="{{ route('frontNewsDetail', $news['slug']) }}">
-                                    <h4 class="article_title text-center">{{ $news['title'] }}</h4>
+                                    <h4 class="article_title text-center text-base">{{ $news['title'] }}</h4>
                                 </a>
                             </p>
                         </div>
@@ -96,7 +96,7 @@
     </section>
 
     <!-- Youtube Section -->
-    <section class="bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_full_video.png') }})">
+    <section class="pt-5 bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_full_video.png') }})">
             
         <div class="container">
              <div class="row">
@@ -112,7 +112,7 @@
                 </div>
                 @if(isset($home_video) && !empty($home_video))
                     @foreach($home_video as $home_video)
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-5">
                             
                             <p class="text-center" style="">
                                 <img src="{{ $home_video['home_thumbnail_url'] }}" alt="{{ $home_video['title'] }}" style="width: 100%" />
@@ -120,7 +120,7 @@
                                     {{ $home_video['category'] }}
                                 </span>
                                 <a href="{{ route('frontVideoDetail', $home_video['slug']) }}">
-                                    <h4 class="article_title text-center">{{ $home_video['title'] }}</h4>
+                                    <h4 class="article_title text-center text-base">{{ $home_video['title'] }}</h4>
                                 </a>
                             </p>
                         </div>
@@ -146,7 +146,7 @@
         </div>
     </section>
 
-    <section class="bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_doctor.png') }})">
+    <section class="pb-5 pt-4 bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_doctor.png') }})">
             
         <div class="container">
                 <div class="row">
@@ -195,7 +195,7 @@
         </div>
     </section>
 
-    <section id="contact" class="text-white bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_contact.png') }})">
+    <section id="contact" class="pt-5 text-white bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_contact.png') }})">
             
         <div class="container">
             <div class="row">

@@ -19,6 +19,7 @@ class VideoController extends Controller
 
 	public function __construct(VideoServices $videoManager) 
 	{
+        parent::__construct();
         $this->videoManager = $videoManager;
 
     }

@@ -20,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\Contracts\Video', 'App\Repositories\Implementation\Video');
         $this->app->bind('App\Repositories\Contracts\Contact', 'App\Repositories\Implementation\Contact');
         $this->app->bind('App\Repositories\Contracts\Search', 'App\Repositories\Implementation\Search');
+        $this->app->bind('App\Repositories\Contracts\Seo', 'App\Repositories\Implementation\Seo');
+        $this->app->bind('App\Repositories\Contracts\Front', 'App\Repositories\Implementation\Front');
     }
 
     /**

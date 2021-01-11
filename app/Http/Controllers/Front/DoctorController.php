@@ -12,12 +12,13 @@ class DoctorController extends Controller
 {
 	public function __construct() 
 	{
+        parent::__construct();
 
     }
     
     public function index(Request $request)
     {
-        return abort(404);
+        // return abort(404);
         return view('front.pages.doctor');
     }
     

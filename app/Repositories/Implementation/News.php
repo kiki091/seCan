@@ -7,6 +7,7 @@ use App\Models\NewsTran as NewsTranModel;
 use App\Services\Api\Response as ResponseService;
 use App\Repositories\Contracts\News as NewsInterface;
 use App\Services\Transformation\News as NewsTransformation;
+use App\Services\Bridge\Seo as SeoService;
 use Carbon\Carbon;
 use DB;
 use LaravelLocalization;
@@ -19,13 +20,15 @@ class News implements NewsInterface
     protected $message;
     protected $lastInsertId;
     protected $response;
+    protected $seoManager;
 
     function __construct(NewsModel $newsModel, NewsTranModel $newsTranModel, NewsTransformation $newsTransform,  
-    ResponseService $response)
+    ResponseService $response, SeoService $seoManager)
     {
 
         $this->response = $response;
         $this->newsModel = $newsModel;
+        $this->seoManager = $seoManager;
         $this->newsTranModel = $newsTranModel;
         $this->newsTransform = $newsTransform;
     }
@@ -90,8 +93,10 @@ class News implements NewsInterface
     public function editDataCms($requestId)
     {
         try {
+
+            $data['seo'] = $this->seoManager->getEdit(['id' => $requestId, 'type'=>'News']);
             //code...
-            $data = $this->newsTransform->getSingleDataCms($this->newsManager(['id' => $requestId], 'asc', 'array', true));
+            $data['data'] = $this->newsTransform->getSingleDataCms($this->newsManager(['id' => $requestId], 'asc', 'array', true));
             return $this->response->setResponse('Success get data', true, $data);
             
         } catch (\Exception $e) {
