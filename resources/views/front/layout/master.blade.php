@@ -48,6 +48,7 @@
 <script src="{{ asset('js/external/Pnotify/dist/pnotify.js') }}" defer></script>
 <script src="{{ asset('js/external/Pnotify/dist/pnotify.buttons.js') }}" defer></script>
 <script src="{{ asset('js/external/Pnotify/dist/pnotify.nonblock.js') }}" defer></script>
+
 <script>
     var subscribe = new Vue({
         el: "#subscribe",

@@ -27,7 +27,7 @@
             </div>
 
             <div class="col-md-5 ml-1 col-sm-12 mt-5">
-                <h3 class="text-capitalize mb-5">
+                <h3 class="text-capitalize mb-5 ff-old-standart">
                     Filosofi SeCan
                 </h3>
 
@@ -41,7 +41,7 @@
                 <br />
                 <p>Ikuti kami di <a href=""><b>@SeCanindonesia</b></a></p>
                 <br/>
-                <h1 class="text-left text-md">Mulai hari kita dengan percaya diri.</h1>
+                <h1 class="text-capitalize text-left text-md ff-old-standart">Mulai hari kita dengan percaya diri.</h1>
             </div>
         </div>
     </div>
