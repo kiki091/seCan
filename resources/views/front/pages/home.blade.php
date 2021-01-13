@@ -40,7 +40,7 @@
         </div>
     </div>
     <!-- About Section-->
-    <section class="bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_about.png') }})">
+    <section class="bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_about_2.png') }})">
             
         <div class="container">
              <div class="row">
@@ -96,7 +96,7 @@
     </section>
 
     <!-- Youtube Section -->
-    <section class="pt-5 bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_full_video.png') }})">
+    <section class="pt-5 bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_full_video_new.png') }})">
             
         <div class="container">
              <div class="row">
@@ -132,7 +132,8 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-12">
-                    <img src="{{ asset('images/Asset 04_video play .png') }}" style="width: 100%;position: relative;z-index: 9;" />
+                    
+                        <iframe style="width: 100%;position: relative;z-index: 9;" height="565" src="https://www.youtube.com/embed/KZKwflR8cJo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div class="circle">
                         <span>Disini tempat video tentang tips dan olah kecantikan untuk kamu.</span>
                         <h5 style="margin-top:1em;">

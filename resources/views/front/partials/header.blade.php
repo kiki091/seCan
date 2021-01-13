@@ -43,7 +43,7 @@
             <!-- <div class="row"> -->
                 <!-- <div class="col-md-3"> -->
                     <div class="d-flex navbar-brand">
-                        <img id="logo-images" class="logo" src="{{ asset('images/logo_header.png') }}">
+                        <img id="logo-images" class="logo" src="{{ asset('images/logo.svg') }}">
                     </div>
                 <!-- </div> -->
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
