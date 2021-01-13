@@ -39,7 +39,7 @@
                     bisa sehat sekaligus cantik
                 </p>
                 <br />
-                <p>Ikuti kami di <a href=""><b>@SeCanindonesia</b></a></p>
+                <p>Ikuti kami di <a href="https://www.instagram.com/infosehatdancantik.id/" target="__blank"><b>@SeCanindonesia</b></a></p>
                 <br/>
                 <h1 class="text-capitalize text-left text-md ff-old-standart">Mulai hari kita dengan percaya diri.</h1>
             </div>

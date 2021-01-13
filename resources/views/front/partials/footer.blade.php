@@ -20,7 +20,7 @@
                     </li>
 
                     <li class="m-3">
-                        <a href="">
+                        <a href="https://www.instagram.com/infosehatdancantik.id/" target="__blank">
                             <i class="fab fa-instagram"></i>
                         </a>
                     

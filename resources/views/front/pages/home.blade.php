@@ -43,7 +43,7 @@
                 <p class="about_deskription ff-inconsolata">
                         {{ trans('home.about_section_description') }}
                         <br />
-                        {{ trans('home.follow_at_link') }}<b><a href="mailto:@SeCanindonesia">@SeCanindonesia</a></b>
+                        {{ trans('home.follow_at_link') }}<b><a href="https://www.instagram.com/infosehatdancantik.id/" target="__blank">@SeCanindonesia</a></b>
                     </p>
                 </div>
                 <div class="col-md-3">
@@ -74,7 +74,7 @@
                 </div>
                 @if(isset($home_news) && !empty($home_news))
                     @foreach($home_news as $keyNews=> $news)
-                        <div class="col-md-3 col-sm-4 col-lg-3 col-xl-3">
+                        <div class="col-md-3">
                             <p class="text-center" style="">
                                 <img src="{{ $news['home_thumbnail_url'] }}" alt="{{ $news['title'] }}" style="width: 100%" />
                                 <span class="article_category">
@@ -86,6 +86,16 @@
                             </p>
                         </div>
                     @endforeach
+                    <div class="col-md-3 artikel_circle_container">
+                        <div class="circle_bottom">
+                            <span class="">Blog dan artikel perawatan kulit, riasan dan yang diantaranya</span>
+                            <h5 style="margin-top:1em;">
+                                <a class="ff-old-standart" href="{{ route('frontNews') }}" >
+                                    <u style="position: absolute;display: contents;">Lihat Artikel</u>
+                                </a>
+                            </h5>
+                        </div>
+                    </div>
                 @endif
             </div>
         </div>
@@ -133,7 +143,7 @@
                     <div class="circle">
                         <span>Disini tempat video tentang tips dan olah kecantikan untuk kamu.</span>
                         <h5 style="margin-top:1em;">
-                            <a href="{{ route('frontVideo') }}" >
+                            <a class="ff-old-standart" href="{{ route('frontVideo') }}" >
                                 <u style="position: absolute;display: contents;">Jelajahi Video</u>
                             </a>
                         </h5>
@@ -179,7 +189,7 @@
                     <div class="circle_bottom">
                         <span>Dokter-dokter yang berafiliasi dengan SeCan adalah terpercaya dan ahli.</span>
                         <h5 style="margin-top:1em;">
-                            <a href="" >
+                            <a class="ff-old-standart" href="#" >
                                 <u style="position: absolute;display: contents;">Lihat Dokter</u>
                             </a>
                         </h5>
