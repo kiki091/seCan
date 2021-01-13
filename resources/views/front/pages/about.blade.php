@@ -22,16 +22,16 @@
                 <hr />
             </div>
 
-            <div class="col-md-5 col-sm-12 mr-5 mt-5">
+            <div class="col-md-5 mr-1 col-sm-12 mt-5">
                 <img src="{{ asset('images/about/section_1.png') }}" class="full-width" />
             </div>
 
-            <div class="col-md-5 col-sm-12 ml-5 mt-5">
+            <div class="col-md-5 ml-1 col-sm-12 mt-5">
                 <h3 class="text-capitalize mb-5">
                     Filosofi SeCan
                 </h3>
 
-                <p class="">
+                <p class="text-justify">
                     Kita bisa memahami diri sendiri untuk menuju cantik itu seharusnya gampang dan penerapannya mudah. Gabungan dari 
                     macam-macam yang segar dan inklusif - SeCan berisi ragam artikel dan video yang bikin kita penasaran tentang kecantikan 
                     dan kesehatan. Di sini ada hal-hal riasan, perawatan kulit dan tema yang berkaitan. SeCan Dari Indonesia, ingin mengangkat 
@@ -41,7 +41,7 @@
                 <br />
                 <p>Ikuti kami di <a href=""><b>@SeCanindonesia</b></a></p>
                 <br/>
-                <h1 class="text-left ml-5 mr-5 about_title">Mulai hari kita dengan percaya diri.</h1>
+                <h1 class="text-left text-md">Mulai hari kita dengan percaya diri.</h1>
             </div>
         </div>
     </div>

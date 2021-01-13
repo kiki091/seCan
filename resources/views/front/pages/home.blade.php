@@ -28,13 +28,13 @@
                     <label for="carousel-2" class="carousel-control prev control-3">‹</label>
                     <label for="carousel-1" class="carousel-control next control-3">›</label>
                      -->
-                    <ol class="carousel-indicators">
+                    {{--<ol class="carousel-indicators">
                         @for ($index = 0; $index < count($home_sliders); $index++)
                             <li>
                                 <label for="carousel-{{ $index }}" class="carousel-bullet">•</label>
                             </li>
                         @endfor
-                    </ol>
+                    </ol>--}}
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
         <div class="container">
              <div class="row">
                 <div class="col-md-12">
-                <p class="about_deskription">
+                <p class="about_deskription ff-inconsolata">
                         {{ trans('home.about_section_description') }}
                         <br />
                         {{ trans('home.follow_at_link') }}<b><a href="mailto:@SeCanindonesia">@SeCanindonesia</a></b>
@@ -71,7 +71,7 @@
                 <div class="col-md-12">
 
                      <div class="container">
-                        <p class="article_description">
+                        <p class="article_description ff-inconsolata">
                         {!! trans('home.article_section_description') !!}
                         </p>
                     </div>
@@ -101,7 +101,7 @@
         <div class="container">
              <div class="row">
                 <div class="col-md-12">
-                    <p class="article_description">
+                    <p class="article_description ff-inconsolata">
                         Dunia kesehatan yang juga cantik - standar kecantikan juga memahami definisi 
                         sebenarnya untuk Indonesia-. Apakah yang kita korbankan sehingga kita 
                         mencapai "cantik" ?
@@ -133,7 +133,7 @@
             <div class="row">
                 <div class="col-md-12">
                     
-                        <iframe style="width: 100%;position: relative;z-index: 9;" height="565" src="https://www.youtube.com/embed/KZKwflR8cJo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe style="width: 100%;position: relative;z-index: 9;" height="565" src="https://www.youtube.com/embed/KZKwflR8cJo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div class="circle">
                         <span>Disini tempat video tentang tips dan olah kecantikan untuk kamu.</span>
                         <h5 style="margin-top:1em;">
@@ -152,7 +152,7 @@
         <div class="container">
                 <div class="row">
                 <div class="col-md-12">
-                    <p class="article_description">
+                    <p class="article_description ff-inconsolata">
                         SeCan paham pentingnya tenaga ahli yang kredibel untuk ragam kecantikan yang sehat di Indonesia. 
                         Kita bisa tahu banyak hal dengan konsultasi dengan para dokter.
                     </p>

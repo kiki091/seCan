@@ -2,24 +2,16 @@
 
     return [
 
-        'about_section_description' => 'SeCan adalah media online yang menyajikan kebutuhan informasi mengenai kesehatan dan
-        kecantikan yang diolah langsung dari dokter berpengalaman dan terpercaya di bidangnya. 
-        Secan.id diluncurkan pada Januari 2021, bertujuan untuk mencerdaskan kehidupan bangsa 
-        dan memberikan solusi seputar kesehatan dan kecantikan.',
+        'about_section_description' => 'Setiap orang ingin sehat dan tampil cantik. Tapi sayangnya masih banyak masyarakat tidak mendapatkan informasi secara tepat. Secan hadir sebagai media informasi kesehatan dan kecantikan.',
         'follow_at_link' => 'Ikuti terus di ',
         'about_link' => 'Cerita Kami',
-        'article_section_description' => 'Berbagi tentang tips dan cara mudah meningkatkan kualitas hidup <br/>
-        kita. Diskusi tentang kecantikan yang terbaru, yang menjadi <br/>
-        "Trend" juga rahasia dari ahli kecantikan dan banyak lagi :)',
-        'video_section_description' => 'Dunia kesehatan yang juga cantik - standar kecantikan juga memahami definisi 
-        sebenarnya untuk Indonesia-. Apakah yang kita korbankan sehingga kita 
-        mencapai "cantik" ?',
+        'article_section_description' => 'Menyajikan berbagai info kesehatan dan kecantikan yang disajikan secara padat dan ringkas. Telusuri dan temukan lebih banyak informasinya.',
+        'video_section_description' => 'Saksikan video wawancara dan treatment dari para dokter kesehatan dan kecantikan terpercaya. Dapatkan informasi dan solusi yang tepat dari tenaga yang ahli di bidangnya.',
         'subscribe_link' => 'Berlangganan ',
         'subscribe_info' => ' untuk ikuti kontent mingguan tentang kesehatan dan kecantikan.',
         'video_section_info' => 'Disini tempat video tentang tips dan olah kecantikan untuk kamu.',
         'video_link_info' => 'Jelajahi Video',
-        'doctor_section_description' => 'SeCan paham pentingnya tenaga ahli yang kredibel untuk ragam kecantikan yang sehat di Indonesia. 
-        Kita bisa tahu banyak hal dengan konsultasi dengan para dokter.',
+        'doctor_section_description' => 'Seputar info kesehatan dan kecantikan diberikan secara langsung oleh para dokter yang ahli di bidangnya. Simak artikel dan videonya.',
         'doctor_section_info' => 'Dokter-dokter yang berafiliasi dengan SeCan adalah terpercaya dan ahli.',
         'doctor_link_info' => 'Lihat Dokter',
         'product_info' => 'Pelajari Produk Kecantikan.',

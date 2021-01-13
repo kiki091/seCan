@@ -388,7 +388,7 @@ footer {
 
 .about_deskription {
 
-    padding: 1em; font-size: 18px;
+    padding: 1em; font-size: 2em;
 }
 
 .about_link {
@@ -396,11 +396,11 @@ footer {
 }
 
 .article_description {
-    padding: 1em; font-size: 18px;
+    padding: 1em; font-size: 2em;
 }
 
 .article_category {
-    font-size: 12px; padding: 2em; display: block; text-transform: uppercase;
+    font-size: 1em; padding: 1em; display: block; text-transform: uppercase;
 }
 
 @media (min-width: 1200px) {
@@ -931,4 +931,22 @@ footer {
 .news_date {
     position: absolute;
     right: 0;
+}
+
+@font-face {
+    font-family: Inconsolata;
+    src: url('../fonts/02_Inconsolata/InconsolataCondensed-ExtraLight.ttf');
+}
+
+@font-face {
+    font-family: InconsolataBold;
+    src: url('../fonts/02_Inconsolata/InconsolataCondensed-ExtraBold.ttf');
+}
+
+.ff-inconsolata {
+    font-family: 'Inconsolata' !important;
+}
+
+.ff-inconsolata-b {
+    font-family: 'InconsolataBold' !important;
 }

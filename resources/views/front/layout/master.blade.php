@@ -5,7 +5,7 @@
     <!-- css -->    
     <link rel="stylesheet" href="{{ elixir('css/secan_plugins.css') }}">
 
-	<link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+	<link rel="icon" type="image/png" href="{{ asset('images/favicon-32x32.png') }}">
 	
     <!-- PNotify -->
     <link href="{{ asset('js/external/Pnotify/dist/pnotify.css') }}" rel="stylesheet">
