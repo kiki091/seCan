@@ -17,7 +17,7 @@
                     <a href="{{ route('frontVideo') }}">video</a> {{ isset($category_name) ? '/ '.$category_name : '' }}
                 </p>
                 <br />
-                <ul class="nav_article_category">
+                <ul class="nav_article_category ff-old-standart">
                     <li><a href="{{ route('frontVideoCategory', 'kecantikan') }}" class="active">kecantikan</a></li>
                     <li><a href="{{ route('frontVideoCategory', 'kesehatan') }}">kesehatan</a></li>
                 </ul>
@@ -32,9 +32,9 @@
                                 <div class="hover-overlay"></div>
                                 <div class="hover-2-content">
                                     <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> 
-                                        <span class="font-weight-light">{{ $video['category'] }} </span>
+                                        <span class="font-weight-light ff-old-standart">{{ $video['category'] }} </span>
                                     </h3>
-                                    <p class="hover-2-description text-uppercase mb-0">
+                                    <p class="hover-2-description text-uppercase mb-0 ff-old-standart">
                                         {{ $video['title'] }}
                                     </p>
                                 </div>
