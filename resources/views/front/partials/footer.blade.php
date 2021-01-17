@@ -4,9 +4,9 @@
         <div class="row px-4">
             <div class="col-lg-3 mx-auto text-left">
                 <h6 class="text-uppercase mb-4">Kontak </h6>
-                <h4 class="text-sm">salam@secan.id</h4>
+                <h4 class="text-sm ff-old-standart">salam@secan.id</h4>
 
-                <p class="text-sm text-uppercase mt-5">
+                <p class="text-sm text-uppercase mt-5 ff-heebo-regular">
                     Ikuti Kabar Kami
                 </p>
 
@@ -52,7 +52,7 @@
                 </ul>
             </div>
             <div class="col-lg-4 mx-auto desktop_only" id="subscribe">
-                <p class="text-sm text-uppercase mb-5">
+                <p class="text-sm text-uppercase mb-5 ff-heebo-regular">
                     Berlangganan
                 </p>
 

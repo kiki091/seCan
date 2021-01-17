@@ -44,7 +44,7 @@
                     <a href="{{ route('frontHome') }}">beranda</a>
                      / <a href="{{ route('frontNews') }}">artikel</a> {{ isset($category_name) ? '/ '.$category_name : '' }}</p>
                 <br />
-                <ul class="nav_article_category">
+                <ul class="nav_article_category ff-old-standart">
                     <li><a href="{{ route('frontNewsCategory', 'kecantikan') }}" class="active">kecantikan</a></li>
                     <li><a href="{{ route('frontNewsCategory', 'kesehatan') }}">kesehatan</a></li>
                 </ul>
@@ -58,12 +58,12 @@
                                     <span class="float-left text-uppercase">{{ $newsLanding['category'] }}</span>
                                     <span class="float-right text-uppercase news_date">{{ $newsLanding['publish_date'] }}</span>
                                 </p>
-                                <h3 class="mt-4 mb-3 d-flex full-width">{{ $newsLanding['title'] }}</h3>
+                                <h4 class="mt-4 mb-3 d-flex full-width ff-old-standart">{{ $newsLanding['title'] }}</h4>
                                 <p>
                                 {!! $newsLanding['content'] !!}
                                 </p>
                                 
-                                <p class="mt-5">
+                                <p class="mt-5 ff-old-standart">
                                     <a href="{{ route('frontNewsDetail', $newsLanding['slug']) }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
                                 </p>
                             </div>

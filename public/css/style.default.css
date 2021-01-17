@@ -2749,7 +2749,7 @@ code {
   padding: 0.5rem 1rem;
   font-weight: 400;
   color: #2E3349;
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-size: 0.85rem;
   font-weight: bold;
   letter-spacing: 0.1em;
@@ -2761,7 +2761,7 @@ code {
 }
 
 .nav-link.active, .nav-link:hover, .nav-link:focus {
-  color: #1f2de2;
+  color: #7bd0b5;
 }
 
 .nav-tabs .nav-item {
@@ -2919,7 +2919,7 @@ code {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: #2E3349;
+  color: #000000;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
@@ -2928,17 +2928,17 @@ code {
 .dropdown-item {
   padding: 0.25rem 1.5rem;
   font-weight: 400;
-  color: #212529;
+  color: #000000;
 }
 
 .dropdown-item:hover, .dropdown-item:focus {
-  color: #16181b;
-  background-color: #f8f9fa;
+  color: #fff;
+  background-color: #70d5b8;
 }
 
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
-  background-color: #fbd214;
+  background-color: #70d5b8;
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {

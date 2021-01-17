@@ -47,7 +47,7 @@
                     </p>
                 </div>
                 <div class="col-md-3">
-                    <p class="about_link ml-3">
+                    <p class="about_link ml-4">
                         <a href="{{ route('frontAbout') }}">{{ trans('home.about_link') }}</a>
                     </p>
                 </div>
@@ -143,8 +143,8 @@
                     <div class="circle">
                         <span>Disini tempat video tentang tips dan olah kecantikan untuk kamu.</span>
                         <h5 style="margin-top:1em;">
-                            <a class="ff-old-standart" href="{{ route('frontVideo') }}" >
-                                <u style="position: absolute;display: contents;">Jelajahi Video</u>
+                            <a href="{{ route('frontVideo') }}" >
+                                Jelajahi Video
                             </a>
                         </h5>
                     </div>
@@ -217,14 +217,14 @@
                                 <br/>
                                 <small>kontak@secan.id</small>
                             </p>
-                            <form action="{{ route('storeContact') }}" method="POST" id="form_contact" @submit.prevent>
+                            <form action="{{ route('storeContact') }}" method="POST" class="" id="form_contact" @submit.prevent>
                                 <div class="form-group">
-                                    <label class="form-control-label">Name</label>
+                                    <!-- <label class="form-control-label">Name</label> -->
                                     <input type="text" name="fullname" v-model="models.fullname" placeholder="Nama Lengkap" class="form-contact">
                                     <span class="text-error mt-2 d-block" id="field_fullname"></span>
                                 </div>
                                 <div class="form-group">       
-                                    <label class="form-control-label">Email</label>
+                                    <!-- <label class="form-control-label">Email</label> -->
                                     <input type="email" name="email" v-model="models.email" placeholder="Email" class="form-contact">
                                     <span class="text-error mt-2 d-block" id="field_email"></span>
                                 </div>

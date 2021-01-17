@@ -60,7 +60,7 @@
                         
                     <!--  -->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav m-auto">
+                        <ul class="navbar-nav m-auto ff-heebo-thin">
                             <li class="nav-item">
                                 <form class="form-inline my-2 my-lg-0">
                                     <div class="form-search-icon-m full-width">
@@ -80,8 +80,8 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownArtikel">
                                     <div class=" d-flex">
-                                        <a class="dropdown-item" href="{{ route('frontNewsCategory', 'kesehatan') }}">Kesehatan</a>
-                                        <a class="dropdown-item" href="{{ route('frontNewsCategory', 'kecantikan') }}">Kecantikan</a>
+                                        <a class="dropdown-item" href="{{ route('frontNewsCategory', 'kesehatan') }}">kesehatan</a>
+                                        <a class="dropdown-item" href="{{ route('frontNewsCategory', 'kecantikan') }}">kecantikan</a>
                                     </div>
                                     
                                 </div>
@@ -94,8 +94,8 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownVideo">
                                     <div class=" d-flex">
-                                        <a class="dropdown-item" href="{{ route('frontVideoCategory', 'kesehatan') }}">Kesehatan</a>
-                                        <a class="dropdown-item" href="{{ route('frontVideoCategory', 'kecantikan') }}">Kecantikan</a>
+                                        <a class="dropdown-item" href="{{ route('frontVideoCategory', 'kesehatan') }}">kesehatan</a>
+                                        <a class="dropdown-item" href="{{ route('frontVideoCategory', 'kecantikan') }}">kecantikan</a>
                                     </div>
                                     
                                 </div>
@@ -104,7 +104,7 @@
                             </li>
                         </ul>
                         <form action="{{ route('frontSearch') }}" method="GET" class="form-inline my-2 my-lg-0">
-                            <div class="form-search-icon">
+                            <div class="form-search-icon ff-heebo-thin">
                                 <input type="text" name="q" class="form-search" placeholder="Cari" />
                                 <button class="btn my-2 my-sm-0" type="submit">
                                     <img src="{{ asset('images/search_icon.png') }}" />

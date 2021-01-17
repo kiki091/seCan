@@ -1,4 +1,9 @@
 /* your styles go here */
+
+label {
+    font-family: 'HeboRegular' !important;
+}
+
 .section-banner {
     width: 100%;
     padding-right: 15px;
@@ -108,6 +113,7 @@ a.text-chocolate:hover, a.text-chocolate:focus {
 
 .address {
     list-style: none;
+    font-family: 'HeboLight' !important;
 }
 
 .address li {
@@ -153,6 +159,19 @@ a.text-chocolate:hover, a.text-chocolate:focus {
 
 .circle span {
     font-size: 1em;
+    font-family: 'HeboLight' !important;
+}
+
+.circle a {
+    color: #000000;
+    text-decoration: underline;
+    font-family: 'oldStandartItalic' !important;
+    /* position: absolute;display: contents; */
+}
+
+.circle a:hover {
+    color: #ffffff;
+    text-decoration: underline;
 }
 
 
@@ -175,6 +194,7 @@ a.text-chocolate:hover, a.text-chocolate:focus {
 .circle_bottom a {
     color: #FFFFFF;
     text-decoration: underline;
+    font-family: 'oldStandartItalic' !important;
 }
 
 .circle_bottom a:hover {
@@ -184,6 +204,7 @@ a.text-chocolate:hover, a.text-chocolate:focus {
 
 .circle_bottom span {
     font-size: 1em;
+    font-family: 'HeboLight' !important;
 }
 
 .carousel {
@@ -292,7 +313,7 @@ a.text-chocolate:hover, a.text-chocolate:focus {
     font-size: 1rem;
     line-height: 1.5;
     color: #ffffff;
-    background-color: #343433;
+    background-color: #34343300;
     display: block;
     width: 100%;
     height: calc(3.5em + 1.75rem + 5px);
@@ -303,14 +324,17 @@ a.text-chocolate:hover, a.text-chocolate:focus {
 }
 .form-group input {
     outline: 0;
+    font-family: 'HeboRegular' !important;
 }
 .form-group textarea {
     outline: 0;
+    font-family: 'HeboRegular' !important;
 }
 .form-contact textarea {
     resize: none;
     height: 200px;
     outline: 0;
+    font-family: 'HeboRegular' !important;
 }
 
 .btn-submit-contact {
@@ -320,6 +344,7 @@ a.text-chocolate:hover, a.text-chocolate:focus {
     text-align: center;
     text-transform: uppercase;
     font-size: 14px;
+    font-family: 'HeboRegular' !important;
 }
 
 footer {
@@ -392,7 +417,7 @@ footer {
 }
 
 .about_link {
-    position: absolute;color: #000000; border: 1px solid #de75dd; padding: 1em
+    position: absolute;color: #000000; border: 1px solid #de75dd; padding: 1em;font-weight: 600;
 }
 
 .article_description {
@@ -400,7 +425,7 @@ footer {
 }
 
 .article_category {
-    font-size: 1em; padding: 1em; display: block; text-transform: uppercase;
+    font-size: 0.8em; padding: 1em; display: block; text-transform: uppercase;font-family: 'HeboRegular' !important;
 }
 
 @media (min-width: 1200px) {
@@ -937,6 +962,7 @@ footer {
 
 .text-error {
     color: #f71a0a;
+    font-family: 'HeboRegular' !important;
 }
 
 .news_date {
@@ -959,6 +985,26 @@ footer {
     src: url('../fonts/03_Old_standart/OldStandardTT-Regular.ttf');
 }
 
+@font-face {
+    font-family: oldStandartItalic;
+    src: url('../fonts/03_Old_standart/OldStandardTT-Italic.ttf');
+}
+
+@font-face {
+    font-family: HeboThin;
+    src: url('../fonts/01_Heebo/Heebo-Thin.ttf');
+}
+
+@font-face {
+    font-family: HeboRegular;
+    src: url('../fonts/01_Heebo/Heebo-Regular.ttf');
+}
+
+@font-face {
+    font-family: HeboLight;
+    src: url('../fonts/01_Heebo/Heebo-Light.ttf');
+}
+
 .ff-inconsolata {
     font-family: 'Inconsolata' !important;
 }
@@ -969,6 +1015,22 @@ footer {
 
 .ff-old-standart {
     font-family: 'oldStandartRegular' !important;
+}
+
+.ff-old-standart-itaic {
+    font-family: 'oldStandartItalic' !important;
+}
+
+.ff-heebo-thin {
+    font-family: 'HeboThin' !important;
+}
+
+.ff-heebo-regular {
+    font-family: 'HeboRegular' !important;
+}
+
+.ff-heebo-light {
+    font-family: 'HeboLight' !important;
 }
 
 
