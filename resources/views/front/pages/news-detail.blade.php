@@ -8,7 +8,7 @@
             
             <div class="col-md-9">
                 
-                <h1 class="text-left text-capitalize mb-5 text-md">
+                <h1 class="text-left text-capitalize mb-5 text-md ff-old-standart">
                     Artikel
                 </h1>
                 <p class="text-capitalize bredcrumb">
@@ -28,7 +28,7 @@
                         <span class="float-right text-uppercase news_date">{{ $detail['publish_date'] }}</span>
                     </p>
 
-                    <h1 class="text-capitalize mt-2 mb-2 text-md">{{ $detail['title'] }}</h1>
+                    <h1 class="text-capitalize mt-2 mb-2 text-md ff-old-standart">{{ $detail['title'] }}</h1>
                     <div class="mt-4 text-justify d-block">
                         <p>{!! $detail['content'] !!}</p>
                     </div>
@@ -102,29 +102,19 @@
             </div>
 
             <div class="col-md-3 sidebar_news_detail position-relative">
-                    
-                <!-- <div class="">
-                    <p class="text-uppercase text-left mb-3">
-                        <h6>TAG</h6>
-                    </p>
-                    <p class="text-sm text-uppercase text-left mb-3">
-                        <a href="">kecantikan (1)</a> <a href="">tips cantik (2)</a> <a href="">riasan (3)</a> <a href="">bibir (6)</a> <a href="">perawatan (2)</a>
-                        <a href="">kulit sehat (5)</a> <a href="">rambut (4)</a> <a href="">pelembab (1)</a> <a href="">olah raga (3)</a> <a href="">produk (2)</a>
-                        <a href="">senam (4)</a>
-                    </p>
-                </div> -->
+            @include('front.partials.tags')
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-9">
                 <div class="mt-5 comment_section">
-                    <h1 class="text-md">Komentar</h1>
-                    <p class="text-sm">Alamat surel anda tidak akan ditampilkan. Bidang yang ditandai harus di isi.</p>
+                    <h1 class="text-md ff-old-standart">Komentar</h1>
+                    <p class="text-sm ff-heebo-regular">Alamat surel anda tidak akan ditampilkan. Bidang yang ditandai harus di isi.</p>
                 </div>
 
                 <div class="mt-5">
-                    <form action="" class="" method="POST">
+                    <form action="#" class="ff-heebo-regular" method="POST">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group mb-5">

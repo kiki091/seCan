@@ -47,15 +47,25 @@
                         </div>
                     </div>
 
-                    <!-- <div class="col-md-12 ">
+                    <div class="col-md-12 " v-if="isEdit == false">
                         <div class="form-group row">
-                            <label for="tags_1" class="col-md-12">Input Tags</label>
-                            <div class="col-md-12">
-                                <input id="tags_1" type="text" class="tags form-control" value="social, adverts, sales" />
+                            <label for="tags_news" class="col-md-12">Input Tags</label>
+                            <div class="col-md-12 " id="new_tag">
+                                <input id="tags_news" type="text" class="tags form-control" name="tag_id" />
                                 <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
+
+                    <div class="col-md-12 " v-if="isEdit == true">
+                        <div class="form-group row">
+                            <label for="tags_news_edit" class="col-md-12">Input Tags</label>
+                            <div class="col-md-12">
+                                <input id="tags_news_edit" type="text" class="tags form-control" name="tag_id" />
+                                <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="col-md-12 mt-2">
                         <div class="form-group row">
@@ -97,6 +107,7 @@
                     <div class="col-md-12 mt-3">
                         <div class="ln_solid"></div>
                         {{ csrf_field() }}			
+                        <input type="hidden" name="class" value="News">
                         <input type="hidden" name="id" v-model="models.id" v-if="isEdit == true">
                         <input type="hidden" name="old_home_thumbnail" v-model="models.home_thumbnail" v-if="isEdit == true">
                         <input type="hidden" name="old_thumbnail" v-model="models.thumbnail" v-if="isEdit == true">

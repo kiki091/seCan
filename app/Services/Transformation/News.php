@@ -18,7 +18,7 @@ class News
                 'home_thumbnail_url' => isset($params['home_thumbnail']) ? asset(NEWS_DIR.$params['home_thumbnail']) : '',
                 'image_url' => isset($params['image']) ? asset(NEWS_DIR.$params['image']) : '',
                 'title' => isset($params['translation']['title']) ? $params['translation']['title'] : '',
-                'content' => isset($params['translation']['content']) ? str_limit($params['translation']['content'], 150) : '',
+                'content' => isset($params['translation']['content']) ? str_limit($params['translation']['content'], 250) : '',
                 'category' => isset($params['category']['translation']['title']) ? $params['category']['translation']['title'] : '',
                 'category_slug' => isset($params['category']['slug']) ? $params['category']['slug'] : '',
             ];
@@ -74,7 +74,8 @@ class News
             'image_url' => isset($params['image']) ? asset(NEWS_DIR.$params['image']) : '',
             'category_id' => isset($params['category_id']) ? $params['category_id'] : '',
             'doctor_id' => isset($params['doctor_id']) ? $params['doctor_id'] : '',
-            'translations' => isset($params['translations']) ? $this->setDataTranslations($params['translations']) : []
+            'translations' => isset($params['translations']) ? $this->setDataTranslations($params['translations']) : [],
+            'tags' => isset($params['tags']) && !empty($params['tags']) ? $this->setTagData($params['tags']) : []
         ];
     }
 
@@ -91,5 +92,16 @@ class News
             $return['content'][$tran['locale']] = $tran['content'];
         }
         return $return;
+    }
+
+    protected function setTagData($params)
+    {
+        return array_map(function($params) {
+
+            return [
+                'id' => isset($params['tag_id']) ? $params['tag_id'] : '',
+                'title' => isset($params['tag']['translation']['title']) ? $params['tag']['translation']['title'] : ''
+            ];
+        },$params);
     }
 }

@@ -55,6 +55,11 @@ class News extends Model
     	return $this->belongsTo(\App\Models\Category::class,'category_id','id');
     }
 
+    public function tags()
+    {
+        return $this->morphMany(\App\Models\TagRelated::class, 'key')->with('tag');   
+    }
+
     public static function boot() {
         parent::boot();
         News::observe(new SeoActionsObserver());

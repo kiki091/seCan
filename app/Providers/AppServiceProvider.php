@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\Contracts\Search', 'App\Repositories\Implementation\Search');
         $this->app->bind('App\Repositories\Contracts\Seo', 'App\Repositories\Implementation\Seo');
         $this->app->bind('App\Repositories\Contracts\Front', 'App\Repositories\Implementation\Front');
+        $this->app->bind('App\Repositories\Contracts\Tag', 'App\Repositories\Implementation\Tag');
     }
 
     /**

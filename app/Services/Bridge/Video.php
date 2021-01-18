@@ -33,5 +33,41 @@ class Video {
     {
         return $this->videoManager->getFrontDetail($params);
     }
+    
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function getDataCms($params = array())
+    {
+        return $this->videoManager->getDataCms($params);
+    }
+    
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function editDataCms($bannerId)
+    {
+        return $this->videoManager->editDataCms($bannerId);   
+    }
+    
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function storeDataCms($params = array())
+    {
+        return $this->videoManager->storeDataCms($params);   
+    }
+    
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function deleteDataCms($params = array())
+    {
+        return $this->videoManager->deleteDataCms($params);   
+    }
 
 }

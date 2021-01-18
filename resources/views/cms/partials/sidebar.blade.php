@@ -30,6 +30,7 @@
                             <li><a href="{{ route('indexSeo') }}">Seo</a></li>
                             <li><a href="{{ route('indexBanner') }}">Banner</a></li>
                             <li><a href="{{ route('indexNews') }}">Artikel</a></li>
+                            <li><a href="{{ route('indexVideo') }}">Video</a></li>
                         </ul>
                     </li>
                 </ul>

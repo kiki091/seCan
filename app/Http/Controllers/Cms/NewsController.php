@@ -111,6 +111,7 @@ class NewsController extends Controller
 
     protected function validationStore($request = array())
     {
+        
         $rules = [
             'category_id' => 'required',
             'thumbnail' => 'required|dimensions:width='.THUMBNAIL_NEWS_IMAGE_WIDTH.',height='.THUMBNAIL_NEWS_IMAGE_HEIGHT.'|max:'. MAX_IMAGES_SIZE .'|mimes:jpeg,jpg,png',

@@ -8,7 +8,6 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 window.moment = require('moment');
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -43,6 +42,9 @@ window.onload = function () {
 
     if (document.getElementById('newsManager'))
         require('./cms/news');
+
+    if (document.getElementById('videoManager'))
+        require('./cms/video');
 
 }
 

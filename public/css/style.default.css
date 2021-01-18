@@ -1907,8 +1907,8 @@ a {
 }
 
 a:hover, a:focus {
-  color: #bf9e03;
-  text-decoration: underline;
+  color: #70d5b8;
+  text-decoration: none;
 }
 
 h1,

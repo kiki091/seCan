@@ -32,7 +32,7 @@
 
             <div class="col-md-3 mb-5">
                 <div class="">
-                    <h1 class="text-md desktop_only">
+                    <h1 class="video_title desktop_only">
                     {{ $detail['title'] }}
                     </h1>
                     <table>
@@ -46,7 +46,13 @@
                             <tr>
                                 <th class="pt-3 pr-3 pb-1">Tanggal</th><td class="pt-3 pl-3 pb-1">{{ $detail['publish_date'] }}</td>
                             </tr>
-                            
+                            <tr>
+                                <td colspan="2">
+                                
+                    @include('front.partials.tags')
+
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

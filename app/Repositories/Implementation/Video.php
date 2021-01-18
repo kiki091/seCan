@@ -7,6 +7,7 @@ use App\Models\VideoTran as VideoTranModel;
 use App\Services\Api\Response as ResponseService;
 use App\Repositories\Contracts\Video as VideoInterface;
 use App\Services\Transformation\Video as VideoTransformation;
+use App\Services\Bridge\Seo as SeoService;
 use Carbon\Carbon;
 use DB;
 use LaravelLocalization;
@@ -19,13 +20,17 @@ class Video implements VideoInterface
     protected $message;
     protected $lastInsertId;
     protected $response;
+    protected $seoManager;
+
+    use \App\Traits\TagRelated;
 
     function __construct(VideoModel $videoModel, VideoTranModel $videoTranModel, VideoTransformation $videoTransform,  
-    ResponseService $response)
+    ResponseService $response, SeoService $seoManager)
     {
 
         $this->response = $response;
         $this->videoModel = $videoModel;
+        $this->seoManager = $seoManager;
         $this->videoTranModel = $videoTranModel;
         $this->videoTransform = $videoTransform;
     }
@@ -44,6 +49,7 @@ class Video implements VideoInterface
             return $this->videoTransform->getFrontData($this->videoManager($params));
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
         }
     }
     /** 
@@ -60,6 +66,7 @@ class Video implements VideoInterface
             return $this->videoTransform->getFrontDetail($this->videoManager($params, 'asc', 'array', true));
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
         }
     }
 
@@ -73,10 +80,11 @@ class Video implements VideoInterface
     {
         try {
             //code...
-
-            return $this->videoTransform->getListDataCms($this->videoManager($params));
+            
+            return $this->videoTransform->getDataCms($this->videoManager($params));
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
         }
     }
 
@@ -90,11 +98,13 @@ class Video implements VideoInterface
     {
         try {
             //code...
-            $data = $this->videoTransform->getSingleDataCms($this->videoManager(['id' => $requestId], 'asc', 'array', true));
+            $data['seo'] = $this->seoManager->getEdit(['id' => $requestId, 'type'=>'Video']);
+            $data['data'] = $this->videoTransform->getSingleDataCms($this->videoManager(['id' => $requestId], 'asc', 'array', true));
             return $this->response->setResponse('Success get data', true, $data);
             
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
         }
     }
 
@@ -112,19 +122,48 @@ class Video implements VideoInterface
 
             if(isset($params['id'])) {
                 $store = $this->videoModel->find($params['id']);
+                $store->updated_at = Carbon::now();
             } else {
                 $store = $this->videoModel;
+                $store->created_at = Carbon::now();
+                $store->publish_date = Carbon::now();
                 $store->slug = isset($params['title']['id']) ? str_slug($params['title']['id']) : str_slug($params['title']['en']);
             }
             
-            $store->created_at = Carbon::now();
+            $store->youtube_url = isset($params['youtube_url']) ? $params['youtube_url'] : '';
+            $store->category_id = isset($params['category_id']) ? $params['category_id'] : '';
+            $store->doctor_id = isset($params['doctor_id']) ? $params['doctor_id'] : NULL;
+            
+            if(isset($params['thumbnail']) && !empty($params['thumbnail']))
+                $store->thumbnail = strtolower(str_replace(' ', '_', $params['thumbnail']->getClientOriginalName()));
+            else
+                $store->thumbnail = isset($params['old_thumbnail']) ? $params['old_thumbnail'] : '';
+            
+            if(isset($params['home_thumbnail']) && !empty($params['home_thumbnail']))
+                $store->home_thumbnail = strtolower(str_replace(' ', '_', $params['home_thumbnail']->getClientOriginalName()));
+            else
+                $store->home_thumbnail = isset($params['old_home_thumbnail']) ? $params['old_home_thumbnail'] : '';
             
             if($store->save()) {
                 
                 if($this->storeDataTranslationCms($params, $store->id)) {
 
-                    DB::commit();
-                    return $this->response->setResponse('Success save data', true);
+                    if($this->imageUploader($params)) {
+
+                        if(isset($params['tag_id']) && !empty($params['tag_id'])) {
+
+                            if(!$this->storeTagRelated($params, $store->id)) {
+                                DB::rollBack();
+                                return $this->response->setResponse($this->message, false);
+                            }
+                        }
+
+                        DB::commit();
+                        return $this->response->setResponse('Success save data', true);
+                    }
+
+                    DB::rollBack();
+                    return $this->response->setResponse($this->message, false);
                 }
                 
                 DB::rollBack();
@@ -154,7 +193,7 @@ class Video implements VideoInterface
 
             if(isset($params['id'])) {
 
-                $this->videoTranModel->where('category_id', $params['id'])->delete();
+                $this->videoTranModel->where('video_id', $params['id'])->delete();
             }
 
             $transData = [];
@@ -164,7 +203,7 @@ class Video implements VideoInterface
             foreach($suportLocale as $key=> $locale) {
                 $transData[$key] = [
                     'locale' => $key,
-                    'category_id' => isset($params['id']) ? $params['id'] : $categoryId,
+                    'video_id' => isset($params['id']) ? $params['id'] : $categoryId,
                     'title' => isset($params['title'][$key]) ? $params['title'][$key] : '',
                     'created_at' => Carbon::now()
                 ];
@@ -180,6 +219,55 @@ class Video implements VideoInterface
             $this->message = $e->getMessage();
             return false;
         }
+    }
+
+    protected function imageUploader($params)
+    {
+        try {
+            //code...
+
+            if (isset($params['thumbnail']) && !empty($params['thumbnail'])) {
+                if ($params['thumbnail']->isValid()) {
+                    
+                    $thumbnail = strtolower(str_replace(' ', '_', $params['thumbnail']->getClientOriginalName()));
+                    
+                    if (!$params['thumbnail']->move('./' . VIDEO_DIR, $thumbnail)) {
+                        
+                        $this->message = 'failed upload thumbnail';
+                        return false;
+                    }
+                }
+                else {
+                    $this->message = $params['thumbnail']->getErrorMessage();
+                    return false;
+                }
+            }
+
+            if (isset($params['home_thumbnail']) && !empty($params['home_thumbnail'])) {
+                if ($params['home_thumbnail']->isValid()) {
+                    
+                    $home_thumbnail = strtolower(str_replace(' ', '_', $params['home_thumbnail']->getClientOriginalName()));
+                    
+                    if (!$params['home_thumbnail']->move('./' . VIDEO_DIR, $home_thumbnail)) {
+                        
+                        $this->message = 'failed upload home thumbnail';
+                        return false;
+                    }
+                }
+                else {
+                    $this->message = $params['home_thumbnail']->getErrorMessage();
+                    return false;
+                }
+            }
+    
+            return true;
+
+        } catch (\Exception $e) {
+            
+            $this->message = $e->getMessage();
+            return false;
+        }
+        
     }
 
     /** 
@@ -200,7 +288,7 @@ class Video implements VideoInterface
 
             if($model) {
                 $model->delete();
-                $this->videoTranModel->where('category_id', $params['id'])->delete();
+                $this->videoTranModel->where('video_id', $params['id'])->delete();
 
                 DB::commit();
                 return $this->response->setResponse('Success delete data', true);
@@ -226,13 +314,20 @@ class Video implements VideoInterface
         try {
 
             //code...
-            $el = $this->videoModel->with(['translation', 'translations', 'category', 'category.translation']);
+            $el = $this->videoModel->with(['translation', 'translations', 'category', 'category.translation', 'tags']);
 
             if(isset($params['category_slug'])) {
                 $el->whereHas('category', function($q) use($params) {
                     $q->where('slug', $params['category_slug']);
                 });
             }
+            
+            if(isset($params['tag_slug'])) {
+                $el->with(['tags.tag' => function($q) use($params) {
+                    $q->where('slug', $params['tag_slug']);
+                }]);
+            }
+            // dd($el->get()->toArray());   
             
             if(isset($params['slug']))
                 $el->where('slug',$params['slug']);
@@ -280,6 +375,7 @@ class Video implements VideoInterface
 
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
         }
     }
 

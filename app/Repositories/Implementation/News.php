@@ -22,6 +22,8 @@ class News implements NewsInterface
     protected $response;
     protected $seoManager;
 
+    use \App\Traits\TagRelated;
+
     function __construct(NewsModel $newsModel, NewsTranModel $newsTranModel, NewsTransformation $newsTransform,  
     ResponseService $response, SeoService $seoManager)
     {
@@ -95,7 +97,6 @@ class News implements NewsInterface
         try {
 
             $data['seo'] = $this->seoManager->getEdit(['id' => $requestId, 'type'=>'News']);
-            //code...
             $data['data'] = $this->newsTransform->getSingleDataCms($this->newsManager(['id' => $requestId], 'asc', 'array', true));
             return $this->response->setResponse('Success get data', true, $data);
             
@@ -150,6 +151,15 @@ class News implements NewsInterface
                 if($this->storeDataTranslationCms($params, $store->id)) {
 
                     if($this->imageUploader($params)) {
+
+                        if(isset($params['tag_id']) && !empty($params['tag_id'])) {
+
+                            if(!$this->storeTagRelated($params, $store->id)) {
+                                DB::rollBack();
+                                return $this->response->setResponse($this->message, false);
+                            }
+                        }
+
                         DB::commit();
                         return $this->response->setResponse('Success save data', true);
                     }
@@ -326,7 +336,7 @@ class News implements NewsInterface
         try {
             
             //code...
-            $el = NewsModel::with(['translation', 'translations', 'category', 'category.translation', 'doctor']);
+            $el = NewsModel::with(['translation', 'translations', 'category', 'category.translation', 'doctor', 'tags']);
 
             if(isset($params['category_slug'])) {
                 $el->whereHas('category', function($q) use($params) {
@@ -334,6 +344,12 @@ class News implements NewsInterface
                 });
             }
             
+            if(isset($params['tag_slug'])) {
+                $el->with(['tags.tag' => function($q) use($params) {
+                    $q->where('slug', $params['tag_slug']);
+                }]);
+            }
+             
             if(isset($params['slug']))
                 $el->where('slug',$params['slug']);
                 

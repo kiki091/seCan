@@ -21,6 +21,9 @@
                     <li><a href="{{ route('frontVideoCategory', 'kecantikan') }}" class="active">kecantikan</a></li>
                     <li><a href="{{ route('frontVideoCategory', 'kesehatan') }}">kesehatan</a></li>
                 </ul>
+                <div class="col-md-3 sidebar_news">
+                    @include('front.partials.tags')
+                </div>
             </div>
             
             @if(isset($video) && !empty($video))

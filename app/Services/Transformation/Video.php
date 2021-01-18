@@ -54,6 +54,9 @@ class Video
                 
                 'id' => isset($params['id']) ? $params['id'] : '',
                 'title' => isset($params['translation']['title']) ? $params['translation']['title'] : '',
+                'home_thumbnail_url' => isset($params['home_thumbnail']) ? asset(VIDEO_DIR.$params['home_thumbnail']) : '',
+                'category' => isset($params['category']['translation']['title']) ? $params['category']['translation']['title'] : '',
+                'publish_date' => isset($params['publish_date']) ? Carbon::parse($params['publish_date'])->format('d M Y') : '',
             ];
 
         }, $params);
@@ -63,7 +66,15 @@ class Video
     {
         return [
             'id' => isset($params['id']) ? $params['id'] : '',
-            'translations' => isset($params['translations']) ? $this->setDataTranslations($params['translations']) : []
+            'youtube_url' => isset($params['youtube_url']) ? $params['youtube_url'] : '',
+            'thumbnail' => isset($params['thumbnail']) ? $params['thumbnail'] : '',
+            'thumbnail_url' => isset($params['thumbnail']) ? asset(VIDEO_DIR.$params['thumbnail']) : '',
+            'home_thumbnail' => isset($params['home_thumbnail']) ? $params['home_thumbnail'] : '',
+            'home_thumbnail_url' => isset($params['home_thumbnail']) ? asset(VIDEO_DIR.$params['home_thumbnail']) : '',
+            'category_id' => isset($params['category_id']) ? $params['category_id'] : '',
+            'doctor_id' => isset($params['doctor_id']) ? $params['doctor_id'] : '',
+            'translations' => isset($params['translations']) ? $this->setDataTranslations($params['translations']) : [],
+            'tags' => isset($params['tags']) && !empty($params['tags']) ? $this->setTagData($params['tags']) : []
         ];
     }
 
@@ -79,5 +90,16 @@ class Video
             $return['title'][$tran['locale']] = $tran['title'];
         }
         return $return;
+    }
+
+    protected function setTagData($params)
+    {
+        return array_map(function($params) {
+
+            return [
+                'id' => isset($params['tag_id']) ? $params['tag_id'] : '',
+                'title' => isset($params['tag']['translation']['title']) ? $params['tag']['translation']['title'] : ''
+            ];
+        },$params);
     }
 }

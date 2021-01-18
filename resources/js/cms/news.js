@@ -18,7 +18,8 @@ const app = new Vue({
             translations: {
                 title: { "en": "", "id": "" },
                 content: { "en": "", "id": "" },
-            }
+            },
+            tags: null
         },
 
         seo: {
@@ -47,12 +48,19 @@ const app = new Vue({
         this.fetchData()
     },
 
+    watch: {
+        'models.tag': function () {
+            console.log("runnn")
+        }
+    },
+
     methods: {
 
         showForm: function () {
 
             $('#form-open-content').slideDown('swing');
             $('.list_table').hide();
+            this.resetFormData()
         },
 
         fetchData: function (page) {
@@ -119,6 +127,7 @@ const app = new Vue({
                         vm.isEdit = true
                         vm.models = data.data
                         vm.seo = data.seo
+
                         $('#category_id').val(vm.models.category_id)
                         $('#doctor_id').val(vm.models.doctor_id)
                         for (var key in supported_language) {
@@ -127,6 +136,32 @@ const app = new Vue({
 
                         $('.list_table').hide();
                         $('#form-open-content').slideDown('swing');
+                        setTimeout(() => {
+                            $("#tags_news_edit").tokenInput(appDomain + '/cms/tag/data?is_json=1', {
+                                theme: "facebook",
+                                queryParam: 'tag',
+                                hintText: 'Type here ..',
+                                noResultsText: 'Tag not found ..',
+                                searchingText: 'Searching tag ..',
+                                preventDuplicates: true,
+                                searchDelay: 2000,
+                                minChars: 3,
+                                propertyToSearch: 'title',
+                                prePopulate: data.data.tags,
+                                animateDropdown: true,
+                                hintShowData: true,
+
+                                onAdd: function (item) {
+
+                                },
+                                onDelete: function (item) {
+
+                                },
+                                resultsFormatter: function (item) { return "<li><div style='display: inline-block; padding-left: 6px;'><div class='full_name'>" + item.title + " </div></div></li>" },
+                                tokenFormatter: function (item) { return "<li><p>" + item.title + "</p></li>" }
+                            });
+                        }, 1000);
+
                     }
 
                 })()
@@ -264,6 +299,11 @@ const app = new Vue({
 
         resetFormData: function () {
 
+            this.isEdit = false
+            var tagEdit = $("#tags_news_edit")
+            var tagNew = document.createElement("input");
+            $("#tags_news").remove();
+            $('.token-input-list-facebook').remove();
             this.models = {
                 id: '',
                 image: '',
@@ -278,7 +318,8 @@ const app = new Vue({
                 translations: {
                     title: { "en": "", "id": "" },
                     content: { "en": "", "id": "" },
-                }
+                },
+                tags: null
             }
 
             this.seo = {
@@ -301,11 +342,48 @@ const app = new Vue({
                 $("#editor-one-" + key).html('');
                 $('#descr_' + key).val('')
             }
+            tagNew.setAttribute('id', 'tags_news')
+            tagNew.setAttribute('name', 'tag')
+            tagNew.setAttribute('class', 'tags form-control')
+            console.log($(tagNew))
+            $("#new_tag").append(tagNew);
 
-            this.isEdit = false
+            if ($(tagNew).length <= 1)
+                this.initTagging()
+
+            if (tagEdit.length)
+                tagEdit.tokenInput("clear");
+
             $('input[type=file]').val(null)
             $('#category_id').val('')
             $('#doctor_id').val('')
+        },
+
+        initTagging: function () {
+
+            let self = this
+            $("#tags_news").tokenInput(appDomain + '/cms/tag/data?is_json=1', {
+                theme: "facebook",
+                queryParam: 'tag',
+                hintText: 'Type here ..',
+                noResultsText: 'Tag not found ..',
+                searchingText: 'Searching tag ..',
+                preventDuplicates: true,
+                searchDelay: 2000,
+                minChars: 3,
+                propertyToSearch: 'title',
+                animateDropdown: true,
+                hintShowData: true,
+
+                onAdd: function (item) {
+
+                },
+                onDelete: function (item) {
+
+                },
+                resultsFormatter: function (item) { return "<li><div style='display: inline-block; padding-left: 6px;'><div class='full_name'>" + item.title + " </div></div></li>" },
+                tokenFormatter: function (item) { return "<li><p>" + item.title + "</p></li>" }
+            });
         }
     }
 

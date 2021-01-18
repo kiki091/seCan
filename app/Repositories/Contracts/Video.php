@@ -18,4 +18,28 @@ interface Video
      */
     public function getFrontDetail($params);
 
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function getDataCms($params);
+
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function editDataCms($params);
+
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function storeDataCms($params);
+
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function deleteDataCms($params);
+
 }

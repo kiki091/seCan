@@ -44,7 +44,7 @@ mix.js([
         'public/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js',
         'public/vendors/jquery.hotkeys/jquery.hotkeys.js',
         'public/vendors/google-code-prettify/src/prettify.js',
-        'public/vendors/jquery.tagsinput/src/jquery.tagsinput.js',
+        'public/vendors/jquery-tokeninput/src/jquery.tokeninput.js',
         'public/vendors/select2/dist/js/select2.full.min.js',
         'public/js/custom_cms.js',
     ], 'public/js/cms.js')
@@ -65,6 +65,9 @@ mix.js([
         'public/vendors/HoldOn/src/css/HoldOn.css',
         'public/vendors/google-code-prettify/bin/prettify.min.css',
         'public/vendors/select2/dist/css/select2.min.css',
+        'public/vendors/jquery-tokeninput/styles/token-input.css',
+        'public/vendors/jquery-tokeninput/styles/token-input-facebook.css',
+        'public/vendors/jquery-tokeninput/styles/token-input-mac.css',
         'public/css/custom_cms.css',
     ], 'public/css/cms.css')
     .options({
