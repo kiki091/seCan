@@ -20,6 +20,8 @@ class Doctor
                 'phone_number' => isset($params['phone_number']) ? $params['phone_number'] : '',
                 'foto_url' => isset($params['foto']) ? asset(DOCTOR_DIR.$params['foto']) : '',
                 'description' => isset($params['information']['description']) ? $params['information']['description'] : '',
+                'total_artikel' => isset($params['artikel']) ? count($params['artikel']) : '',
+                'category_slug' => isset($params['category']['slug']) ? $params['category']['slug'] : '',
                 'category_name' => isset($params['category']['translation']['title']) ? $params['category']['translation']['title'] : '',
             ];
 

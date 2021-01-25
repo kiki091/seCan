@@ -44,6 +44,7 @@ class Category implements CategoryInterface
             return $this->categoryTransform->getData($this->categoryManager($params));
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
         }
     }
 
@@ -57,10 +58,11 @@ class Category implements CategoryInterface
     {
         try {
             //code...
-
-            return $this->categoryTransform->getListDataCms($this->categoryManager($params));
+            
+            return $this->categoryTransform->getDataCms($this->categoryManager($params));
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
         }
     }
 
@@ -79,6 +81,7 @@ class Category implements CategoryInterface
             
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
         }
     }
 
@@ -240,6 +243,7 @@ class Category implements CategoryInterface
 
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
         }
     }
 

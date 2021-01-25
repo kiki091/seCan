@@ -14064,6 +14064,23 @@ footer {
 .video_title {
     font-size: 1.5em;
 }
+
+.doctor_profile {
+    position: absolute;
+    top: 0;
+    display: block;
+    margin: 10px;
+}
+
+.doctor_profile img {
+    height: 100px;
+    width: auto;
+    border-radius: 50%;
+}
+
+.view_doctor_detail:focus {
+    opacity: 0.4;
+}
 body {
     font-family: 'Montserrat', sans-serif;
 }

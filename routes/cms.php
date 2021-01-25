@@ -4,6 +4,7 @@ Route::get('/home', function() {
 	return redirect(route('dashboard'));
 });
 
+
 Route::group(['middleware' => ['auth']], function() {
     Route::group(['prefix' => 'cms'], function () {
 
@@ -45,6 +46,13 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/data', 'Cms\TagController@data')->name('dataTag');
             Route::get('/edit/{id}', 'Cms\TagController@edit')->name('editTag');
             Route::post('/store', 'Cms\TagController@store')->name('storeTag');
+        });
+
+        Route::group(['prefix' => 'category'], function () {
+            Route::get('/', 'Cms\CategoryController@index')->name('indexCategory');
+            Route::get('/data', 'Cms\CategoryController@data')->name('dataCategory');
+            Route::get('/edit/{id}', 'Cms\CategoryController@edit')->name('editCategory');
+            Route::post('/store', 'Cms\CategoryController@store')->name('storeCategory');
         });
     });
 });

@@ -314,7 +314,7 @@ class Video implements VideoInterface
         try {
 
             //code...
-            $el = $this->videoModel->with(['translation', 'translations', 'category', 'category.translation', 'tags']);
+            $el = $this->videoModel->with(['translation', 'translations', 'category', 'category.translation', 'tags', 'doctor']);
 
             if(isset($params['category_slug'])) {
                 $el->whereHas('category', function($q) use($params) {
@@ -327,7 +327,10 @@ class Video implements VideoInterface
                     $q->where('slug', $params['tag_slug']);
                 }]);
             }
-            // dd($el->get()->toArray());   
+
+            if(isset($params['video_article'])) {
+                $el->where('doctor_id', '!=', null);
+            } 
             
             if(isset($params['slug']))
                 $el->where('slug',$params['slug']);

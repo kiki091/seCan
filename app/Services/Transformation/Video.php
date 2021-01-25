@@ -20,6 +20,8 @@ class Video
                 'title' => isset($params['translation']['title']) ? $params['translation']['title'] : '',
                 'category' => isset($params['category']['translation']['title']) ? $params['category']['translation']['title'] : '',
                 'category_slug' => isset($params['category']['slug']) ? $params['category']['slug'] : '',
+                'doctor_photo_url' => isset($params['doctor']['foto']) ? asset(DOCTOR_DIR.$params['doctor']['foto']) : '',
+                'doctor_name' => isset($params['doctor']['fullname']) ? $params['doctor']['fullname'] : '',
             ];
 
         }, $params);

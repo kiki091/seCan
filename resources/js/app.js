@@ -46,6 +46,12 @@ window.onload = function () {
     if (document.getElementById('videoManager'))
         require('./cms/video');
 
+    if (document.getElementById('tagManager'))
+        require('./cms/tag');
+
+    if (document.getElementById('categoryManager'))
+        require('./cms/category');
+
 }
 
 window.showLoading = () => {

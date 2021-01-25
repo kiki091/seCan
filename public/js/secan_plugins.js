@@ -77861,6 +77861,8 @@ window.onload = function () {
   if (document.getElementById('bannerManager')) __webpack_require__(/*! ./cms/banner */ "./resources/js/cms/banner.js");
   if (document.getElementById('newsManager')) __webpack_require__(/*! ./cms/news */ "./resources/js/cms/news.js");
   if (document.getElementById('videoManager')) __webpack_require__(/*! ./cms/video */ "./resources/js/cms/video.js");
+  if (document.getElementById('tagManager')) __webpack_require__(/*! ./cms/tag */ "./resources/js/cms/tag.js");
+  if (document.getElementById('categoryManager')) __webpack_require__(/*! ./cms/category */ "./resources/js/cms/category.js");
 };
 
 window.showLoading = function () {
@@ -78157,6 +78159,211 @@ var app = new Vue({
       };
       this.isEdit = false;
       $('input[type=file]').val(null);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/cms/category.js":
+/*!**************************************!*\
+  !*** ./resources/js/cms/category.js ***!
+  \**************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var app = new Vue({
+  el: '#categoryManager',
+  data: {
+    models: {
+      id: '',
+      slug: '',
+      translations: {
+        title: {
+          "en": "",
+          "id": ""
+        }
+      }
+    },
+    isEdit: false,
+    listData: [],
+    supported_language: supported_language
+  },
+  mounted: function mounted() {
+    this.fetchData();
+  },
+  methods: {
+    showForm: function showForm() {
+      $('#form-open-content').slideDown('swing');
+      $('.list_table').hide();
+    },
+    fetchData: function fetchData(page) {
+      var vm = this;
+
+      _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _yield$axios$get$then, status, message, data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios.get(appDomain + '/cms/category/data').then(function (response) {
+                  return response.data;
+                })["catch"](function (error) {
+                  if (err.response) {
+                    return err.response.data;
+                  } else if (err.request) {
+                    return err.request.data;
+                  } else {
+                    console.log('error', err.message);
+                  }
+                });
+
+              case 2:
+                _yield$axios$get$then = _context.sent;
+                status = _yield$axios$get$then.status;
+                message = _yield$axios$get$then.message;
+                data = _yield$axios$get$then.data;
+
+                if (status == true) {
+                  vm.listData = data.category;
+                } else {
+                  vm.listData = [];
+                  notify('Error!', message, 'error');
+                  console.log(message);
+                }
+
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    editData: function editData(id) {
+      try {
+        var vm = this;
+
+        _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+          var _yield$axios$get$then2, status, message, data;
+
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return axios.get(appDomain + '/cms/category/edit/' + id).then(function (response) {
+                    return response.data;
+                  })["catch"](function (err) {
+                    if (err.response) {
+                      return err.response.data;
+                    } else if (err.request) {
+                      return err.request.data;
+                    } else {
+                      console.log('error', err.message);
+                    }
+                  });
+
+                case 2:
+                  _yield$axios$get$then2 = _context2.sent;
+                  status = _yield$axios$get$then2.status;
+                  message = _yield$axios$get$then2.message;
+                  data = _yield$axios$get$then2.data;
+
+                  if (status == true) {
+                    vm.isEdit = true;
+                    vm.models = data;
+                    $('.list_table').hide();
+                    $('#form-open-content').slideDown('swing');
+                  }
+
+                case 7:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }))();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    saveData: function saveData() {
+      try {
+        var vm = this;
+        var optForm = {
+          dataType: "json",
+          beforeSerialize: function beforeSerialize(form, options) {
+            showLoading();
+          },
+          beforeSend: function beforeSend() {
+            vm.clearErrorMessage();
+          },
+          success: function success(response) {
+            if (response.status == false) {
+              if (response.is_error_form_validation) {
+                var message_validation = [];
+                $.each(response.message, function (key, value) {
+                  // $('input[name="' + key.replace('.', '_') + '"]').focus();
+                  $('#field_' + key.replace('.', '_')).text(value);
+                });
+              } else {
+                notify('Error!', response.message, 'error');
+              }
+            } else {
+              vm.clearErrorMessage();
+              vm.closeForm();
+              vm.fetchData();
+              notify('Success', '', 'success');
+            }
+          },
+          complete: function complete(response) {
+            hideLoading();
+          }
+        };
+        $("#form_category").ajaxForm(optForm);
+        $("#form_category").submit();
+      } catch (error) {
+        console.log(error);
+        hideLoading();
+      }
+    },
+    clearErrorMessage: function clearErrorMessage() {
+      $('.text-error').text('');
+    },
+    showConfirmDelete: function showConfirmDelete(id) {
+      this.models.id = id;
+    },
+    closeForm: function closeForm() {
+      this.resetFormData();
+      this.clearErrorMessage();
+      $('#form-open-content').slideUp('swing');
+      $('.list_table').show();
+    },
+    resetFormData: function resetFormData() {
+      this.models = {
+        id: '',
+        slug: '',
+        translations: {
+          title: {
+            "en": "",
+            "id": ""
+          }
+        }
+      };
+      this.isEdit = false;
     }
   }
 });
@@ -78797,6 +79004,211 @@ var app = new Vue({
             "id": ""
           },
           meta_description: {
+            "en": "",
+            "id": ""
+          }
+        }
+      };
+      this.isEdit = false;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/cms/tag.js":
+/*!*********************************!*\
+  !*** ./resources/js/cms/tag.js ***!
+  \*********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var app = new Vue({
+  el: '#tagManager',
+  data: {
+    models: {
+      id: '',
+      slug: '',
+      translations: {
+        title: {
+          "en": "",
+          "id": ""
+        }
+      }
+    },
+    isEdit: false,
+    listData: [],
+    supported_language: supported_language
+  },
+  mounted: function mounted() {
+    this.fetchData();
+  },
+  methods: {
+    showForm: function showForm() {
+      $('#form-open-content').slideDown('swing');
+      $('.list_table').hide();
+    },
+    fetchData: function fetchData(page) {
+      var vm = this;
+
+      _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _yield$axios$get$then, status, message, data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios.get(appDomain + '/cms/tag/data').then(function (response) {
+                  return response.data;
+                })["catch"](function (error) {
+                  if (err.response) {
+                    return err.response.data;
+                  } else if (err.request) {
+                    return err.request.data;
+                  } else {
+                    console.log('error', err.message);
+                  }
+                });
+
+              case 2:
+                _yield$axios$get$then = _context.sent;
+                status = _yield$axios$get$then.status;
+                message = _yield$axios$get$then.message;
+                data = _yield$axios$get$then.data;
+
+                if (status == true) {
+                  vm.listData = data.tag;
+                } else {
+                  vm.listData = [];
+                  notify('Error!', message, 'error');
+                  console.log(message);
+                }
+
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    editData: function editData(id) {
+      try {
+        var vm = this;
+
+        _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+          var _yield$axios$get$then2, status, message, data;
+
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return axios.get(appDomain + '/cms/tag/edit/' + id).then(function (response) {
+                    return response.data;
+                  })["catch"](function (err) {
+                    if (err.response) {
+                      return err.response.data;
+                    } else if (err.request) {
+                      return err.request.data;
+                    } else {
+                      console.log('error', err.message);
+                    }
+                  });
+
+                case 2:
+                  _yield$axios$get$then2 = _context2.sent;
+                  status = _yield$axios$get$then2.status;
+                  message = _yield$axios$get$then2.message;
+                  data = _yield$axios$get$then2.data;
+
+                  if (status == true) {
+                    vm.isEdit = true;
+                    vm.models = data.data;
+                    $('.list_table').hide();
+                    $('#form-open-content').slideDown('swing');
+                  }
+
+                case 7:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }))();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    saveData: function saveData() {
+      try {
+        var vm = this;
+        var optForm = {
+          dataType: "json",
+          beforeSerialize: function beforeSerialize(form, options) {
+            showLoading();
+          },
+          beforeSend: function beforeSend() {
+            vm.clearErrorMessage();
+          },
+          success: function success(response) {
+            if (response.status == false) {
+              if (response.is_error_form_validation) {
+                var message_validation = [];
+                $.each(response.message, function (key, value) {
+                  // $('input[name="' + key.replace('.', '_') + '"]').focus();
+                  $('#field_' + key.replace('.', '_')).text(value);
+                });
+              } else {
+                notify('Error!', response.message, 'error');
+              }
+            } else {
+              vm.clearErrorMessage();
+              vm.closeForm();
+              vm.fetchData();
+              notify('Success', '', 'success');
+            }
+          },
+          complete: function complete(response) {
+            hideLoading();
+          }
+        };
+        $("#form_tag").ajaxForm(optForm);
+        $("#form_tag").submit();
+      } catch (error) {
+        console.log(error);
+        hideLoading();
+      }
+    },
+    clearErrorMessage: function clearErrorMessage() {
+      $('.text-error').text('');
+    },
+    showConfirmDelete: function showConfirmDelete(id) {
+      this.models.id = id;
+    },
+    closeForm: function closeForm() {
+      this.resetFormData();
+      this.clearErrorMessage();
+      $('#form-open-content').slideUp('swing');
+      $('.list_table').show();
+    },
+    resetFormData: function resetFormData() {
+      this.models = {
+        id: '',
+        slug: '',
+        translations: {
+          title: {
             "en": "",
             "id": ""
           }

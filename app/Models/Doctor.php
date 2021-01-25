@@ -20,6 +20,12 @@ class Doctor extends Model
 		return $this->hasMany(\App\Models\DoctorInformation::class,'doctor_id','id');
 	}
 
+
+	public function artikel()
+	{
+		return $this->hasMany(\App\Models\News::class,'doctor_id','id');
+	}
+
     /**
      * @return mixed
      */
@@ -36,7 +42,7 @@ class Doctor extends Model
     public function category()
     {
     	
-    	return $this->belongsTo(\App\Models\Category::class,'id','category_id');
+    	return $this->belongsTo(\App\Models\Category::class,'category_id','id');
     }
 
 }

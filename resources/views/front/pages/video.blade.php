@@ -31,6 +31,11 @@
                     <div class="col-md-4 mb-3 mb-lg-5">
                         <a href="{{ route('frontVideoDetail', $video['slug']) }}">
                             <div class="hover hover-2 text-white rounded">
+                                @if(isset($is_from_doctor_url))
+                                <div class="doctor_profile">
+                                    <img src="{{ $video['doctor_photo_url'] }}" alt="">
+                                </div>
+                                @endif
                                 <img src="{{ $video['thumbnail_url'] }}" alt="{{ $video['title'] }}" class="">
                                 <div class="hover-overlay"></div>
                                 <div class="hover-2-content">

@@ -44,6 +44,7 @@ class Doctor implements DoctorInterface
             return $this->doctorTransform->getData($this->doctorManager($params));
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
         }
     }
 
@@ -61,6 +62,7 @@ class Doctor implements DoctorInterface
             return $this->doctorTransform->getListDataCms($this->doctorManager($params));
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
         }
     }
 
@@ -79,6 +81,7 @@ class Doctor implements DoctorInterface
             
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
         }
     }
 
@@ -258,7 +261,13 @@ class Doctor implements DoctorInterface
         try {
 
             //code...
-            $el = $this->doctorModel->with(['information', 'informations', 'category', 'category.translation']);
+            $el = $this->doctorModel->with(['information', 'informations', 'category', 'category.translation', 'artikel']);
+            
+            if(isset($params['category_slug'])) {
+                $el->whereHas('category', function($q) use($params) {
+                    $q->where('slug', $params['category_slug']);
+                });
+            }
             
             if(isset($params['id']))
                 $el->where('id',$params['id']);
@@ -266,12 +275,24 @@ class Doctor implements DoctorInterface
             if(isset($params['limit']))
                 $el->take(0, $params['limit']);
 
+            if(isset($params['filter'])) {
+
+                switch ($params['filter']) {
+                    case 'name':
+                        $el->orderBy('fullname', 'asc');
+                        break;
+                    case 'area':
+                        $el->orderBy('location', 'asc');
+                        break;
+                }
+            }
+            
             if(isset($params['order_by'])) {
                 $el
                 ->orderBy($params['order_by'], $orderType);
             } else {
                 $el
-                ->orderBy('created_at', $orderType);
+                ->orderBy('fullname', 'asc');
             }
 
             if(!$el->count())
@@ -291,6 +312,7 @@ class Doctor implements DoctorInterface
 
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th->getMessage());
         }
     }
 

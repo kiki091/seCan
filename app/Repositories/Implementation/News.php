@@ -349,7 +349,11 @@ class News implements NewsInterface
                     $q->where('slug', $params['tag_slug']);
                 }]);
             }
-             
+
+            if(isset($params['doctor_article'])) {
+                $el->where('doctor_id', '!=', null);
+            }
+                   
             if(isset($params['slug']))
                 $el->where('slug',$params['slug']);
                 

@@ -29,6 +29,8 @@
                         <ul class="nav child_menu">
                             <li><a href="{{ route('indexSeo') }}">Seo</a></li>
                             <li><a href="{{ route('indexBanner') }}">Banner</a></li>
+                            <li><a href="{{ route('indexCategory') }}">Category</a></li>
+                            <li><a href="{{ route('indexTag') }}">Tag</a></li>
                             <li><a href="{{ route('indexNews') }}">Artikel</a></li>
                             <li><a href="{{ route('indexVideo') }}">Video</a></li>
                         </ul>

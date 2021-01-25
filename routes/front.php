@@ -16,6 +16,7 @@ Route::group(['middleware' => ['web']], function() {
 		Route::get('/video/tag/{slug}', 'Front\VideoController@tag')->name('frontVideoTag');
 		Route::get('/video/category/{slug}', 'Front\VideoController@category')->name('frontVideoCategory');
 		Route::get('/dokter', 'Front\DoctorController@index')->name('frontDoctor');
+		Route::get('/dokter/data', 'Front\DoctorController@data')->name('frontGetDoctor');
 		Route::get('/dokter/artikel', 'Front\DoctorController@article')->name('frontDoctorArticle');
 		Route::get('/dokter/video', 'Front\DoctorController@video')->name('frontDoctorVideo');
 

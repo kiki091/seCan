@@ -40,6 +40,7 @@
 <script src="{{ elixir('js/secan_plugins.js')}}"></script>
 <script>
 	
+    var appDomain = {!! json_encode(env('APP_URL')) !!}
 </script>
 <!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->
 @yield('scripts')

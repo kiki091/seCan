@@ -2,35 +2,31 @@
     <div class="form-group row">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Content <small>(@{{lang.name}})</small></h2>
+                <label>Content (@{{lang.name}})</label>
                 
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
                 <div :id="'alerts_'+langKey"></div>
                 <div class="btn-toolbar editor" data-role="editor-toolbar" :data-target="'#editor-one-'+langKey">
-                    <div class="btn-group">
-                        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        </ul>
-                    </div>
+                    
 
                     <div class="btn-group">
                         <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a data-edit="fontSize 5">
-                                    <p style="font-size:17px">Huge</p>
+                                    <p style="font-size:17px">H1</p>
                                 </a>
                             </li>
                             <li>
                                 <a data-edit="fontSize 3">
-                                    <p style="font-size:14px">Normal</p>
+                                    <p style="font-size:14px">H2</p>
                                 </a>
                             </li>
                             <li>
                                 <a data-edit="fontSize 1">
-                                    <p style="font-size:11px">Small</p>
+                                    <p style="font-size:11px">H3</p>
                                 </a>
                             </li>
                         </ul>
