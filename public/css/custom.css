@@ -478,12 +478,15 @@ footer {
 }
 
 @media (max-width: 992px) {
-    .artikel_circle_container {
-        display: none !important;
+
+    .contact_section {
+        -ms-flex: 0 0 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
     }
 }
 @media (min-width: 768px) and (max-width: 992px) {
-
+    
     section {
         padding: 1.5rem 0;
     }
@@ -531,12 +534,24 @@ footer {
         margin-top: 5vw;
     }
 
+    .article_title {
+        font-size: 1rem !important;
+    }
+
     .circle {
-        padding: 4.5vw;
+        padding: 4.25vw;
         top: -2vw;
         height: 25vw;
         width: 25vw;
-        right: -8vw;
+        right: -2vw;
+    }
+
+    .circle h5 {
+        padding-top: 0 !important;
+    }
+
+    .circle a {
+        font-size: 1.2rem;
     }
     
     .circle_news {
@@ -544,16 +559,30 @@ footer {
         padding: 3vw;
         left: 0;
         position: relative;
-        border-radius: 0%;
+        border-radius: 50%;
+        padding-top: 2em !important;
+        width: 25vw !important;
+        height: 25vw !important;
+        bottom: -2em !important;
 
     }
+    .circle_news h5 {
+        font-size: 0.6em !important;
+    }
     .circle_bottom {
+        width: 25vw !important;
+        height: 25vw !important;
         bottom: 0;
         padding: 3vw;
-        left: 0;
         position: relative;
-        border-radius: 0%;
+        border-radius: 50%;
+        right: 5em;
+        top: 5em;
 
+    }
+
+    .circle_bottom h5 {
+        font-size: 10px !important;
     }
 
     .about_title {
@@ -737,11 +766,7 @@ footer {
 }
 
 @media (max-width: 767px) {
-    contact_section {
-        -ms-flex: 0 0 100% !important;
-        flex: 0 0 100% !important;
-        max-width: 100% !important;
-    }
+    
     section {
         padding: 1.5rem 0;
     }
