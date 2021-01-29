@@ -7,9 +7,9 @@
         @if(isset($home_sliders) && !empty($home_sliders))
         <div class="col-md-12 col-lg-12">
             <div id="jssor_1"
-                style="position:relative;margin:0 auto;top:0px;left:0px;width:1600px;height:960px;overflow:hidden;visibility:hidden;">
+                style="position:relative;margin:0 auto;top:0px;left:0px;width:1600px;height:1024px;overflow:hidden;visibility:hidden;">
                 <div data-u="slides"
-                    style="cursor:default;position:relative;top:0px;left:0px;width:1600px;height:960px;overflow:hidden;">
+                    style="cursor:default;position:relative;top:0px;left:0px;width:1600px;height:1024px;overflow:hidden;">
                     @foreach($home_sliders as $keySlider=> $slider)
                         <div>
                             <img data-u="image" style="opacity:0.8;" data-src="{{ $slider['image_url'] }}" alt="{{ $slider['title'] }}" />
@@ -40,7 +40,7 @@
         <div class="container">
              <div class="row">
                 <div class="col-md-12">
-                <p class="about_deskription ff-inconsolata">
+                <p class="about_deskription ff-inconsolata-med">
                         {{ trans('home.about_section_description') }}
                         <br />
                         {{ trans('home.follow_at_link') }}<b><a href="https://www.instagram.com/infosehatdancantik.id/" target="__blank">@SeCanindonesia</a></b>
@@ -60,13 +60,13 @@
     </section>
 
     <!-- Article Section-->
-    <section class="bg-cover bg-center pt-5" style="background-image: url({{ asset('images/bg_section_news.png') }})">
+    <section class="bg-cover bg-center pt-5" style="background-image: url({{ asset('images/bg_home_section_news.png') }})">
         <div class="container-fluid">
             <div class="row" style="margin: 0 3em;">
                 <div class="col-md-12">
                     <div class="col-md-8 m-auto">
                         <div class="container">
-                            <p class="article_description ff-inconsolata">
+                            <p class="article_description ff-inconsolata-med">
                             {!! trans('home.article_section_description') !!}
                             </p>
                         </div>
@@ -87,7 +87,7 @@
                         </div>
                     @endforeach
                     <div class="col-md-3 artikel_circle_container">
-                        <div class="circle_bottom">
+                        <div class="circle_news">
                             <span class="">Blog dan artikel perawatan kulit, riasan dan yang diantaranya</span>
                             <h5 style="margin-top:1em;">
                                 <a class="ff-old-standart" href="{{ route('frontNews') }}" >
@@ -102,12 +102,12 @@
     </section>
 
     <!-- Youtube Section -->
-    <section class="pt-5 bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_full_video_new.png') }})">
+    <section class="pt-5 bg-cover bg-center" style="background-image: url({{ asset('images/bg_home_section_full_video.png') }})">
             
         <div class="container">
              <div class="row">
                 <div class="col-md-12">
-                    <p class="article_description ff-inconsolata">
+                    <p class="article_description ff-inconsolata-med">
                         Dunia kesehatan yang juga cantik - standar kecantikan juga memahami definisi 
                         sebenarnya untuk Indonesia-. Apakah yang kita korbankan sehingga kita 
                         mencapai "cantik" ?
@@ -120,15 +120,19 @@
                     @foreach($home_video as $home_video)
                         <div class="col-md-4 mb-5">
                             
-                            <p class="text-center" style="">
-                                <img src="{{ $home_video['home_thumbnail_url'] }}" alt="{{ $home_video['title'] }}" style="width: 100%" />
+                            <p class="text-center">
+                                <img src="{{ $home_video['home_thumbnail_url'] }}" alt="{{ $home_video['title'] }}" style="width: 100%" >
                                 <span class="article_category">
                                     {{ $home_video['category'] }}
                                 </span>
-                                <a href="{{ route('frontVideoDetail', $home_video['slug']) }}">
-                                    <h4 class="text-justify article_title text-center text-base ff-old-standart">{{ $home_video['title'] }}</h4>
-                                </a>
                             </p>
+                            <h5 class="article_title text-center ff-old-standart">
+                                <a href="{{ route('frontVideoDetail', $home_video['slug']) }}">
+                                    {{ $home_video['title'] }}
+                                </a>
+                            </h5>
+                                
+                            
                         </div>
                     @endforeach
                 @endif
@@ -153,12 +157,12 @@
         </div>
     </section>
 
-    <section class="pb-5 pt-4 bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_doctor.png') }})">
+    <section class="pb-5 pt-4 bg-cover bg-center" style="background-image: url({{ asset('images/bg_home_section_doctor.png') }})">
             
         <div class="container">
                 <div class="row">
                 <div class="col-md-12">
-                    <p class="article_description ff-inconsolata">
+                    <p class="article_description ff-inconsolata-med">
                         SeCan paham pentingnya tenaga ahli yang kredibel untuk ragam kecantikan yang sehat di Indonesia. 
                         Kita bisa tahu banyak hal dengan konsultasi dengan para dokter.
                     </p>
@@ -189,27 +193,24 @@
                     <div class="circle_bottom">
                         <span>Dokter-dokter yang berafiliasi dengan SeCan adalah terpercaya dan ahli.</span>
                         <h5 style="margin-top:1em;">
-                            <a class="ff-old-standart" href="#" >
+                            <a class="ff-old-standart" href="{{ route('frontDoctor') }}" >
                                 <u style="position: absolute;display: contents;">Lihat Dokter</u>
                             </a>
                         </h5>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <p class="text-small mt-4">Pelajari Produk Kecantikan</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="pt-5 text-white bg-cover bg-center" style="background-image: url({{ asset('images/bg_section_contact.png') }})">
+    <section id="contact" class="pt-5 text-white bg-cover bg-center" style="background-image: url({{ asset('images/bg_home_section_contact.png') }})">
             
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 contact_section">
                     <div class="container-fluid">
                     
-                        <div class="card-body">
+                        <div class="card-body contact_description">
                             <p>
                                 Hanya dengan saling menyapa, kita bisa tau banyak hal.
                             

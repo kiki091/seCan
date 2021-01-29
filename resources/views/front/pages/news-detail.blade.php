@@ -29,6 +29,10 @@
                     </p>
 
                     <h1 class="text-capitalize mt-2 mb-2 text-md ff-old-standart">{{ $detail['title'] }}</h1>
+                    <div class="author">
+                        <img src="" alt="">
+                        {{ $detail['publish_by'] }}
+                    </div>
                     <div class="mt-4 text-justify d-block">
                         <p>{!! $detail['content'] !!}</p>
                     </div>

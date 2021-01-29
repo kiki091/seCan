@@ -1,10 +1,10 @@
 <!-- Footer-->
 <footer>
-    <div class="container text-center section-padding-y">
+    <div class="container text-center section-padding-y footer">
         <div class="row px-4">
             <div class="col-lg-3 mx-auto text-left">
-                <h6 class="text-uppercase mb-4">Kontak </h6>
-                <h4 class="text-sm ff-old-standart">salam@secan.id</h4>
+                <h6 class="text-uppercase mb-4 text-sm">Kontak </h6>
+                <h4 class="text-base ff-old-standart">salam@secan.id</h4>
 
                 <p class="text-sm text-uppercase mt-5 ff-heebo-regular">
                     Ikuti Kabar Kami
@@ -13,7 +13,7 @@
                 <ul class="list-unstyled d-flex flex-md-row align-items-md-center">
 
                     <li class="m-3">
-                        <a href="">
+                        <a href="#">
                         <i class="fab fa-facebook-f"></i>
                         </a>
                     
@@ -27,7 +27,7 @@
                     </li>
 
                     <li class="m-3">
-                        <a href="">
+                        <a href="#">
                             <i class="fab fa-twitter"></i>
                         </a>
                     

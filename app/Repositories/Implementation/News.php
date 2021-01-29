@@ -11,6 +11,7 @@ use App\Services\Bridge\Seo as SeoService;
 use Carbon\Carbon;
 use DB;
 use LaravelLocalization;
+use Auth;
 
 class News implements NewsInterface
 {
@@ -124,6 +125,7 @@ class News implements NewsInterface
             } else {
                 $store = $this->newsModel;
                 $store->created_at = Carbon::now();
+                $store->publish_by = Auth::user()->name;
                 $store->publish_date = Carbon::now();
                 $store->slug = isset($params['title']['id']) ? str_slug($params['title']['id']) : '';
             }

@@ -2746,10 +2746,10 @@ code {
 * 8. NAV
 */
 .nav-link {
-  padding: 0.5rem 1rem;
+  padding: 1rem 1rem;
   font-weight: 400;
   color: #2E3349;
-  text-transform: lowercase;
+  text-transform: capitalize;
   font-size: 0.85rem;
   font-weight: bold;
   letter-spacing: 0.1em;

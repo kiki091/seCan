@@ -43,6 +43,7 @@ class News
             'category' => isset($params['category']['translation']['title']) ? $params['category']['translation']['title'] : '',
             'category_id' => isset($params['category']['id']) ? $params['category']['id'] : '',
             'category_slug' => isset($params['category']['slug']) ? $params['category']['slug'] : '',
+            'publish_by' => isset($params['publish_by']) ? $params['publish_by'] : '',
         ];
     }
 
