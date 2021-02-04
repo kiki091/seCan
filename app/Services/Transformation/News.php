@@ -105,4 +105,17 @@ class News
             ];
         },$params);
     }
+
+    public function getCommentData($params)
+    {
+        return array_map(function($params) {
+            return [
+                'fullname' => isset($params['fullname']) ? $params['fullname'] : '',
+                'phone_number' => isset($params['phone_number']) ? $params['phone_number'] : '',
+                'website_url' => isset($params['website_url']) ? $params['website_url'] : '',
+                'comment' => isset($params['comment']) ? $params['comment'] : '',
+                'created_at' => isset($params['created_at']) ? Carbon::parse($params['created_at'])->format('d M Y H:i') : '',
+            ];
+        },$params);
+    }
 }

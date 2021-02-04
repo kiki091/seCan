@@ -4,6 +4,7 @@ namespace App\Repositories\Implementation;
 
 use App\Models\News as NewsModel;
 use App\Models\NewsTran as NewsTranModel;
+use App\Models\NewsComment as NewsCommentModel;
 use App\Services\Api\Response as ResponseService;
 use App\Repositories\Contracts\News as NewsInterface;
 use App\Services\Transformation\News as NewsTransformation;
@@ -67,6 +68,49 @@ class News implements NewsInterface
             return $this->newsTransform->getHomeDetail($this->newsManager($params, 'asc', 'array', true));
         } catch (\Exception $e) {
             return $this->response->setResponse($e->getMessage(), false);
+        }
+    }
+
+    public function getCommentData($params)
+    {
+        try {
+            //code...
+            $comment = NewsCommentModel::where('news_id', $params['news_id'])->get()->toArray();
+
+            return $this->newsTransform->getCommentData($comment);
+
+        } catch (\Exception $e) {
+            return $this->response->setResponse($e->getMessage(), false);
+        }
+    }
+
+    public function storeCommentData($params)
+    {
+        try {
+            //code...
+            
+            DB::beginTransaction();
+
+            $store = new NewsCommentModel;
+
+            $store->created_at = Carbon::now();
+            $store->news_id = isset($params['news_id']) ? $params['news_id'] : '';
+            $store->fullname = isset($params['fullname']) ? $params['fullname'] : '';
+            $store->comment = isset($params['comment']) ? $params['comment'] : '';
+            $store->phone_number = isset($params['phone_number']) ? $params['phone_number'] : '';
+            $store->website_url = isset($params['website']) ? $params['website'] : '';
+
+            if($store->save()){
+                DB::commit();
+                return $this->response->setResponse('Success save data', true);
+            }
+
+            DB::rollBack();
+            return $this->response->setResponse('Failed', false);
+
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return $this->response->setResponse($th->getMessage(), false);
         }
     }
 

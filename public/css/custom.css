@@ -1330,3 +1330,20 @@ footer {
     
 
 }
+
+.author {
+    display: flex;
+    height: 40px;
+}
+.author img {
+    height: 40px;
+    position: absolute;
+    left: 10px;
+}
+.author span {
+    position: absolute;
+    left: 75px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 60px;
+}

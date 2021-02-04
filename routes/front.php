@@ -11,6 +11,8 @@ Route::group(['middleware' => ['web']], function() {
 		Route::get('/artikel/{slug}', 'Front\NewsController@detail')->name('frontNewsDetail');
 		Route::get('/artikel/tag/{slug}', 'Front\NewsController@tag')->name('frontNewsTag');
 		Route::get('/artikel/category/{slug}', 'Front\NewsController@category')->name('frontNewsCategory');
+		Route::get('/artikel/comment/data', 'Front\NewsController@getComment')->name('frontNewsComment');
+		Route::post('/artikel/post-comment', 'Front\NewsController@submitComment')->name('frontNewsSubmitComment');
 		Route::get('/video', 'Front\VideoController@index')->name('frontVideo');
 		Route::get('/video/{slug}', 'Front\VideoController@detail')->name('frontVideoDetail');
 		Route::get('/video/tag/{slug}', 'Front\VideoController@tag')->name('frontVideoTag');

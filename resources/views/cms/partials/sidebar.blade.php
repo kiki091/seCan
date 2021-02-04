@@ -33,6 +33,7 @@
                             <li><a href="{{ route('indexTag') }}">Tag</a></li>
                             <li><a href="{{ route('indexNews') }}">Artikel</a></li>
                             <li><a href="{{ route('indexVideo') }}">Video</a></li>
+                            <li><a href="{{ route('indexDoctor') }}">Doctor</a></li>
                         </ul>
                     </li>
                 </ul>

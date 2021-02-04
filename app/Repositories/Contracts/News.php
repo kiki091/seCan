@@ -17,6 +17,17 @@ interface News
      * @return mixed
      */
     public function getHomeDetail($params);
+    
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function getCommentData($params);
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function storeCommentData($params);
 
     /**
      * @param $params

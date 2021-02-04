@@ -2,7 +2,7 @@
 @section('content')
 
 
-<section class="pb-5 pt-3">
+<section class="pb-5 pt-3" id="frontNewsDetail">
     <div class="container">
         <div class="row">
             
@@ -30,8 +30,9 @@
 
                     <h1 class="text-capitalize mt-2 mb-2 text-md ff-old-standart">{{ $detail['title'] }}</h1>
                     <div class="author">
-                        <img src="" alt="">
-                        {{ $detail['publish_by'] }}
+                        <img src="{{ asset('images/thumb.png') }}" alt="" />
+                        <span>Di publish oleh {{ $detail['publish_by'] }}</span>
+                        
                     </div>
                     <div class="mt-4 text-justify d-block">
                         <p>{!! $detail['content'] !!}</p>
@@ -118,39 +119,41 @@
                 </div>
 
                 <div class="mt-5">
-                    <form action="#" class="ff-heebo-regular" method="POST">
+                    <form action="{{ route('frontNewsSubmitComment') }}" id="form_comment" class="ff-heebo-regular" method="POST" @submit.prevent>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group mb-5">
-                                    <textarea name="comment" id="" style="height: 200px" class="form-comment" placeholder="komentar"></textarea>
+                                    <textarea  name="comment" style="height: 200px" class="form-comment" placeholder="komentar"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-5">
-                                    <input type="text" placeholder="* Nama Lengkap" class="form-comment">
+                                    <input type="text" name="fullname" v-model="models.fullname" placeholder="* Nama Lengkap" class="form-comment">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-5">
-                                    <input type="number" placeholder="* Surel" class="form-comment">
+                                    <input type="number" name="phone_number" v-model="models.phone_number" placeholder="* Surel" class="form-comment">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-5">
-                                    <input type="text" placeholder="Website" class="form-comment">
+                                    <input type="text" name="website" v-model="models.website" placeholder="Website" class="form-comment">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group mb-5 float-left">
                                     <p class="d-inline-block margin-r20 width200">
-                                        <input type="checkbox" id="user__data" class="check" value="1"> 
+                                        <input type="checkbox" id="user__data" class="check" v-model="models.remember"> 
                                         <label for="user__data">
                                             Simpan data saya untuk komentar berikutnya.
                                         </label>
                                     </p>
                                 </div>
                                 <div class="form-group float-right">       
-                                    <button type="submit" class="btn btn-submit-comment text-uppercase" disabled>Post koment</button>
+                                    {{ csrf_field() }}		
+                                    <input type="hidden" name="news_id" value="{{ $detail['id'] }}">	
+                                    <button @click="saveData" type="submit" class="btn btn-submit-comment text-uppercase">Post koment</button>
                                 </div>
                             </div>
                         </div>
@@ -165,8 +168,143 @@
 
 
 @section('scripts')
+<script src="{{ asset('vendors/jquery-ajax-form-submit/jquery.form.min.js') }}"></script>
 <script>
+    var newsId = {!! json_encode($detail['id']) !!}
+</script>
+<script>
+var frontNewsDetail = new Vue({
 
+    el: "#frontNewsDetail",
+    data: {
+
+        models: {
+            
+            fullname: '',
+            phone_number: '',
+            website: '',
+            remember: false
+        },
+
+        responseData: []
+        
+    },
+
+    watch: {
+
+        'models.remember': function(value) {
+            
+            if(value == true) 
+                window.localStorage.setItem('secan_id_news_comment_data', JSON.stringify(this.models));
+            else
+                window.localStorage.removeItem('secan_id_news_comment_data');
+        }
+    },
+
+    mounted() {
+        this.setRemimber()
+        this.fetchCommentData()
+    },
+
+    methods: {
+
+        setRemimber: function() {
+
+            let sessionData = window.localStorage.getItem('secan_id_news_comment_data');
+
+            if(sessionData) this.models = JSON.parse(sessionData)
+        },
+
+        fetchCommentData: function() {
+
+            (async () => {
+
+                let params = '?news_id='+ newsId
+                const { status, message, data } = await axios.get(appDomain + '/artikel/comment/data'+params).then(function (response) {
+
+                    return response.data
+
+                }).catch(function (error) {
+                    if (err.response) {
+                        return err.response.data;
+                    }
+                    else if (err.request) {
+                        return err.request.data;
+                    }
+                    else {
+                        console.log('error', err.message);
+                    }
+                });
+
+                if (status == true) {
+                    vm.responseData = data.comment
+                }
+                else {
+                    vm.responseData = []
+                    notify('Error!', message, 'error');
+                    console.log(message)
+                }
+            })()
+        },
+
+        saveData: function () {
+
+            try {
+
+                var vm = this;
+                var editorObj = []
+
+                var optForm = {
+                    dataType: "json",
+                    beforeSerialize: function (form, options) {
+                        
+                    },
+                    beforeSend: function () {
+                        // vm.clearErrorMessage();
+
+                    },
+                    success: function (response) {
+                        if (response.status == false) {
+                            if (response.is_error_form_validation) {
+
+                                var message_validation = []
+                                $.each(response.message, function (key, value) {
+
+                                    // $('input[name="' + key.replace('.', '_') + '"]').focus();
+                                    $('#field_' + key.replace('.', '_')).text(value)
+                                });
+
+
+                            } else {
+                                notify('Error!', response.message, 'error');
+
+                            }
+                        } else {
+
+                            // vm.clearErrorMessage();
+                            // vm.closeForm()
+                            // vm.fetchData()
+                            notify('Success', '', 'success');
+
+                        }
+                    },
+                    complete: function (response) {
+                        // hideLoading()
+                    }
+
+                };
+                $("#form_comment").ajaxForm(optForm);
+                $("#form_comment").submit();
+
+            } catch (error) {
+                console.log(error)
+                // hideLoading()
+            }
+
+
+            },
+    }
+});
 </script>
 
 @stop

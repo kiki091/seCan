@@ -38,6 +38,24 @@ class News {
      * @param $params
      * @return mixed
      */
+    public function getCommentData($params = array())
+    {
+        return $this->newsManager->getCommentData($params);
+    }
+    
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function storeCommentData($params = array())
+    {
+        return $this->newsManager->storeCommentData($params);
+    }
+    
+    /**
+     * @param $params
+     * @return mixed
+     */
     public function getDataCms($params = array())
     {
         return $this->newsManager->getDataCms($params);

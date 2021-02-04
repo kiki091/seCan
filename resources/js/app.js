@@ -52,6 +52,9 @@ window.onload = function () {
     if (document.getElementById('categoryManager'))
         require('./cms/category');
 
+    if (document.getElementById('doctorManager'))
+        require('./cms/doctor');
+
 }
 
 window.showLoading = () => {

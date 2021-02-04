@@ -59,7 +59,7 @@ class Doctor implements DoctorInterface
         try {
             //code...
 
-            return $this->doctorTransform->getListDataCms($this->doctorManager($params));
+            return $this->doctorTransform->getDataCms($this->doctorManager($params));
         } catch (\Throwable $th) {
             //throw $th;
             dd($th->getMessage());
@@ -76,6 +76,7 @@ class Doctor implements DoctorInterface
     {
         try {
             //code...
+            
             $data = $this->doctorTransform->getSingleDataCms($this->doctorManager(['id' => $requestId], 'asc', 'array', true));
             return $this->response->setResponse('Success get data', true, $data);
             
@@ -106,6 +107,7 @@ class Doctor implements DoctorInterface
                 $store->created_at = Carbon::now();
             }
             
+            $store->category_id = isset($params['category_id']) ? $params['category_id'] : '';
             $store->fullname = isset($params['fullname']) ? $params['fullname'] : '';
             $store->location = isset($params['location']) ? $params['location'] : '';
             $store->longitude = isset($params['longitude']) ? $params['longitude'] : '';
@@ -123,6 +125,7 @@ class Doctor implements DoctorInterface
                 if($this->storeDataTranslationCms($params, $store->id)) {
 
                     if($this->imageUploader($params)) {
+                        
                         DB::commit();
                         return $this->response->setResponse('Success save data', true);
                     }
@@ -139,6 +142,7 @@ class Doctor implements DoctorInterface
             return $this->response->setResponse($this->message, false);
             
         } catch (\Exception $e) {
+            
             DB::rollBack();
             $this->message = $e->getMessage();
         }
@@ -190,7 +194,7 @@ class Doctor implements DoctorInterface
     {
         try {
             //code...
-
+            
             if (isset($params['foto']) && !empty($params['foto'])) {
                 if ($params['foto']->isValid()) {
                     
@@ -207,6 +211,8 @@ class Doctor implements DoctorInterface
                     return false;
                 }
             }
+
+            return true;
 
         } catch (\Exception $e) {
             

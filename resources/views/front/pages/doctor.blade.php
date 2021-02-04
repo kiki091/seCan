@@ -71,7 +71,7 @@
                             @{{ detail.description }}
                         </span>
                     </p>
-                    <a href="#" class="text-sm">Lihat peta</a>
+                    <a target="__blank" :href="'https://www.google.com/maps/search/?api=1&query='+detail.latitude+','+detail.longitude" class="text-sm">Lihat peta</a>
                 </div>
                 
             </div>

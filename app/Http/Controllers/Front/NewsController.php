@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\Bridge\Tag as TagServices;
 use App\Services\Bridge\News as NewsServices;
+use App\Services\Api\Response as ResponseService;
 
 use Response;
 use Validator;
@@ -16,14 +17,17 @@ class NewsController extends Controller
      * init service
      * @return true
      **/
+    protected $response;
     protected $tagManager;
     protected $newsManager;
     
 	public function __construct(
+        ResponseService $response,
         TagServices $tagManager,
         NewsServices $newsManager) 
 	{
         parent::__construct();
+        $this->response = $response;
         $this->tagManager = $tagManager;
         $this->newsManager = $newsManager;
 
@@ -97,5 +101,40 @@ class NewsController extends Controller
         ]);
         
         return view('front.pages.news-detail',$data);
+    }
+
+    public function getComment(Request $request)
+    {
+        $data['comment'] = $this->newsManager->getCommentData(['news_id' => $request['news_id']]);
+        return $this->response->setResponse('Success get data', true, $data);
+    }
+
+    public function submitComment(Request $request)
+    {
+        
+        $validator = Validator::make($request->all(), $this->validationStore($request));
+
+        if ($validator->fails()) {
+            //TODO: case fail
+            return $this->response->setResponseErrorFormValidation($validator->messages(), false);
+
+        } else {
+            //TODO: case pass
+            return $this->newsManager->storeCommentData($request->except(['_token']));
+        }
+    }
+
+    protected function validationStore($request = array())
+    {
+        
+        $rules = [
+            'fullname' => 'required',
+            'phone_number' => 'required',
+            'comment' => 'required',
+            'website' => 'sometimes|nullable|url',
+        ];
+
+        return $rules;
+
     }
 }

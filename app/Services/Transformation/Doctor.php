@@ -71,7 +71,6 @@ class Doctor
     {
         $return = [];
         foreach ($params as $tran) {
-            $return['title'][$tran['locale']] = $tran['title'];
             $return['description'][$tran['locale']] = $tran['description'];
         }
         return $return;

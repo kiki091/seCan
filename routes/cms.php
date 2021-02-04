@@ -54,5 +54,12 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/edit/{id}', 'Cms\CategoryController@edit')->name('editCategory');
             Route::post('/store', 'Cms\CategoryController@store')->name('storeCategory');
         });
+
+        Route::group(['prefix' => 'doctor'], function () {
+            Route::get('/', 'Cms\DoctorController@index')->name('indexDoctor');
+            Route::get('/data', 'Cms\DoctorController@data')->name('dataDoctor');
+            Route::get('/edit/{id}', 'Cms\DoctorController@edit')->name('editDoctor');
+            Route::post('/store', 'Cms\DoctorController@store')->name('storeDoctor');
+        });
     });
 });
