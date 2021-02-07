@@ -58,7 +58,9 @@
                                 
                                 
                                 <p class="mt-5 news_button_more">
-                                    <a href="{{ route('frontNewsDetail', $newsLanding['slug']) }}"><i class="fa fa-arrow-alt-circle-right mr-3">Lebih Lanjut</i></a>
+                                    <a href="{{ route('frontNewsDetail', $newsLanding['slug']) }}">
+                                        <img src="{{ asset('images/arrow_link.jpeg') }}" class="mr-2" style="height: 10px;">
+                                    Lebih Lanjut</a>
                                 </p>
                             </div>
                         @endforeach
