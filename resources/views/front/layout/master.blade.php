@@ -41,6 +41,15 @@
 <script>
 	
     var appDomain = {!! json_encode(env('APP_URL')) !!}
+    
+    function removeLoader()
+    {
+        $(".loader").fadeOut("slow");
+    }
+    $('body').append('<div class="loader"><img src="{{ asset('images/logo.svg') }}" /></div>');
+    $(window).on('load', function(){
+        setTimeout(removeLoader, 2000); //wait for page load PLUS two seconds.
+    });
 </script>
 <!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->
 @yield('scripts')
