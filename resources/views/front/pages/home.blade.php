@@ -41,7 +41,7 @@
              <div class="row">
                 <div class="col-md-12">
                 <p class="about_deskription ff-inconsolata-med">
-                        {{ trans('home.about_section_description') }}
+                Setiap orang ingin sehat dan tampil cantik. Tapi sayangnya masih banyak masyarakat tidak mendapatkan informasi secara tepat. Secan.id hadir untuk mencerdaskan masyarakat dengan memberikan informasi mengenai kesehatan dan kecantikan dari dokter yang ahli di bidangnya.
                         <br />
                         {{ trans('home.follow_at_link') }}<b><a href="https://www.instagram.com/infosehatdancantik.id/" target="__blank">@SeCanindonesia</a></b>
                     </p>
@@ -67,7 +67,7 @@
                     <div class="col-md-8 m-auto">
                         <div class="container">
                             <p class="article_description ff-inconsolata-med">
-                            {!! trans('home.article_section_description') !!}
+                            Menyajikan berbagai informasi tentang kesehatan dan kecantikan yang disajikan secara padat dan ringkas. Telusuri dan temukan lebih banyak artikel menarik yang wajib diketahui.
                             </p>
                         </div>
                     </div>
@@ -108,9 +108,7 @@
              <div class="row">
                 <div class="col-md-12">
                     <p class="article_description ff-inconsolata-med">
-                        Dunia kesehatan yang juga cantik - standar kecantikan juga memahami definisi 
-                        sebenarnya untuk Indonesia-. Apakah yang kita korbankan sehingga kita 
-                        mencapai "cantik" ?
+                    Saksikan video dan treatment dari para dokter kesehatan dan kecantikan terpercaya. Dapatkan informasi dan solusi yang tepat mengenai kesehatan dan kecantikan dari tenaga yang ahli di bidangnya.
                         <br />
                         <br />
                         <b><a href="#subscribe">Berlangganan</a></b> untuk ikuti kontent mingguan tentang kesehatan dan kecantikan.
@@ -163,8 +161,7 @@
                 <div class="row">
                 <div class="col-md-12">
                     <p class="article_description ff-inconsolata-med">
-                        SeCan paham pentingnya tenaga ahli yang kredibel untuk ragam kecantikan yang sehat di Indonesia. 
-                        Kita bisa tahu banyak hal dengan konsultasi dengan para dokter.
+                    Temukan jawaban yang tepat mengenai seputar kesehatan dan kecantikan dari para dokter terpercaya. Berbagai informasi dan solusi diberikan  secara objektif dan mudah dipahami. Simak artikel dan videonya.
                     </p>
                 </div>
                 <div class="col-md-3 col-sm-4">

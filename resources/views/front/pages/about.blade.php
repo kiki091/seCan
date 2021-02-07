@@ -32,11 +32,8 @@
                 </h3>
 
                 <p>
-                    Kita bisa memahami diri sendiri untuk menuju cantik itu seharusnya gampang dan penerapannya mudah. Gabungan dari 
-                    macam-macam yang segar dan inklusif - SeCan berisi ragam artikel dan video yang bikin kita penasaran tentang kecantikan 
-                    dan kesehatan. Di sini ada hal-hal riasan, perawatan kulit dan tema yang berkaitan. SeCan Dari Indonesia, ingin mengangkat 
-                    dan menginspirasi individu untuk lebih percaya diri. Lintas budaya suku dan warna kulit kami percaya semua orang Indonesia 
-                    bisa sehat sekaligus cantik
+                Secan.id adalah media yang menyajikan informasi tentang kesehatan dan kecantikan yang diperoleh dan diolah dari dokter yang ahli di bidangnya.
+                Secan.id didirikan pada Agustus 2020 dan diluncurkan pada Januari 2021. Secan.id menjadi wadah bagi dokter untuk mengedukasi masyarakat mengenai kesehatan dan kecantikan.
                 </p>
                 <br />
                 <p>Ikuti kami di <a href="https://www.instagram.com/infosehatdancantik.id/" target="__blank"><b>@SeCanindonesia</b></a></p>
