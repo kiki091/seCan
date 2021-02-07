@@ -13,8 +13,8 @@
                 <ul class="list-unstyled d-flex flex-md-row align-items-md-center">
 
                     <li class="m-3">
-                        <a href="#">
-                        <i class="fab fa-facebook-f"></i>
+                        <a href="https://www.youtube.com/watch?v=KZKwflR8cJo" taget="__blank">
+                        <i class="fab fa-youtube"></i>
                         </a>
                     
                     </li>
@@ -46,8 +46,7 @@
                     </li>
                     <li class="mb-3 d-flex">
                         <i class="fas fa-mail-bulk mr-4"> </i>
-                        halo@secan.id <br />
-                        marketing@secan.id
+                        halo@secan.id
                     </li>
                 </ul>
             </div>

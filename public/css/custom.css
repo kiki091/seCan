@@ -767,12 +767,22 @@ footer {
 }
 
 @media (max-width: 767px) {
+
+    .notfound_info {
+        top: 273px !important;
+        left: 20% !important
+    }
     
+    .loader img {
+        height: 70px !important;
+        left: 25% !important;
+    }
     .about_description{
         margin-left: 0 !important;
     }
 
     .bottom_about_info{
+        font-size: 1rem !important;
         padding-left: 0 !important;
     }
 
@@ -1372,12 +1382,12 @@ footer {
 }
 
 .bottom_about_info {
-    font-size: 2rem;
+    font-size: 4rem;
     text-transform: capitalize !important;
     text-align: left;
-    padding-left: 3em;
+    padding-left: 1em;
     letter-spacing: 4px;
-    line-height: 1.4;
+    line-height: 0.99;
     font-family: 'InconsolataLight' !important;
 }
 
@@ -1447,5 +1457,22 @@ footer {
     height: 120px;
     position: absolute;
     top: 50%;
-    left: 40%;
+    left: 35vw;
+}
+
+.about_title {
+    font-size: 2.4rem !important;
+}
+
+.notfound_info {
+    position: absolute;
+    color: #FFFFFF;
+    text-align: center;
+    top: 180px;
+    left: 42%;
+}
+
+.notfound_info h1 {
+    font-size: 4.4rem;
+    margin-bottom: 8px !important;
 }

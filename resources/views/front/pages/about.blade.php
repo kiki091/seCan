@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h4 class="text-center text-capitalize mb-5 ff-inconsolata-l">
+                <h4 class="text-center text-capitalize mb-5 ff-inconsolata-l about_title">
                     Dalami Perjalanan kesehatan dan kecantikan secan.
                 </h4>
                 <hr />
@@ -55,7 +55,7 @@
         <div class="row">
 
             <div class="col-md-4 bg-dark text-white pt-5 pl-5 pr-5 pb-5 ff-old-standart">
-                <p class="text-uppercase text-sm">
+                <p class="text-uppercase text-sm ff-heebo-regular">
                     Mari berkarya bersama kami
                 </p>
 
