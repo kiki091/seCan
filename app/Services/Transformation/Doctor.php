@@ -12,6 +12,8 @@ class Doctor
 
             return [
 
+                'id' => isset($params['id']) ? $params['id'] : '',
+                'title' => isset($params['fullname']) ? $params['fullname'] : '',
                 'fullname' => isset($params['fullname']) ? $params['fullname'] : '',
                 'location' => isset($params['location']) ? $params['location'] : '',
                 'longitude' => isset($params['longitude']) ? $params['longitude'] : '',

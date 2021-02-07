@@ -18,7 +18,7 @@
                     @include('front.partials.tags')
                 </div>
 
-                <h1 class="text-left text-capitalize mb-5 text-md">
+                <h1 class="artikel_label_page">
                     Artikel
                 </h1>
                 <div class="col-xs-12 sidebar_news_mobile mb-3">
@@ -34,7 +34,7 @@
                     <a href="{{ route('frontHome') }}">beranda</a>
                      / <a href="{{ route('frontNews') }}">artikel</a> {{ isset($category_name) ? '/ '.$category_name : '' }}</p>
                 <br />
-                <ul class="nav_article_category ff-old-standart">
+                <ul class="nav_article_category">
                     <li><a href="{{ route('frontNewsCategory', 'kecantikan') }}" class="active">kecantikan</a></li>
                     <li><a href="{{ route('frontNewsCategory', 'kesehatan') }}">kesehatan</a></li>
                 </ul>
@@ -44,11 +44,12 @@
                         @foreach($news as $keyNews=> $newsLanding)
                             <div class="grid-item m-3">
                                 <img src="{{ $newsLanding['thumbnail_url'] }}" alt="{{ $newsLanding['title'] }}" class="full-width" />
-                                <p class="mt-3 mb-3 d-flex ff-heebo-light">
+                                <p class="publish_info">
                                     <span class="float-left text-uppercase">{{ $newsLanding['category'] }}</span>
                                     <span class="float-right text-uppercase news_date">{{ $newsLanding['publish_date'] }}</span>
                                 </p>
-                                <h4 class="mt-4 mb-3 d-flex full-width ff-old-standart">{{ $newsLanding['title'] }}</h4>
+                                <h4 class="mt-4 mb-3 d-flex full-width ff-old-standart">
+                                <a href="{{ route('frontNewsDetail', $newsLanding['slug']) }}">{{ $newsLanding['title'] }}</a></h4>
                                 <div class="news_intro">
                                     
                                         {!! $newsLanding['content'] !!}
@@ -56,8 +57,8 @@
                                 </div>
                                 
                                 
-                                <p class="mt-5 ff-old-standart">
-                                    <a href="{{ route('frontNewsDetail', $newsLanding['slug']) }}">Lebih Lanjut<i class="fa fa-arrow-alt-circle-right ml-3"></i></a>
+                                <p class="mt-5 news_button_more">
+                                    <a href="{{ route('frontNewsDetail', $newsLanding['slug']) }}"><i class="fa fa-arrow-alt-circle-right mr-3">Lebih Lanjut</i></a>
                                 </p>
                             </div>
                         @endforeach

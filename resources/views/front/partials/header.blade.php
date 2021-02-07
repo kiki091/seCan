@@ -86,7 +86,19 @@
                                     
                                 </div>
                             </li>
-                            <li class="nav-item"><a class="nav-link link-scroll" href="{{ route('frontDoctor') }}">Dokter</a></li>
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownDoctor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dokter
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownDoctor">
+                                    <div class="">
+                                        <a class="dropdown-item" href="{{ route('frontDoctor') }}">Direktori Dokter</a>
+                                        <a class="dropdown-item" href="{{ route('frontDoctorArticle') }}">Artikel Dokter</a>
+                                        <a class="dropdown-item" href="{{ route('frontDoctorVideo') }}">Video Dokter</a>
+                                    </div>
+                                    
+                                </div>
+                            </li>
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVideo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

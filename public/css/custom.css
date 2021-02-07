@@ -707,6 +707,7 @@ footer {
     display: flex;
     list-style: none;
     width: 100%;
+    font-family: 'HeboRegular' !important;
 }
 
 .nav_article_category li {
@@ -767,6 +768,14 @@ footer {
 
 @media (max-width: 767px) {
     
+    .about_description{
+        margin-left: 0 !important;
+    }
+
+    .bottom_about_info{
+        padding-left: 0 !important;
+    }
+
     section {
         padding: 1.5rem 0;
     }
@@ -1070,6 +1079,11 @@ footer {
 }
 
 @font-face {
+    font-family: InconsolataLight;
+    src: url('../fonts/02_Inconsolata/InconsolataCondensed-Light.ttf');
+}
+
+@font-face {
     font-family: oldStandartRegular;
     src: url('../fonts/03_Old_standart/OldStandardTT-Regular.ttf');
 }
@@ -1104,6 +1118,10 @@ footer {
 
 .ff-inconsolata-b {
     font-family: 'InconsolataBold' !important;
+}
+
+.ff-inconsolata-l {
+    font-family: 'InconsolataLight' !important;
 }
 
 .ff-old-standart {
@@ -1160,6 +1178,11 @@ footer {
 .jssora051:hover {opacity:.8;}
 .jssora051.jssora051dn {opacity:.5;}
 .jssora051.jssora051ds {opacity:.3;pointer-events:none;}
+
+.news_intro {
+    line-height: 2;
+    letter-spacing: 2px;
+}
 
 .news_tag,
 .news_intro, 
@@ -1346,4 +1369,66 @@ footer {
     font-size: 12px;
     font-weight: 600;
     line-height: 60px;
+}
+
+.bottom_about_info {
+    font-size: 2rem;
+    text-transform: capitalize !important;
+    text-align: left;
+    padding-left: 3em;
+    letter-spacing: 4px;
+    line-height: 1.4;
+    font-family: 'InconsolataLight' !important;
+}
+
+.about_description {
+    margin-left: 3rem;
+    margin-top: 3rem !important;
+}
+
+.about_description h3 {
+    font-family: 'InconsolataLight' !important;
+    text-transform: capitalize !important;
+    margin-bottom: 3rem !important;
+}
+
+.about_description p {
+    text-align: left !important;
+    line-height: 2;
+}
+
+.side_desc_bottom_left {
+    margin-bottom: 3rem !important;
+    font-family: 'oldStandartRegular' !important;
+    font-size: 1.4rem;
+    color: #FFFFFF;
+}
+
+.side_desc_bottom_left_button {
+    /* border-color: #fbd214 !important; */
+    border-color: magenta !important;
+    text-transform: capitalize;
+    font-family: 'HeboRegular' !important;
+}
+
+.artikel_label_page {
+    font-family: 'InconsolataMedium' !important;
+    font-size: 2rem;
+    text-transform: capitalize !important;
+    text-align: left !important;
+    margin-bottom: 3rem !important;
+}
+
+.publish_info {
+    font-family: 'HeboRegular' !important;
+    color: #fbd214 !important;
+    margin-top: 1rem !important;
+    display: flex !important;
+    margin-bottom: 1rem !important;
+}
+
+.news_button_more a {
+    font-family: 'HeboRegular' !important;
+    color: #fbd214 !important;
+    text-transform: uppercase;
 }

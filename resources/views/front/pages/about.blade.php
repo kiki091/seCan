@@ -16,22 +16,22 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h4 class="text-center text-capitalize mb-5">
+                <h4 class="text-center text-capitalize mb-5 ff-inconsolata-l">
                     Dalami Perjalanan kesehatan dan kecantikan secan.
                 </h4>
                 <hr />
             </div>
 
-            <div class="col-md-5 mr-1 col-sm-12 mt-5">
+            <div class="col-md-5 mr-5 col-sm-12 mt-5">
                 <img src="{{ asset('images/about/section_1.png') }}" class="full-width" />
             </div>
 
-            <div class="col-md-5 ml-1 col-sm-12 mt-5">
-                <h3 class="text-capitalize mb-5 ff-old-standart">
+            <div class="col-md-5 about_description">
+                <h3>
                     Filosofi SeCan
                 </h3>
 
-                <p class="text-justify">
+                <p>
                     Kita bisa memahami diri sendiri untuk menuju cantik itu seharusnya gampang dan penerapannya mudah. Gabungan dari 
                     macam-macam yang segar dan inklusif - SeCan berisi ragam artikel dan video yang bikin kita penasaran tentang kecantikan 
                     dan kesehatan. Di sini ada hal-hal riasan, perawatan kulit dan tema yang berkaitan. SeCan Dari Indonesia, ingin mengangkat 
@@ -41,7 +41,7 @@
                 <br />
                 <p>Ikuti kami di <a href="https://www.instagram.com/infosehatdancantik.id/" target="__blank"><b>@SeCanindonesia</b></a></p>
                 <br/>
-                <h1 class="text-capitalize text-left text-md ff-old-standart">Mulai hari kita dengan percaya diri.</h1>
+                <h1 class="bottom_about_info">Mulai hari kita dengan percaya diri.</h1>
             </div>
         </div>
     </div>
@@ -57,16 +57,16 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-md-4 bg-dark text-white pt-5 pl-5 pr-5 pb-5">
+            <div class="col-md-4 bg-dark text-white pt-5 pl-5 pr-5 pb-5 ff-old-standart">
                 <p class="text-uppercase text-sm">
                     Mari berkarya bersama kami
                 </p>
 
-                <p class="text-white text-md mb-5">
+                <p class="side_desc_bottom_left">
                     Anda juga mengangkat kecantikan Indonesia yang sehat?
                 </p>
 
-                <a href="" class="btn btn-dark text-center border border-light">Hubungi Kami</a>
+                <a href="" class="btn btn-dark text-center border side_desc_bottom_left_button">Hubungi Kami</a>
             </div>
 
             <div class="col-md-8">
