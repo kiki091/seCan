@@ -672,7 +672,7 @@ footer {
     bottom: 0;
 }
 
-.grid-item { width: 265px; }
+.grid-item { width: 265px; display: block; }
 .grid-item a {
     color: #515256;
     text-decoration: none;
@@ -994,6 +994,8 @@ footer {
 .news_content p {
     letter-spacing: 1.2px;
     line-height: 1.5;
+    font-family: 'RobotoSanSerif' !important;
+    text-align: left;
 }
 
 .hover {
@@ -1116,6 +1118,11 @@ footer {
 @font-face {
     font-family: HeboLight;
     src: url('../fonts/01_Heebo/Heebo-Light.ttf');
+}
+
+@font-face {
+    font-family: RobotoSanSerif;
+    src: url('../fonts/04_Roboto/Roboto-Regular.ttf');
 }
 
 .ff-inconsolata {
@@ -1367,13 +1374,19 @@ footer {
 .author {
     display: flex;
     height: 40px;
+    position: relative;
 }
+
 .author img {
     height: 40px;
     position: absolute;
     left: 10px;
 }
-.author span {
+.author-info:first-of-type {
+    bottom: 0;
+}
+
+.author-info  {
     position: absolute;
     left: 75px;
     font-size: 12px;
@@ -1475,4 +1488,23 @@ footer {
 .notfound_info h1 {
     font-size: 4.4rem;
     margin-bottom: 8px !important;
+}
+
+.news_landing_title {
+    font-family: 'oldStandartRegular' !important;
+    width: 100% !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    display: flex im !important;
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: 400 !important;
+}
+
+.news_detail_title {
+    font-family: 'oldStandartRegular' !important;
+    font-size: 2rem;
+    margin-bottom: 0.5rem !important;
+    margin-top: 0.5rem !important;
+    font-weight: 400 !important;
 }

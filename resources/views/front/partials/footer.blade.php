@@ -12,7 +12,7 @@
 
                 <ul class="list-unstyled d-flex flex-md-row align-items-md-center">
 
-                    <li class="m-3">
+                    <li class="m-3" style="margin-left: 0 !important">
                         <a href="https://www.youtube.com/watch?v=KZKwflR8cJo" taget="__blank">
                         <i class="fab fa-youtube"></i>
                         </a>
@@ -32,17 +32,29 @@
                         </a>
                     
                     </li>
+
+                    <li class="m-3">
+                        <a href="https://www.facebook.com/Secan-Indonesia-106634738008475">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li class="m-3">
+                        <a href="https://www.linkedin.com/in/secan-indonesia-27390a204/">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    
+                    </li>
                 </ul>
             </div>
             <div class="col-lg-5 mx-auto">
                 <ul class="address text-left">
                     <li class="mb-3 d-flex">
-                        <i class="fas fa-home mr-4"> </i>Green Sedayu Biz Park DM 16 No.36 <br /> 
+                        <i class="fas fa-home mr-4"> </i>Green Sedayu Biz Park DM 16 No.38 <br /> 
                         Jl. Daan Mogot Km 18, Kalideres Jakarta Barat
                     </li>
                     <li class="mb-3 d-flex">
                         <i class="fas fa-phone mr-4"> </i>
-                        021-22527412, 021-528424
+                        021-22527412, 021-22528424
                     </li>
                     <li class="mb-3 d-flex">
                         <i class="fas fa-mail-bulk mr-4"> </i>

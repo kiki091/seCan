@@ -28,13 +28,16 @@
                         <span class="float-right text-uppercase news_date">{{ $detail['publish_date'] }}</span>
                     </p>
 
-                    <h1 class="text-capitalize mt-2 mb-2 text-md ff-old-standart">{{ $detail['title'] }}</h1>
+                    <h4 class="news_detail_title">{{ $detail['title'] }}</h4>
                     <div class="author">
                         <img src="{{ asset('images/thumb.png') }}" alt="" />
-                        <span>Di publish oleh {{ $detail['publish_by'] }}</span>
+                        <span class="author-info">Di publish oleh {{ $detail['publish_by'] }}</span>
+                        @if(isset($detail['doctor_name']) && !empty($detail['doctor_name']))
+                            <span class="author-info">Di tinjau oleh {{ $detail['doctor_name'] }}</span>
+                        @endif
                         
                     </div>
-                    <div class="mt-4 text-justify d-block">
+                    <div class="mt-4 d-block">
                         <p>{!! $detail['content'] !!}</p>
                     </div>
                 </div>

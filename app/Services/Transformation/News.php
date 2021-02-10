@@ -44,6 +44,7 @@ class News
             'category_id' => isset($params['category']['id']) ? $params['category']['id'] : '',
             'category_slug' => isset($params['category']['slug']) ? $params['category']['slug'] : '',
             'publish_by' => isset($params['publish_by']) ? $params['publish_by'] : '',
+            'doctor_name' => isset($params['doctor']['fullname']) ? $params['doctor']['fullname'] : '',
         ];
     }
 

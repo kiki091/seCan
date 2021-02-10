@@ -48,7 +48,7 @@
                                     <span class="float-left text-uppercase">{{ $newsLanding['category'] }}</span>
                                     <span class="float-right text-uppercase news_date">{{ $newsLanding['publish_date'] }}</span>
                                 </p>
-                                <h4 class="mt-4 mb-3 d-flex full-width ff-old-standart">
+                                <h4 class="news_landing_title">
                                 <a href="{{ route('frontNewsDetail', $newsLanding['slug']) }}">{{ $newsLanding['title'] }}</a></h4>
                                 <div class="news_intro">
                                     

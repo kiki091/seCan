@@ -15,6 +15,15 @@ trait Meta
             if (!empty($params['id']) && !empty($params['type'])) {
                 return $this->seoManager->getEdit($params);
             }
+            elseif (isset($params['id']) && !empty($params['route'])) {
+                if ($page = $this->pageModel->where('id', $params['id'])->first()) {
+                    $params = [
+                        'id' => $page->id,
+                        'type' => 'Pages'
+                    ];
+                    return $this->seoManager->getEdit($params);
+                }
+            }
             elseif (!empty($params['route'])) {
                 if ($page = $this->pageModel->where('route', $params['route'])->first()) {
                     $params = [
@@ -50,21 +59,23 @@ trait Meta
             
             //code...
             
-            $stored_page = ['frontHome', 'frontSearch', 'frontAbout', 'frontNews', 'frontVideo', 'frontNewsCategory', 'frontVideoCategory', 'frontDoctor'];
+            $stored_page = ['frontHome', 'frontSearch', 'frontAbout', 'frontNews', 'frontVideo', 'frontDoctor', 'frontSearch'];
             $route_name = Route::currentRouteName();
             
             if (in_array($route_name, $stored_page)){
                 $params = [
                     'route' => $route_name
                 ];
-    
+
                 return $this->detail($params);
             }
             
             $route = Route::getCurrentRoute();
             $slug = $id = $type = null;
+            
             if ($route && $parameters = $route->parameters) {
                 $slug = is_array($parameters) && isset($parameters['slug']) ? $parameters['slug'] : null;
+               
                 if (is_null($slug) && !empty($parameters['id'])) {
                     $slug = $parameters['id'];
                 }
@@ -92,7 +103,44 @@ trait Meta
                 $id = $video['id'];
                 $type = 'Video';
             }
+            else if($route_name == 'frontNewsCategory') {
 
+                if($slug == 'kesehatan') {
+                    $params = [
+                        'route' => $route_name,
+                        'id' => '6'
+                    ];
+                }
+                else if ($slug == 'kecantikan') {
+                    $params = [
+                        'route' => $route_name,
+                        'id' => '5'
+                    ];
+                }
+
+                return $this->detail($params);
+                
+            }
+
+            else if($route_name == 'frontVideoCategory') {
+
+                if($slug == 'kesehatan') {
+                    $params = [
+                        'route' => $route_name,
+                        'id' => '9'
+                    ];
+                }
+                else if ($slug == 'kecantikan') {
+                    $params = [
+                        'route' => $route_name,
+                        'id' => '8'
+                    ];
+                }
+
+                return $this->detail($params);
+                
+            }
+            
             return $this->detail([
                 'id' => $id,
                 'type' => $type
